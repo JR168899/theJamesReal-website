@@ -47,7 +47,7 @@ def comic(card):
  photo=PHOTOS.get(card['id'])
  if photo:
   raw=base64.b64encode((D/photo['asset']).read_bytes()).decode()
-  return f'<svg xmlns="http://www.w3.org/2000/svg" width="660" height="338" viewBox="0 0 660 338"><title>{E(photo["caption"])}</title><rect width="660" height="338" fill="#faf8f1"/><image x="8" y="5" width="644" height="285" preserveAspectRatio="xMidYMid meet" href="data:image/jpeg;base64,{raw}"/><text x="12" y="310" font-family="Arial, sans-serif" font-size="13" fill="#454545">{E(photo['caption'])}</text><a href="{E(photo['sourceURL'])}"><text x="12" y="329" font-family="Arial, sans-serif" font-size="11" fill="#676767">{E(photo['credit'])}</text></a></svg>'
+  return f'<svg xmlns="http://www.w3.org/2000/svg" width="660" height="338" viewBox="0 0 660 338"><title>{E(photo["caption"])}</title><rect width="660" height="338" fill="#faf8f1"/><image x="8" y="5" width="644" height="285" preserveAspectRatio="{photo.get("fit","xMidYMid meet")}" href="data:image/jpeg;base64,{raw}"/><text x="12" y="310" font-family="Arial, sans-serif" font-size="13" fill="#454545">{E(photo['caption'])}</text><a href="{E(photo['sourceURL'])}"><text x="12" y="329" font-family="Arial, sans-serif" font-size="11" fill="#676767">{E(photo['credit'])}</text></a></svg>'
  key=art.subject(card)
  # Original, round-faced characters and clean, expressive Japanese family-manga
  # linework. The object/scene is selected from the actual lesson, not randomly.
@@ -84,7 +84,7 @@ def enrich(c,lev):
  c['formatVersion']='oct15-restored-v1';c['illustrationAlt']='Original family-manga scene illustrating '+title+'.'
  from refine_teaching_fields import refine
  c=refine(c)
- if c['id'] in PHOTOS:c['photoCredit']=PHOTOS[c['id']];c['illustrationAlt']=PHOTOS[c['id']]['caption']
+ if c['id'] in PHOTOS:c['photoCredit']={k:v for k,v in PHOTOS[c['id']].items() if k!='fit'};c['illustrationAlt']=PHOTOS[c['id']]['caption']
  return c
 
 def label(copy,x,y,size=16):return f'<text x="{x}" y="{y}" font-family="Arial, sans-serif" font-size="{size}" font-weight="700" fill="#8c8981">{E(copy)}</text>'
