@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "framework": null,
+  "outputDirectory": "dist",
+  "headers": [{"source":"/data/english-cards/(.*)","headers":[{"key":"Cache-Control","value":"public, max-age=86400"}]}]
+}

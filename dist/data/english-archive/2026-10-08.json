@@ -1,0 +1,289 @@
+{
+  "date": "2026-10-08",
+  "version": 4,
+  "revision": 16,
+  "cardSize": {
+    "width": 660,
+    "height": 1434
+  },
+  "lessons": [
+    {
+      "image": "vocabulary",
+      "title": "resilient",
+      "meaning": "Able to recover after difficulty or adapt when conditions change.",
+      "example": "Our team stayed resilient through several setbacks and found a workable way forward.",
+      "notes": "Adjective. Common patterns: resilient people, a resilient community, resilient in the face of difficulty. It does not mean never feeling upset.",
+      "conversation": "A: The first launch was rough. How is the team doing?\nB: They have been resilient. They regrouped and fixed the main problems.\nA: So being resilient does not mean they were unaffected?\nB: Right. They were disappointed, but they adapted and kept going.",
+      "exercise": "Describe a resilient person or group. Explain what they did after a setback.",
+      "id": "2026-10-08-1",
+      "illustration": "assets/english/2026-10-08/1.png",
+      "filename": "Vocabulary_2026-10-08_01.png",
+      "ipa": "/rɪˈzɪl.jənt/",
+      "ipaAccent": "en-US",
+      "ipaSource": "https://dictionary.cambridge.org/us/pronunciation/english/resilient",
+      "synonyms": [
+        "adaptable",
+        "able to bounce back"
+      ],
+      "partOfSpeech": "adjective",
+      "wordForms": "Comparative: more resilient · Superlative: most resilient"
+    },
+    {
+      "image": "vocabulary",
+      "title": "resourceful",
+      "meaning": "Good at finding practical ways to solve problems with the resources available.",
+      "example": "With no spare parts, Maya found a resourceful way to repair the broken handle.",
+      "notes": "Adjective, usually complimentary. A resourceful person uses ideas and available materials effectively; the word is not a synonym for wealthy.",
+      "conversation": "A: How did you fix it without the usual tools?\nB: I used a spare strap to hold the handle in place.\nA: That was resourceful of you. Will it last?\nB: It is temporary, but it will work until the replacement arrives.",
+      "exercise": "Describe a resourceful solution to a small everyday problem.",
+      "id": "2026-10-08-2",
+      "illustration": "assets/english/2026-10-08/2.png",
+      "filename": "Vocabulary_2026-10-08_02.png",
+      "ipa": "/rɪˈsɔːr.sfəl/",
+      "ipaAccent": "en-US",
+      "ipaSource": "https://dictionary.cambridge.org/us/pronunciation/english/resourceful",
+      "synonyms": [
+        "ingenious",
+        "inventive"
+      ],
+      "partOfSpeech": "adjective",
+      "wordForms": "Comparative: more resourceful · Superlative: most resourceful"
+    },
+    {
+      "image": "phrasal",
+      "title": "bring something up / bring up something",
+      "meaning": "Introduce a subject into a conversation for discussion.",
+      "example": "I did not want to bring up the budget until everyone had seen the proposal.",
+      "notes": "Separable: bring up a topic / bring a topic up / bring it up. This lesson covers introducing a subject; bring up can also mean raise a child. With a noun, both orders work; pronouns go between the verb and particle.",
+      "conversation": "A: Should we discuss the deadline now?\nB: Yes, bring it up before the meeting ends.\nA: Could I say, 'There is one deadline concern I would like to bring up'?\nB: That sounds clear and polite. Explain the concern next.",
+      "exercise": "Write a polite sentence introducing a concern you want to discuss.",
+      "id": "2026-10-08-3",
+      "illustration": "assets/english/2026-10-08/3.png",
+      "filename": "Phrasal verbs_2026-10-08_01.png",
+      "synonyms": [
+        "raise",
+        "broach"
+      ]
+    },
+    {
+      "image": "phrasal",
+      "title": "draw on something",
+      "meaning": "Use knowledge, experience or another resource to help with a task.",
+      "example": "She drew on her teaching experience to explain the complicated process clearly.",
+      "notes": "Use draw on + resource: draw on experience, research or savings. Do not separate it: draw on it, not draw it on. Past tense: drew; past participle: drawn.",
+      "conversation": "A: How did you know how to train the new staff?\nB: I drew on my teaching experience.\nA: Which part of that experience was useful?\nB: Breaking a complicated task into manageable steps.",
+      "exercise": "Name an experience you can draw on to handle a new challenge.",
+      "id": "2026-10-08-4",
+      "illustration": "assets/english/2026-10-08/4.png",
+      "filename": "Phrasal verbs_2026-10-08_02.png",
+      "synonyms": [
+        "tap into",
+        "make use of"
+      ]
+    },
+    {
+      "image": "idiom",
+      "title": "the ball is in your court",
+      "meaning": "It is your turn to decide or take the next step.",
+      "example": "We have sent the revised offer, so the ball is now in their court.",
+      "notes": "Informal. This tennis metaphor concerns responsibility for the next move. In a delicate conversation, a direct request may sound warmer than assigning responsibility.",
+      "conversation": "A: We have sent the offer. Should we change it again?\nB: Not yet. The ball is in their court.\nA: So we are waiting for their decision?\nB: Yes. We can follow up if they miss the agreed deadline.",
+      "exercise": "Describe a situation in which the next step depends on someone else.",
+      "id": "2026-10-08-5",
+      "illustration": "assets/english/2026-10-08/5.png",
+      "filename": "Idioms & slang_2026-10-08_01.png",
+      "synonyms": [
+        "It is your move.",
+        "The next step is up to you."
+      ]
+    },
+    {
+      "image": "idiom",
+      "title": "a blessing in disguise",
+      "meaning": "Something that first seems unfortunate but later turns out to be beneficial.",
+      "example": "Missing that flight was a blessing in disguise: it gave me an extra day with my family.",
+      "notes": "Use a blessing in disguise, not a disguised blessing. Usually retrospective; do not use it to dismiss someone’s pain before a benefit is clear.",
+      "conversation": "A: I was disappointed when the trip was canceled.\nB: Did anything good come of it?\nA: Yes. I stayed for my sister's celebration. It was a blessing in disguise.\nB: I can see why you feel differently about it now.",
+      "exercise": "Describe a minor disappointment that unexpectedly led to something good.",
+      "id": "2026-10-08-6",
+      "illustration": "assets/english/2026-10-08/6.png",
+      "filename": "Idioms & slang_2026-10-08_02.png",
+      "synonyms": [
+        "an unexpected benefit",
+        "a fortunate outcome from a setback"
+      ]
+    },
+    {
+      "image": "life",
+      "title": "Let me get back to you on that.",
+      "meaning": "A natural way to promise a later answer when you need time or information.",
+      "example": "Let me get back to you on that after I have checked the schedule.",
+      "notes": "Get back to someone means respond later. Add a time if possible and follow through; without a deadline, it can sound like avoidance.",
+      "conversation": "A: Can you confirm the final price?\nB: Let me get back to you on that by tomorrow morning.\nA: Do you need to check the delivery charge?\nB: Yes. I will confirm the total before ten.",
+      "exercise": "Respond to a question you cannot answer yet. Give a specific follow-up time.",
+      "id": "2026-10-08-7",
+      "illustration": "assets/english/2026-10-08/7.png",
+      "filename": "Life phrases_2026-10-08_01.png",
+      "synonyms": [
+        "Let me check and follow up.",
+        "I will come back to you with an answer."
+      ]
+    },
+    {
+      "image": "quote",
+      "title": "Clarity begins when we name what matters.",
+      "meaning": "Identifying a priority can make a confusing situation easier to understand.",
+      "example": "With three deadlines competing for attention, Jo reminded herself, “Clarity begins when we name what matters.” She chose the most important task.",
+      "notes": "Name here means identify or state explicitly, rather than give someone a name. Use the sentence when discussing priorities or clarifying what is most important.",
+      "conversation": "A: Everything feels urgent. Where do I start?\nB: “Clarity begins when we name what matters.” Which deadline affects someone else?\nA: The application. My colleague needs it today.\nB: Then make that your first priority.",
+      "exercise": "Use the quote to introduce one priority and explain why it matters. Model: Finishing the application matters because someone is waiting for it.",
+      "id": "2026-10-08-9",
+      "illustration": "assets/english/2026-10-08/9.png",
+      "filename": "Quote_2026-10-08_01.png",
+      "synonyms": [
+        "Identify your priorities to gain clarity.",
+        "Understanding starts with recognizing what matters."
+      ],
+      "synonymNote": "Similar expressions for the idea, not word-for-word equivalents."
+    },
+    {
+      "image": "grammar",
+      "title": "Inversion after Not only",
+      "meaning": "When Not only begins a clause for emphasis, put the auxiliary before the subject.",
+      "example": "Not only did she finish early, but she also helped the rest of the team.",
+      "notes": "Pattern: Not only + auxiliary + subject + verb. Without an existing auxiliary, use do/does/did + base verb. Ordinary order remains in She not only finished early but also helped us.",
+      "conversation": "A: Was the workshop useful?\nB: Not only did I learn new skills, but I also met people in my field.\nA: Why did you put did before I?\nB: Starting with Not only requires inversion; learn stays in its base form.",
+      "exercise": "Rewrite: He saved us time and also improved the design. Begin with Not only.",
+      "id": "2026-10-08-8",
+      "illustration": "assets/english/2026-10-08/8.png",
+      "filename": "Grammar_2026-10-08_01.png"
+    },
+    {
+      "image": "small-talk",
+      "title": "Have you come across anything worth watching lately?",
+      "meaning": "A friendly invitation to share a recent film, show or video recommendation.",
+      "example": "Have you come across anything worth watching lately? I am looking for a good documentary.",
+      "notes": "Come across means find by chance; worth + -ing describes something deserving your time. Lately connects naturally with the present perfect. Follow up on the person’s taste.",
+      "conversation": "A: Have you come across anything worth watching lately?\nB: A documentary about city wildlife.\nA: What stood out to you?\nB: How animals adapt to places we overlook.\nA: That sounds right up my alley. Where can I find it?\nB: I will send you the link. What kinds of documentaries do you enjoy?\nA: Mostly nature films, especially ones set in cities.\nB: Then this should suit you. Let me know what you think.",
+      "exercise": "Recommend something briefly, then ask a follow-up question about the other person’s interests.",
+      "id": "2026-10-08-10",
+      "illustration": "assets/english/2026-10-08/10.png",
+      "filename": "Small talk_2026-10-08_01.png"
+    },
+    {
+      "id": "2026-10-08-11",
+      "image": "essay",
+      "level": "C1",
+      "title": "Turning a setback into a shared opportunity",
+      "meaning": "A short model essay develops one situation using the day’s vocabulary, expressions and grammar.",
+      "paragraphs": [
+        [
+          "A resilient group can turn an unexpected problem into an opportunity by being resourceful together."
+        ],
+        [
+          "Our community film night lost its usual venue, so we had to draw on our local contacts.",
+          "I brought up the problem at a meeting and asked whether anyone had come across something worth watching.",
+          "Not only did a neighbour suggest a suitable film, but she also offered her garden as a screening space."
+        ],
+        [
+          "When she asked about equipment, I said, “Let me get back to you on that.”",
+          "The ball was in my court, so I checked what we could borrow before promising anything.",
+          "The venue change proved a blessing in disguise: the smaller setting encouraged conversation."
+        ],
+        [
+          "Naming what matters and responding carefully can make a setback useful."
+        ]
+      ],
+      "structure": "Introduction → develop the situation → example and reflection → conclusion. Use 1–2 / 2–3 / 2–3 / 1–2 sentences.",
+      "exercise": "Your turn: Write four short paragraphs about supporting others. Reuse two expressions and today’s grammar.",
+      "example": "A resilient group can turn an unexpected problem into an opportunity by being resourceful together.\n\nOur community film night lost its usual venue, so we had to draw on our local contacts. I brought up the problem at a meeting and asked whether anyone had come across something worth watching. Not only did a neighbour suggest a suitable film, but she also offered her garden as a screening space.\n\nWhen she asked about equipment, I said, “Let me get back to you on that.” The ball was in my court, so I checked what we could borrow before promising anything. The venue change proved a blessing in disguise: the smaller setting encouraged conversation.\n\nNaming what matters and responding carefully can make a setback useful.",
+      "notes": "Notice how each paragraph develops the same central idea.",
+      "conversation": "",
+      "connections": [
+        {
+          "lessonId": "2026-10-08-1",
+          "expression": "resilient"
+        },
+        {
+          "lessonId": "2026-10-08-2",
+          "expression": "resourceful"
+        },
+        {
+          "lessonId": "2026-10-08-3",
+          "expression": "bring up"
+        },
+        {
+          "lessonId": "2026-10-08-4",
+          "expression": "draw on"
+        },
+        {
+          "lessonId": "2026-10-08-5",
+          "expression": "the ball is in your court"
+        },
+        {
+          "lessonId": "2026-10-08-6",
+          "expression": "a blessing in disguise"
+        },
+        {
+          "lessonId": "2026-10-08-8",
+          "expression": "Inversion after Not only"
+        }
+      ],
+      "filename": "Essay_2026-10-08_01.png",
+      "illustration": "assets/english/2026-10-08/essay.png",
+      "scene": {
+        "background": "#eee7d8",
+        "description": "Resourceful neighbours turn a cancelled film night into a friendly garden gathering.",
+        "characters": [
+          {
+            "x": 180,
+            "y": 115,
+            "scale": 1,
+            "face": "curious",
+            "pose": "think",
+            "shirt": "#9ab6c2",
+            "flip": false
+          },
+          {
+            "x": 450,
+            "y": 120,
+            "scale": 1,
+            "face": "happy",
+            "pose": "point",
+            "shirt": "#c5b3cc",
+            "flip": true
+          }
+        ],
+        "props": [
+          {
+            "kind": "phone",
+            "x": 280,
+            "y": 110,
+            "scale": 0.7
+          },
+          {
+            "kind": "lightbulb",
+            "x": 60,
+            "y": 190,
+            "scale": 0.7
+          },
+          {
+            "kind": "bench",
+            "x": 480,
+            "y": 220,
+            "scale": 0.7
+          }
+        ]
+      }
+    }
+  ],
+  "published": "2026-10-08T16:15:33.678066+00:00",
+  "cardFooterVersion": 2,
+  "cardStyleVersion": 8,
+  "theme": "Turning a setback into a shared opportunity",
+  "curriculumVersion": 5,
+  "historicalEssayAddedOn": "2026-10-09",
+  "essayIllustrationVersion": 1,
+  "synonymsVersion": 1,
+  "vocabularyFormsVersion": 1
+}

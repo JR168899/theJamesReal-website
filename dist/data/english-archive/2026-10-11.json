@@ -1,0 +1,612 @@
+{
+  "date": "2026-10-11",
+  "theme": "Optimizing Collaborative Projects",
+  "curriculumVersion": 5,
+  "synonymsVersion": 1,
+  "vocabularyFormsVersion": 1,
+  "essayIllustrationVersion": 1,
+  "illustrationStyle": "japanese",
+  "lessons": [
+    {
+      "image": "vocabulary",
+      "level": "C1",
+      "title": "leverage",
+      "meaning": "To use something that you already have in order to achieve a new or better result.",
+      "ipa": "/ˈlɛvərɪdʒ/",
+      "ipaAccent": "en-US",
+      "notes": "Commonly used in professional contexts: leverage our experience or leverage existing data. It implies extracting maximum value from a resource.",
+      "example": "We can leverage our existing software to speed up the new project.",
+      "conversation": "A: How will we meet the deadline?\nB: We should leverage the research we did last quarter.\nA: That is a smart move.\nB: It saves us from starting from scratch.",
+      "exercise": "Rewrite this sentence using 'leverage': 'We should use our previous contacts to help us get this deal.' \nModel Answer: We should leverage our previous contacts to help us get this deal.",
+      "scene": {
+        "background": "#f0f8ff",
+        "description": "Colleagues point to an existing research chart and a laptop, reusing results to advance their software project.",
+        "characters": [
+          {
+            "x": 200,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#8a9fbc",
+            "flip": false,
+            "face": "happy",
+            "pose": "point"
+          }
+        ],
+        "props": [
+          {
+            "kind": "chart",
+            "x": 400,
+            "y": 160,
+            "scale": 0.7
+          },
+          {
+            "kind": "laptop",
+            "x": 490,
+            "y": 60,
+            "scale": 0.7
+          }
+        ]
+      },
+      "partOfSpeech": "transitive verb",
+      "wordForms": "Forms: leverages · leveraged · leveraging",
+      "synonyms": [
+        "make effective use of",
+        "capitalize on"
+      ],
+      "id": "2026-10-11-1",
+      "illustration": "assets/english/2026-10-11/01.png",
+      "filename": "Vocabulary_2026-10-11_01.png"
+    },
+    {
+      "image": "vocabulary",
+      "level": "C1",
+      "title": "mitigate",
+      "meaning": "To make something less severe, serious, or painful.",
+      "ipa": "/ˈmɪtɪˌɡeɪt/",
+      "ipaAccent": "en-US",
+      "notes": "Used with risks, consequences, or effects. It does not mean to eliminate the problem, but to reduce its negative impact.",
+      "example": "We need to mitigate the risks of this transition before we launch.",
+      "conversation": "A: Is the new server stable?\nB: We have steps to mitigate any potential downtime.\nA: What if it crashes anyway?\nB: We have a backup plan ready.",
+      "exercise": "Fill the gap: 'Taking regular breaks helps to _____ the stress of long work hours.' \nModel Answer: mitigate",
+      "scene": {
+        "background": "#fff5e6",
+        "description": "A colleague points at a protected server plan; an umbrella beside the clock represents reducing downtime risk.",
+        "characters": [
+          {
+            "x": 150,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#8a9fbc",
+            "flip": false,
+            "face": "calm",
+            "pose": "think"
+          }
+        ],
+        "props": [
+          {
+            "kind": "umbrella",
+            "x": 400,
+            "y": 160,
+            "scale": 0.7
+          },
+          {
+            "kind": "clock",
+            "x": 490,
+            "y": 60,
+            "scale": 0.7
+          }
+        ]
+      },
+      "partOfSpeech": "transitive verb",
+      "wordForms": "Forms: mitigates · mitigated · mitigating",
+      "synonyms": [
+        "alleviate",
+        "reduce the severity of"
+      ],
+      "id": "2026-10-11-2",
+      "illustration": "assets/english/2026-10-11/02.png",
+      "filename": "Vocabulary_2026-10-11_02.png"
+    },
+    {
+      "image": "phrasal",
+      "level": "B2",
+      "title": "hammer something out / hammer out something",
+      "meaning": "To reach an agreement or solve a problem after a lot of discussion or effort.",
+      "notes": "Separable: hammer out the details / hammer them out. Suggests a process of shaping something through persistent negotiation. With a noun, both orders work; pronouns go between the verb and particle.",
+      "example": "The team spent all morning hammering out the final terms of the contract.",
+      "conversation": "A: Are we ready to sign?\nB: Not yet, we still need to hammer out the payment terms.\nA: That sounds difficult.\nB: It is, but we are making progress.",
+      "exercise": "Complete: 'They managed to _____ (the agreement) after hours of debate.' \nModel Answer: hammer out the agreement",
+      "scene": {
+        "background": "#e8f5e9",
+        "description": "Two determined colleagues discuss a shared document to negotiate project terms.",
+        "characters": [
+          {
+            "x": 100,
+            "y": 100,
+            "scale": 0.85,
+            "shirt": "#8a9fbc",
+            "flip": false,
+            "face": "determined",
+            "pose": "cross"
+          },
+          {
+            "x": 300,
+            "y": 100,
+            "scale": 0.85,
+            "shirt": "#b49aa8",
+            "flip": true,
+            "face": "determined",
+            "pose": "up"
+          }
+        ],
+        "props": [
+          {
+            "kind": "document",
+            "x": 400,
+            "y": 160,
+            "scale": 0.7
+          }
+        ]
+      },
+      "synonyms": [
+        "work out through negotiation",
+        "settle through discussion"
+      ],
+      "id": "2026-10-11-3",
+      "illustration": "assets/english/2026-10-11/03.png",
+      "filename": "Phrasal verbs_2026-10-11_01.png"
+    },
+    {
+      "image": "phrasal",
+      "level": "C1",
+      "title": "back something up / back up something",
+      "meaning": "To provide evidence or support for a claim or theory.",
+      "notes": "Separable: back up your ideas / back them up. Distinguish from 'backup' (noun) or 'back up' (reverse a vehicle). With a noun, both orders work; pronouns go between the verb and particle.",
+      "example": "You need data to back up your proposal if you want the board to approve it.",
+      "conversation": "A: I think we should switch to this new vendor.\nB: What data do you have to back up that claim?\nA: I have a report here.\nB: Let me look at the figures.",
+      "exercise": "Rewrite using 'back up': 'You should support your argument with facts.' \nModel Answer: You should back up your argument with facts.",
+      "scene": {
+        "background": "#fce4ec",
+        "description": "A presenter points at a chart while a colleague examines a document containing supporting figures.",
+        "characters": [
+          {
+            "x": 120,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#8a9fbc",
+            "flip": false,
+            "face": "happy",
+            "pose": "point"
+          },
+          {
+            "x": 350,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#b49aa8",
+            "flip": true,
+            "face": "curious",
+            "pose": "think"
+          }
+        ],
+        "props": [
+          {
+            "kind": "chart",
+            "x": 400,
+            "y": 160,
+            "scale": 0.7
+          },
+          {
+            "kind": "document",
+            "x": 490,
+            "y": 60,
+            "scale": 0.7
+          }
+        ]
+      },
+      "synonyms": [
+        "substantiate",
+        "support with evidence"
+      ],
+      "id": "2026-10-11-4",
+      "illustration": "assets/english/2026-10-11/04.png",
+      "filename": "Phrasal verbs_2026-10-11_02.png"
+    },
+    {
+      "image": "idiom",
+      "level": "B2",
+      "title": "a tall order",
+      "meaning": "A request or task that is very difficult to fulfill.",
+      "notes": "Used when someone asks for something that seems nearly impossible given constraints. Not necessarily negative, just challenging.",
+      "example": "Finishing the entire project by Friday is a tall order, but we can try.",
+      "conversation": "A: Can you double the output by tomorrow?\nB: That is a tall order.\nA: I know it is hard.\nB: I will see what we can do.",
+      "exercise": "Use 'a tall order' to describe a difficult deadline: 'Asking for 100 units in one hour is _____.' \nModel Answer: a tall order",
+      "scene": {
+        "background": "#fff9c4",
+        "description": "A worried colleague compares a large checklist with the remaining time on a clock.",
+        "characters": [
+          {
+            "x": 200,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#8a9fbc",
+            "flip": false,
+            "face": "worried",
+            "pose": "think"
+          }
+        ],
+        "props": [
+          {
+            "kind": "clipboard",
+            "x": 400,
+            "y": 160,
+            "scale": 0.7
+          },
+          {
+            "kind": "clock",
+            "x": 490,
+            "y": 60,
+            "scale": 0.7
+          }
+        ]
+      },
+      "synonyms": [
+        "a demanding task",
+        "a difficult request"
+      ],
+      "id": "2026-10-11-5",
+      "illustration": "assets/english/2026-10-11/05.png",
+      "filename": "Idioms & slang_2026-10-11_01.png"
+    },
+    {
+      "image": "idiom",
+      "level": "C2",
+      "title": "keep your eyes on the ball",
+      "meaning": "To remain focused on the most important aspect of a situation.",
+      "notes": "This sports metaphor can encourage focus, but an imperative from a manager may imply that someone has been inattentive. Inclusive \"let us keep our eyes on the ball\" shares responsibility; \"keep your eyes on the ball\" can sound like a rebuke. Judge the relationship and tone.",
+      "example": "We have many small tasks, but we must keep our eyes on the ball: the final launch date.",
+      "conversation": "A: The manager told me to keep my eyes on the ball.\nB: Did it sound supportive or critical?\nA: Critical; she said it after I missed a deadline.\nB: In that context, it implies your attention slipped.",
+      "exercise": "A colleague missed a detail. Rewrite \"Keep your eyes on the ball\" to share responsibility. Model: Let us keep our eyes on the ball and check the launch risks together.",
+      "scene": {
+        "background": "#e1f5fe",
+        "description": "A colleague directs attention toward a ball and project target, emphasizing focus under managerial scrutiny.",
+        "characters": [
+          {
+            "x": 200,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#8a9fbc",
+            "flip": false,
+            "face": "determined",
+            "pose": "up"
+          }
+        ],
+        "props": [
+          {
+            "kind": "ball",
+            "x": 400,
+            "y": 160,
+            "scale": 0.7
+          },
+          {
+            "kind": "target",
+            "x": 490,
+            "y": 60,
+            "scale": 0.7
+          }
+        ]
+      },
+      "synonyms": [
+        "stay focused on the objective",
+        "avoid losing sight of the goal"
+      ],
+      "id": "2026-10-11-6",
+      "illustration": "assets/english/2026-10-11/06.png",
+      "filename": "Idioms & slang_2026-10-11_02.png"
+    },
+    {
+      "image": "life",
+      "level": "B2",
+      "title": "I appreciate your transparency.",
+      "meaning": "A polite way to acknowledge someone's honesty about a difficult situation.",
+      "notes": "Use this when someone admits a mistake or shares bad news. It validates their integrity and keeps the professional relationship respectful.",
+      "example": "I appreciate your transparency regarding the budget shortfall.",
+      "conversation": "A: I'm afraid we lost the client.\nB: I appreciate your transparency.\nA: It was a tough call to make.\nB: I understand; let's discuss the next steps.",
+      "exercise": "When would you use this phrase? \nModel Answer: You would use it when someone is honest with you about a negative outcome or a difficult problem.",
+      "scene": {
+        "background": "#f3e5f5",
+        "description": "Two colleagues acknowledge a candid project update with open, welcoming gestures.",
+        "characters": [
+          {
+            "x": 100,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#8a9fbc",
+            "flip": false,
+            "face": "calm",
+            "pose": "reach"
+          },
+          {
+            "x": 300,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#b49aa8",
+            "flip": true,
+            "face": "happy",
+            "pose": "reach"
+          }
+        ],
+        "props": [
+          {
+            "kind": "speech",
+            "x": 400,
+            "y": 160,
+            "scale": 0.7
+          }
+        ]
+      },
+      "synonyms": [
+        "Thank you for being candid.",
+        "I appreciate your openness."
+      ],
+      "id": "2026-10-11-7",
+      "illustration": "assets/english/2026-10-11/07.png",
+      "filename": "Life phrases_2026-10-11_01.png"
+    },
+    {
+      "image": "quote",
+      "level": "C1",
+      "title": "Clarity is the byproduct of effort, not luck.",
+      "meaning": "Understanding is achieved through hard work and preparation, not by chance.",
+      "notes": "Use this to emphasize that results require intentional action. It is a reminder that you must put in the work to reach a clear conclusion.",
+      "example": "After checking the assumptions together, Maya said, \"Clarity is the byproduct of effort, not luck.\"",
+      "conversation": "A: How did you finish the plan so fast?\nB: Clarity is the byproduct of effort, not luck.\nA: You spent all night on it?\nB: Yes, but now the path is clear.",
+      "exercise": "Explain the quote in your own words. \nModel Answer: It means that you only reach a clear understanding by working hard, not by hoping things go well.",
+      "scene": {
+        "background": "#fff8ed",
+        "description": "A colleague studies a project document beside a lightbulb, showing clarity earned through careful work.",
+        "characters": [
+          {
+            "x": 200,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#8a9fbc",
+            "flip": false,
+            "face": "happy",
+            "pose": "up"
+          }
+        ],
+        "props": [
+          {
+            "kind": "document",
+            "x": 400,
+            "y": 160,
+            "scale": 0.7
+          },
+          {
+            "kind": "lightbulb",
+            "x": 490,
+            "y": 60,
+            "scale": 0.7
+          }
+        ]
+      },
+      "synonyms": [
+        "Understanding takes deliberate work.",
+        "Clear thinking comes from sustained effort."
+      ],
+      "synonymNote": "Similar expressions for the idea, not word-for-word equivalents.",
+      "id": "2026-10-11-9",
+      "illustration": "assets/english/2026-10-11/09.png",
+      "filename": "Quote_2026-10-11_01.png"
+    },
+    {
+      "image": "grammar",
+      "level": "C2",
+      "title": "Reduced relatives: preserving modality",
+      "meaning": "A participle modifier can shorten a relative clause, but it may lose modal meaning such as ability or permission.",
+      "notes": "Do not replace \"who can approve\" with \"approving\": ability or permission becomes an actual activity. Likewise, \"who must review\" expresses an obligation that \"reviewing\" does not preserve. Reduce a relative only when the intended voice, time and modal meaning remain clear.",
+      "example": "Analysts reviewing the figures are busy. Analysts who can approve the budget are authorized; analysts approving it are actually doing so.",
+      "conversation": "A: Can I shorten \"colleagues who can approve the figures\"?\nB: \"Colleagues approving the figures\" changes the meaning.\nA: It describes what they are doing, rather than their authority.\nB: Exactly; keep the full relative clause to preserve permission.",
+      "exercise": "Does \"staff reviewing the budget\" preserve \"staff who must review the budget\"? Model: No. The full clause states an obligation; the participle describes an activity.",
+      "scene": {
+        "background": "#fafafa",
+        "description": "A colleague compares an activity document with an authorization check, distinguishing doing from permission.",
+        "characters": [
+          {
+            "x": 200,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#8a9fbc",
+            "flip": false,
+            "face": "neutral",
+            "pose": "point"
+          }
+        ],
+        "props": [
+          {
+            "kind": "document",
+            "x": 400,
+            "y": 160,
+            "scale": 0.7
+          },
+          {
+            "kind": "check",
+            "x": 490,
+            "y": 60,
+            "scale": 0.7
+          }
+        ]
+      },
+      "id": "2026-10-11-8",
+      "illustration": "assets/english/2026-10-11/08.png",
+      "filename": "Grammar_2026-10-11_01.png"
+    },
+    {
+      "image": "small-talk",
+      "level": "B2",
+      "title": "How is your workload looking this week?",
+      "meaning": "A friendly way to check on someone's stress level or availability.",
+      "notes": "This shows empathy for their busy schedule. It is less intrusive than 'What are you doing?'",
+      "conversation": "A: Hi, how is your workload looking this week?\nB: It is quite heavy, actually.\nA: Is there anything I can help with?\nB: That would be great, thanks.\nA: What specific task is the hardest?\nB: The data entry is taking all my time.\nA: I can handle that for you today.\nB: That would be a huge help.",
+      "exercise": "What is a good follow-up if they say it is busy? \nModel Answer: 'Is there anything I can help with?'",
+      "scene": {
+        "background": "#e0f7fa",
+        "description": "Two colleagues talk beside a weekly calendar and workload document, arranging practical help.",
+        "characters": [
+          {
+            "x": 100,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#8a9fbc",
+            "flip": false,
+            "face": "happy",
+            "pose": "think"
+          },
+          {
+            "x": 300,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#b49aa8",
+            "flip": true,
+            "face": "neutral",
+            "pose": "up"
+          }
+        ],
+        "props": [
+          {
+            "kind": "calendar",
+            "x": 400,
+            "y": 160,
+            "scale": 0.7
+          },
+          {
+            "kind": "document",
+            "x": 490,
+            "y": 60,
+            "scale": 0.7
+          }
+        ]
+      },
+      "example": "How is your workload looking this week? I have some time to help with the project figures.",
+      "id": "2026-10-11-10",
+      "illustration": "assets/english/2026-10-11/10.png",
+      "filename": "Small talk_2026-10-11_01.png"
+    },
+    {
+      "image": "essay",
+      "level": "C1",
+      "title": "Mastering Project Coordination",
+      "meaning": "Using strategic communication and effort to align team goals.",
+      "paragraphs": [
+        [
+          "Our team had one week to coordinate a software launch.",
+          "The deadline was a tall order, so we began by making responsibilities clear."
+        ],
+        [
+          "We decided to leverage our earlier research rather than repeat every test.",
+          "Colleagues reviewing the figures helped us hammer out a realistic schedule.",
+          "Their findings allowed us to mitigate the risk of losing customer records."
+        ],
+        [
+          "Only colleagues who could approve the budget were invited to authorize extra support.",
+          "That distinction mattered: checking figures did not automatically give someone permission to spend money."
+        ],
+        [
+          "We backed up our proposal with evidence and kept our eyes on the ball.",
+          "Clear responsibilities, careful language and honest updates made the project easier to coordinate."
+        ]
+      ],
+      "structure": "Introduction introduces the theme, development paragraphs expand on strategies, and the conclusion summarizes the core philosophy.",
+      "exercise": "Write a four-paragraph essay about a project you managed, incorporating 'leverage', 'hammer out', 'mitigate', and 'back up'.",
+      "connections": [
+        {
+          "lessonTitle": "leverage",
+          "explanation": "The team uses earlier research effectively.",
+          "lessonId": "2026-10-11-1"
+        },
+        {
+          "lessonTitle": "hammer something out / hammer out something",
+          "explanation": "Discussion produces a realistic schedule.",
+          "lessonId": "2026-10-11-3"
+        },
+        {
+          "lessonTitle": "mitigate",
+          "explanation": "Testing reduces the risk of lost records.",
+          "lessonId": "2026-10-11-2"
+        },
+        {
+          "lessonTitle": "back something up / back up something",
+          "explanation": "Evidence supports the proposal.",
+          "lessonId": "2026-10-11-4"
+        },
+        {
+          "lessonTitle": "keep your eyes on the ball",
+          "explanation": "The team maintains focus.",
+          "lessonId": "2026-10-11-6"
+        },
+        {
+          "lessonTitle": "Reduced relatives: preserving modality",
+          "explanation": "Reviewing describes an activity; who could approve preserves authority.",
+          "lessonId": "2026-10-11-8"
+        }
+      ],
+      "scene": {
+        "background": "#f5f5f5",
+        "description": "Two colleagues review a project plan and research chart together before a software launch.",
+        "characters": [
+          {
+            "x": 130,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#8a9fbc",
+            "flip": false,
+            "face": "happy",
+            "pose": "point"
+          },
+          {
+            "x": 310,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#b49aa8",
+            "flip": true,
+            "face": "curious",
+            "pose": "think"
+          }
+        ],
+        "props": [
+          {
+            "kind": "document",
+            "x": 400,
+            "y": 160,
+            "scale": 0.7
+          },
+          {
+            "kind": "chart",
+            "x": 490,
+            "y": 60,
+            "scale": 0.7
+          }
+        ]
+      },
+      "id": "2026-10-11-11",
+      "illustration": "assets/english/2026-10-11/11.png",
+      "filename": "Essay_2026-10-11_01.png"
+    }
+  ],
+  "version": 4,
+  "cardSize": {
+    "width": 660,
+    "height": 1434
+  },
+  "generation": {
+    "textModel": "gemini-3.1-flash-lite",
+    "art": "program-drawn-comic",
+    "freeTierVerifiedOn": "2026-10-11"
+  },
+  "editorialReview": {
+    "approved": true,
+    "issues": []
+  },
+  "editorialApproved": true,
+  "published": "2026-10-11T08:46:44.120481+00:00"
+}
