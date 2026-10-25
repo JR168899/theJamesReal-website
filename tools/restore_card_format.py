@@ -3,10 +3,11 @@ Run using the bundled Python with Pillow. No network or generation API is used.
 The original source archive is never modified.
 """
 from pathlib import Path
-import json, re, html, importlib.util
+import json, re, html, importlib.util, base64
 from functools import lru_cache
 from PIL import ImageFont
 ROOT=Path(__file__).resolve().parents[1];D=ROOT/'dist'
+PHOTOS=json.loads((ROOT/'content/photo-pilot.json').read_text()) if (ROOT/'content/photo-pilot.json').exists() else {}
 REF={}
 for line in (ROOT/'content/word-reference.tsv').read_text().splitlines():
  if line.strip():
@@ -43,6 +44,10 @@ def wrap(copy,size,width,bold=False):
  return out
 
 def comic(card):
+ photo=PHOTOS.get(card['id'])
+ if photo:
+  raw=base64.b64encode((D/photo['asset']).read_bytes()).decode()
+  return f'<svg xmlns="http://www.w3.org/2000/svg" width="660" height="338" viewBox="0 0 660 338"><title>{E(photo["caption"])}</title><rect width="660" height="338" fill="#faf8f1"/><image x="8" y="5" width="644" height="285" preserveAspectRatio="xMidYMid meet" href="data:image/jpeg;base64,{raw}"/><text x="12" y="310" font-family="Arial, sans-serif" font-size="13" fill="#454545">{E(photo['caption'])}</text><a href="{E(photo['sourceURL'])}"><text x="12" y="329" font-family="Arial, sans-serif" font-size="11" fill="#676767">{E(photo['credit'])}</text></a></svg>'
  key=art.subject(card)
  # Original, round-faced characters and clean, expressive Japanese family-manga
  # linework. The object/scene is selected from the actual lesson, not randomly.
@@ -77,6 +82,9 @@ def enrich(c,lev):
   else:c['conversation']='A: How would you express this idea?\nB: '+title+'\nA: What does that mean here?\nB: '+meaning
  if typ!='essay' and len(text(c.get('conversation')).split('\n'))==3:c['conversation']=text(c['conversation'])+'\nB: Let us try it together.'
  c['formatVersion']='oct15-restored-v1';c['illustrationAlt']='Original family-manga scene illustrating '+title+'.'
+ from refine_teaching_fields import refine
+ c=refine(c)
+ if c['id'] in PHOTOS:c['photoCredit']=PHOTOS[c['id']];c['illustrationAlt']=PHOTOS[c['id']]['caption']
  return c
 
 def label(copy,x,y,size=16):return f'<text x="{x}" y="{y}" font-family="Arial, sans-serif" font-size="{size}" font-weight="700" fill="#8c8981">{E(copy)}</text>'
@@ -99,7 +107,9 @@ def render(c,day,lev,answer):
  typ=c['type'];name,bg,fg,border=P[typ];essay=typ=='essay';W,H=(1434,660) if essay else (660,1434);edge=14 if essay else 7;inset=24 if essay else 12
  parts=[f'<rect width="{W}" height="{H}" fill="#f7f4eb"/>',f'<rect x="{edge}" y="{edge}" width="{W-2*edge}" height="{H-2*edge}" rx="{10 if essay else 5}" fill="{bg}" stroke="{border}" stroke-width="{5 if essay else 2.5}"/>',f'<rect x="{inset}" y="{inset}" width="{W-2*inset}" height="{H-2*inset}" rx="3" fill="none" stroke="#f7f1e5" stroke-width="{10 if essay else 5}"/>']
  x=42 if essay else 28;headerY=42 if essay else 55
- parts.append(block(['Everyday English - '+name],x,headerY,23 if essay else 15,18,True,fg));parts.append(f'<text x="{W-x}" y="{headerY}" text-anchor="end" font-family="Arial, sans-serif" font-size="{17 if essay else 13}" fill="{fg}">{day} · {lev} · PT</text>')
+ category='Phrasal verb' if typ=='phrases' else name
+ heading='Everyday English - '+lev+' - '+day.replace('-','/')+' - '+str(c['categoryNumber']).zfill(2)+' - '+category
+ parts.append(block([heading],x,headerY,22 if essay else 15,18,True,fg))
  artwork=(D/c['illustration']).read_text()
  if essay:
   artwork=re.sub(r'<svg[^>]*>','<svg x="1132" y="70" width="260" height="134" viewBox="0 0 660 338">',artwork,count=1);parts.append(artwork)
@@ -149,8 +159,8 @@ def main():
  for p in sorted((D/'data/english-levels').glob('*.json')):
   data=json.loads(p.read_text())
   for lev,u in data.items():
-   for c in u['cards']:
-    enrich(c,lev);asset=D/'assets/english-story'/f'{c["id"]}.svg';asset.write_text(comic(c));c['illustration']='assets/english-story/'+asset.name
+   for ci,c in enumerate(u['cards']):
+    c=enrich(c,lev);u['cards'][ci]=c;asset=D/'assets/english-story'/f'{c["id"]}.svg';asset.write_text(comic(c));c['illustration']='assets/english-story/'+asset.name
     folder=D/'data/english-cards'/p.stem/lev;folder.mkdir(parents=True,exist_ok=True)
     for answer,suffix in [(False,''),(True,'-download')]:
      svg,stat=render(c,p.stem,lev,answer);target=folder/(str(c['number']).zfill(2)+suffix+'.svg');target.write_text(svg);stats.append(stat)

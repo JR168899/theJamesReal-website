@@ -45,7 +45,7 @@
   const cardById = id => unit()?.cards.find(c => c.id === id);
   const dateOf = card => /^\d{4}-\d{2}-\d{2}/.exec(card.id)?.[0] || date;
   const levelOf = card => /-(A1|A2|B1|B2|C1|C2)-/.exec(card.id)?.[1] || card.level || level;
-  const fileName = (card, ink) => 'JamesReal_' + levelOf(card) + '_' + palette(card).label.replace(/[^A-Za-z]+/g, '_') + '_' + dateOf(card) + '_' + String(card.number).padStart(2, '0') + (ink ? '_ink-saving' : '') + '.png';
+  const fileName = (card, ink) => ['Everyday English',levelOf(card),dateOf(card),String(card.categoryNumber || card.number).padStart(2,'0'),typeOf(card)==='phrases'?'Phrasal verb':palette(card).label].join(' - ') + (ink?' - ink saving':'') + '.png';
   function announce(message) { const el = document.getElementById('jr-en-status'); if (el) el.textContent = message; }
   function saveProgress() { try { localStorage.setItem(KEY, JSON.stringify(completed)); storageAvailable = true; } catch (_) { storageAvailable = false; } }
   function exerciseText(card) { return text(card.exercise).split(/\n?Model Answer\s*:/i)[0].trim(); }
@@ -83,6 +83,7 @@
     const done = !!completed[card.id];
     return `<article class="jr-en-card jr-en-${type}${done ? ' is-complete' : ''}" data-jr-card="${escape(card.id)}" aria-label="${escape(palette(card).label + ': ' + card.title)}">
       <button class="jr-en-poster-open" type="button" data-jr-do="preview" data-jr-id="${escape(card.id)}" aria-label="Open full-size ${escape(card.title)} card"><span class="jr-en-poster-loading" data-jr-loading="${escape(card.id)}">Preparing your complete ${escape(palette(card).label.toLowerCase())} card…</span><img class="jr-en-poster" id="jr-poster-${escape(card.id)}" width="${isEssay ? 1434 : 660}" height="${isEssay ? 660 : 1434}" alt="${escape(card.title)}. ${escape(palette(card).label)} card. Full accessible text follows." hidden></button>
+      ${card.photoCredit ? `<p class="jr-en-photo-source">Photo: <a href="${escape(card.photoCredit.sourceURL)}" target="_blank" rel="noopener noreferrer">${escape(card.photoCredit.credit)}</a></p>` : ''}
       <div class="jr-en-card-tools"><div class="jr-en-card-top"><span>${escape(palette(card).label)}</span><b>${String(card.number).padStart(2, '0')} / 11 · ${level}</b></div>
       <div class="jr-en-audio-actions"><button type="button" data-jr-do="speak-title" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen title</button>${card.conversation ? `<button type="button" data-jr-do="speak-conversation" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen conversation</button>` : ''}<button type="button" data-jr-do="speak-all" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen ${isEssay ? 'essay' : 'all'}</button></div>
       <details class="jr-en-export"><summary>Save, share or print</summary><div class="jr-en-file-actions"><button type="button" data-jr-do="share" data-jr-id="${escape(card.id)}">↗ Share PNG</button><button type="button" data-jr-do="save" data-jr-id="${escape(card.id)}">↓ Save PNG</button><button type="button" data-jr-do="print" data-jr-id="${escape(card.id)}">▤ Print</button><button type="button" data-jr-do="print-ink" data-jr-id="${escape(card.id)}">▤ Print · ink saving</button></div></details>
@@ -276,7 +277,7 @@
     if (posterCache.has(key)) return posterCache.get(key);
     const promise = (async () => {
       if (!source) throw new Error('The stored card is unavailable. Please refresh.');
-      const response = await fetch(source + '?format=oct15-v1');
+      const response = await fetch(source + '?format=review-v2');
       if (!response.ok) throw new Error('The complete card could not load.');
       let svg = await response.text();
       if (ink) svg = svg.replaceAll('fill="' + palette(card).bg + '"', 'fill="#ffffff"');
@@ -299,7 +300,7 @@
       const requestedDate=date;
       if(editionLoading===requestedDate)return;
       editionLoading=requestedDate;
-      fetch('data/english-levels/'+requestedDate+'.json?format=oct15-v1').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{
+      fetch('data/english-levels/'+requestedDate+'.json?format=review-v2').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{
         DATA[requestedDate]=data;
         if(date===requestedDate&&document.getElementById('jr-english'))renderLocal();
       }).catch(()=>{if(date===requestedDate){root.innerHTML='<h1>Everyday English</h1><p role="status">This stored edition could not load.</p><button type="button" data-jr-do="retry">Try again</button>';}}).finally(()=>{if(editionLoading===requestedDate)editionLoading=null});
@@ -307,7 +308,7 @@
     }
     const generation = ++paintGeneration;
     unit().cards.filter(c => filter === 'all' || typeOf(c) === filter).forEach(card => {
-      (card.poster ? Promise.resolve({url:card.poster+'?format=oct15-v1'}) : poster(card, false)).then(result => {
+      (card.poster ? Promise.resolve({url:card.poster+'?format=review-v2'}) : poster(card, false)).then(result => {
         if (generation !== paintGeneration) return;
         const img = document.getElementById('jr-poster-' + card.id); if (!img) return;
         img.src = result.url; img.hidden = false;
@@ -346,12 +347,12 @@
       parts.push(local, name, bytes); directory.push(central, name); offset += local.length + name.length + bytes.length; directorySize += central.length + name.length;
     }
     const end = new Uint8Array(22), endView = new DataView(end.buffer); endView.setUint32(0, 0x06054b50, true); endView.setUint16(8, 11, true); endView.setUint16(10, 11, true); endView.setUint32(12, directorySize, true); endView.setUint32(16, offset, true);
-    return new File([...parts, ...directory, end], 'JamesReal_EverydayEnglish_' + editionDate + '_' + editionLevel + '.zip', { type: 'application/zip' });
+    return new File([...parts, ...directory, end], 'Everyday English - ' + editionLevel + ' - ' + editionDate + '.zip', { type: 'application/zip' });
   }
   async function printCards(cards, ink) {
     // Open synchronously while the click is active, then populate once every PNG is ready.
     const popup = window.open('', '_blank'); if (!popup) { announce('Allow the print window in your browser, then try again.'); return; }
-    popup.document.write('<!doctype html><html lang="en"><head><title>James Real · Preparing print</title></head><body style="font:16px Arial;padding:30px">Preparing ' + cards.length + ' complete cards…</body></html>'); popup.document.close();
+    popup.document.write('<!doctype html><html lang="en"><head><title>Everyday English · Preparing print</title></head><body style="font:16px Arial;padding:30px">Preparing ' + cards.length + ' complete cards…</body></html>'); popup.document.close();
     try {
       const results = await Promise.all(cards.map(async card => ({ card, result: await poster(card, ink) })));
       if (popup.closed) return;
@@ -360,7 +361,7 @@
       for (let i = 0; i < ordinary.length; i += 2) pages.push('<section class="sheet ' + (cards.length > 1 ? 'pair' : 'single') + '">' + ordinary.slice(i, i + 2).map(img).join('') + '</section>');
       for (const row of essays) pages.push('<section class="sheet essay">' + img(row) + '</section>');
       popup.document.open();
-      popup.document.write(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>James Real · English print</title><style>@page{size:Letter portrait;margin:.35in}@page essay{size:Letter landscape;margin:.35in}*{box-sizing:border-box}body{margin:0;background:#eee;color:#292929;font:15px/1.5 Arial,sans-serif}.toolbar{position:sticky;top:0;background:#f6f2e9;padding:16px 24px;border-bottom:1px solid #bbb}.toolbar button{padding:10px 16px;margin-right:10px;border:1px solid #777;background:white;cursor:pointer}.toolbar p{margin:8px 0 0}main{padding:20px}.sheet{background:#fff;margin:0 auto 24px;padding:12px;max-width:800px;display:flex;gap:12px;align-items:center;justify-content:center}.sheet img{width:calc(50% - 6px);height:auto}.single img{width:60%}.essay{max-width:1150px}.essay img{width:100%}@media print{body,main{margin:0;padding:0;background:white}.toolbar{display:none}.sheet{margin:0;padding:0;max-width:none;height:10.28in;gap:.18in;break-inside:avoid;break-after:page}.sheet:last-child{break-after:auto}.pair img{width:3.81in;height:auto;max-height:10.28in;object-fit:contain}.single img{height:10.28in;width:auto;max-width:100%;object-fit:contain}.essay{page:essay;height:7.78in}.essay img{width:10.28in;height:auto;max-height:7.78in;object-fit:contain}}</style></head><body><div class="toolbar"><button id="print-now" disabled>Print / Save as PDF</button><button id="close-print">Close</button><p id="print-ready">Loading ${cards.length} ${ink ? 'ink-saving' : 'color'} cards…</p><p>Letter paper · ${cards.length > 1 ? 'Two portrait cards per page. Essay on its own landscape page.' : 'One complete card.'} ${ink ? 'White card interiors and thin category borders.' : 'Original pastel card colors.'} Disable browser headers and footers.</p></div><main>${pages.join('')}</main></body></html>`);
+      popup.document.write(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Everyday English · Print</title><style>@page{size:Letter portrait;margin:.35in}@page essay{size:Letter landscape;margin:.35in}*{box-sizing:border-box}body{margin:0;background:#eee;color:#292929;font:15px/1.5 Arial,sans-serif}.toolbar{position:sticky;top:0;background:#f6f2e9;padding:16px 24px;border-bottom:1px solid #bbb}.toolbar button{padding:10px 16px;margin-right:10px;border:1px solid #777;background:white;cursor:pointer}.toolbar p{margin:8px 0 0}main{padding:20px}.sheet{background:#fff;margin:0 auto 24px;padding:12px;max-width:800px;display:flex;gap:12px;align-items:center;justify-content:center}.sheet img{width:calc(50% - 6px);height:auto}.single img{width:60%}.essay{max-width:1150px}.essay img{width:100%}@media print{body,main{margin:0;padding:0;background:white}.toolbar{display:none}.sheet{margin:0;padding:0;max-width:none;height:10.28in;gap:.18in;break-inside:avoid;break-after:page}.sheet:last-child{break-after:auto}.pair img{width:3.81in;height:auto;max-height:10.28in;object-fit:contain}.single img{height:10.28in;width:auto;max-width:100%;object-fit:contain}.essay{page:essay;height:7.78in}.essay img{width:10.28in;height:auto;max-height:7.78in;object-fit:contain}}</style></head><body><div class="toolbar"><button id="print-now" disabled>Print / Save as PDF</button><button id="close-print">Close</button><p id="print-ready">Loading ${cards.length} ${ink ? 'ink-saving' : 'color'} cards…</p><p>Letter paper · ${cards.length > 1 ? 'Two portrait cards per page. Essay on its own landscape page.' : 'One complete card.'} ${ink ? 'White card interiors and thin category borders.' : 'Original pastel card colors.'} Disable browser headers and footers.</p></div><main>${pages.join('')}</main></body></html>`);
       popup.document.close();
       popup.document.getElementById('close-print').onclick = () => popup.close();
       const printButton = popup.document.getElementById('print-now'); printButton.onclick = () => { popup.focus(); popup.print(); };
@@ -417,7 +418,7 @@
       else if (card && action === 'preview') await preview(card);
       else if (card && ['save', 'share'].includes(action)) {
         button.textContent = 'Preparing PNG…'; const result = await poster(card, false);
-        if (action === 'share' && navigator.share && navigator.canShare?.({ files: [result.file] })) { await navigator.share({ files: [result.file], title: card.title, text: 'A little English, every day — James Real' }); announce('Sharing completed.'); }
+        if (action === 'share' && navigator.share && navigator.canShare?.({ files: [result.file] })) { await navigator.share({ files: [result.file], title: card.title, text: 'A little English, every day' }); announce('Sharing completed.'); }
         else { download(result.file); announce(action === 'share' ? 'Image sharing is unavailable here. Your complete PNG has been downloaded; attach it in your preferred app.' : 'Complete PNG downloaded.'); }
       }
     } catch (error) { if (error.name === 'AbortError') announce('Sharing cancelled.'); else announce('The complete card could not be prepared. Please refresh and try again.'); }
