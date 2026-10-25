@@ -58,7 +58,7 @@
   function sections(card) {
     const rows = [];
     if (card.meaning) rows.push(['Meaning', text(card.meaning)]);
-    if (typeOf(card) === 'vocabulary' && card.synonyms?.length) rows.push(['Synonyms', (Array.isArray(card.synonyms) ? card.synonyms.join('; ') : text(card.synonyms)) + (card.synonymNote ? '\n' + text(card.synonymNote) : '')]);
+    if (['vocabulary','phrases','idioms','daily','reflection'].includes(typeOf(card)) && card.synonyms?.length) rows.push(['Synonyms', (Array.isArray(card.synonyms) ? card.synonyms.join('; ') : text(card.synonyms)) + (card.synonymNote ? '\n' + text(card.synonymNote) : '')]);
     if (card.example) rows.push(['In context', text(card.example)]);
     if (card.notes) rows.push(['Usage note', text(card.notes)]);
     if (card.conversation) rows.push(['Conversation', text(card.conversation).replace(/\\n/g, '\n')]);
@@ -270,18 +270,27 @@
     diagnostics.push({ id: card.id, kind: 'essay', size: plan.size, bottom: plan.bottom, limit: 622, ink: !!ink });
     return canvas;
   }
-  function poster(card, ink) {
-    const key = card.id + ':' + !!ink + ':' + JSON.stringify(card);
+  function poster(card, ink, includeAnswer = true) {
+    const source = includeAnswer ? card.downloadPoster : card.poster;
+    const key = card.id + ':' + !!ink + ':' + includeAnswer + ':' + source;
     if (posterCache.has(key)) return posterCache.get(key);
     const promise = (async () => {
-      const illustration = await loadIllustration(card);
-      const peers = DATA[dateOf(card)]?.[levelOf(card)]?.cards || [];
-      const canvas = typeOf(card) === 'essay' ? drawEssay(card, illustration, ink, peers) : drawPortrait(card, illustration, ink);
-      const blob = await new Promise((resolve, reject) => canvas.toBlob(b => b ? resolve(b) : reject(new Error('PNG export failed')), 'image/png'));
-      const file = new File([blob], fileName(card, ink), { type: 'image/png' });
-      return { file, url: URL.createObjectURL(file), width: canvas.width, height: canvas.height };
+      if (!source) throw new Error('The stored card is unavailable. Please refresh.');
+      const response = await fetch(source + '?format=oct15-v1');
+      if (!response.ok) throw new Error('The complete card could not load.');
+      let svg = await response.text();
+      if (ink) svg = svg.replaceAll('fill="' + palette(card).bg + '"', 'fill="#ffffff"');
+      const svgURL = URL.createObjectURL(new Blob([svg], {type:'image/svg+xml'}));
+      try {
+        const image = await new Promise((resolve,reject) => { const i = new Image(); i.onload=()=>resolve(i); i.onerror=reject; i.src=svgURL; });
+        const canvas=document.createElement('canvas'); canvas.width=image.naturalWidth; canvas.height=image.naturalHeight;
+        canvas.getContext('2d').drawImage(image,0,0);
+        const blob=await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(new Error('PNG export failed')),'image/png'));
+        const file=new File([blob],fileName(card,ink),{type:'image/png'});
+        return {file,url:URL.createObjectURL(file),width:canvas.width,height:canvas.height};
+      } finally { URL.revokeObjectURL(svgURL); }
     })();
-    posterCache.set(key, promise); promise.catch(() => posterCache.delete(key)); return promise;
+    posterCache.set(key,promise); promise.catch(()=>posterCache.delete(key)); return promise;
   }
   window.jrEnglishInit = function () {
     const root = document.getElementById('jr-english');
@@ -290,7 +299,7 @@
       const requestedDate=date;
       if(editionLoading===requestedDate)return;
       editionLoading=requestedDate;
-      fetch('data/english-levels/'+requestedDate+'.json').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{
+      fetch('data/english-levels/'+requestedDate+'.json?format=oct15-v1').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{
         DATA[requestedDate]=data;
         if(date===requestedDate&&document.getElementById('jr-english'))renderLocal();
       }).catch(()=>{if(date===requestedDate){root.innerHTML='<h1>Everyday English</h1><p role="status">This stored edition could not load.</p><button type="button" data-jr-do="retry">Try again</button>';}}).finally(()=>{if(editionLoading===requestedDate)editionLoading=null});
@@ -298,7 +307,7 @@
     }
     const generation = ++paintGeneration;
     unit().cards.filter(c => filter === 'all' || typeOf(c) === filter).forEach(card => {
-      (card.poster ? Promise.resolve({url:card.poster}) : poster(card, false)).then(result => {
+      (card.poster ? Promise.resolve({url:card.poster+'?format=oct15-v1'}) : poster(card, false)).then(result => {
         if (generation !== paintGeneration) return;
         const img = document.getElementById('jr-poster-' + card.id); if (!img) return;
         img.src = result.url; img.hidden = false;
@@ -314,10 +323,11 @@
   };
   function download(file) { const url = URL.createObjectURL(file), link = document.createElement('a'); link.href = url; link.download = file.name; document.body.appendChild(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 60000); }
   async function preview(card) {
-    const result = await poster(card, false);
+    const result = await poster(card, false, false);
+    const downloadResult = await poster(card, false, true);
     document.getElementById('jr-en-preview')?.remove();
     const dialog = document.createElement('dialog'); dialog.id = 'jr-en-preview';
-    dialog.innerHTML = '<div class="jr-en-preview-head"><strong>' + escape(card.title) + '</strong><button type="button" data-jr-close>Close ×</button></div><img src="' + result.url + '" alt="' + escape(card.title) + ' full card"><p><a href="' + result.url + '" download="' + escape(result.file.name) + '">↓ Download complete PNG</a></p>';
+    dialog.innerHTML = '<div class="jr-en-preview-head"><strong>' + escape(card.title) + '</strong><button type="button" data-jr-close>Close ×</button></div><img src="' + result.url + '" alt="' + escape(card.title) + ' full card"><p><a href="' + downloadResult.url + '" download="' + escape(result.file.name) + '">↓ Download complete PNG</a></p>';
     dialog.querySelector('[data-jr-close]').onclick = () => { dialog.close(); dialog.remove(); };
     dialog.addEventListener('click', event => { if (event.target === dialog) { dialog.close(); dialog.remove(); } });
     dialog.addEventListener('cancel', () => dialog.remove()); document.body.appendChild(dialog); dialog.showModal();
