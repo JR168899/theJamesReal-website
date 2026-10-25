@@ -11,3 +11,6 @@ The content preparation tools are explicit authoring/build steps, never run by p
 3. `python3 tools/render_cards.py`
 
 The Neon synchronization tool accepts its privileged connection through hidden stdin. Credentials never belong in this repository or frontend output.
+
+## Automatic publication
+Every push to main publishes the checked-in dist/ folder to GitHub Pages. Follow the Publish James Real workflow in Actions. Domain: https://www.thejamesreal.com. No deployment secrets or runtime generation API are required.
