@@ -25,3 +25,6 @@ The page is a Google Finance directory for the existing 14 markets, without AI a
 ## Assets
 
 Headquarters scenes are generated concepts, not a commissioned project or existing James Real building. The original full-tower image was edited for a clear sunset and then for more natural photographic materials and lighting. No claim of an architect's commission is made. Source prompt and asset paths are in the migration handoff.
+
+## Production deployment — 2026-10-25
+The owner approved moving www.thejamesreal.com from Sites to GitHub Pages. Cloudflare www CNAME now targets jr168899.github.io (DNS only). GitHub Pages uses .github/workflows/publish.yml; every push to main deploys dist/. The original Sites deployment remains a backup. Keep database credentials outside the repository.
