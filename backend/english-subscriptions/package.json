@@ -1,0 +1,1 @@
+{"name":"everyday-english-subscriptions","private":true,"type":"module","scripts":{"build":"esbuild index.js --bundle --platform=node --target=node24 --format=esm --outfile=build/index.mjs --packages=bundle"},"dependencies":{"@neon/functions":"0.11.0","@neondatabase/serverless":"1.2.0","esbuild":"0.28.2"}}

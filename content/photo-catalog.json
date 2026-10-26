@@ -1,0 +1,1723 @@
+{
+  "chair": {
+    "id": 10780943,
+    "sourceURL": "https://www.pexels.com/photo/wooden-chair-in-an-empty-room-in-sunlight-10780943/",
+    "credit": "Pexels · 10780943",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A minimalist interior showcasing a wooden chair and warm sunlight filtering through an archway.Stock Photo",
+    "asset": "assets/english-photos/10780943.jpg",
+    "focalY": 1,
+    "originalDimensions": [
+      1200,
+      675
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19478,
+    "quality": 78,
+    "landscape": true
+  },
+  "window": {
+    "id": 18820283,
+    "sourceURL": "https://www.pexels.com/photo/sunlight-streaming-into-a-dark-room-through-a-lone-window-18820283/",
+    "credit": "Pexels · 18820283",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A dark room with sunlight streaming through a window, creating dramatic shadows.Stock Photo",
+    "asset": "assets/english-photos/18820283.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 6524,
+    "quality": 78,
+    "landscape": true
+  },
+  "book": {
+    "id": 36324703,
+    "sourceURL": "https://www.pexels.com/photo/close-up-of-an-open-book-with-sunlight-36324703/",
+    "credit": "Pexels · 36324703",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A hand gently turning a page of an open book in sunlight, creating a warm, tranquil reading scene.Stock Photo",
+    "asset": "assets/english-photos/36324703.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 21223,
+    "quality": 42,
+    "landscape": true
+  },
+  "reading": {
+    "id": 8468754,
+    "sourceURL": "https://www.pexels.com/photo/people-reading-book-8468754/",
+    "credit": "Pexels · 8468754",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Top view of diverse hands holding open books, creating an engaging reading session.Stock Photo",
+    "asset": "assets/english-photos/8468754.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19766,
+    "quality": 62,
+    "landscape": true
+  },
+  "dictionary": {
+    "id": 13745412,
+    "sourceURL": "https://www.pexels.com/photo/a-stack-of-thick-books-on-white-surface-13745412/",
+    "credit": "Pexels · 13745412",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A black and white close-up of a hand flipping through an open dictionary.Stock Photo",
+    "asset": "assets/english-photos/13745412.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 18552,
+    "quality": 70,
+    "landscape": true
+  },
+  "notebook": {
+    "id": 1119792,
+    "sourceURL": "https://www.pexels.com/photo/pen-and-notebook-1119792/",
+    "credit": "Pexels · 1119792",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A sleek pen placed on a notebook, symbolizing productivity and planning.Stock Photo",
+    "asset": "assets/english-photos/1119792.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      900
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 9730,
+    "quality": 78,
+    "landscape": true
+  },
+  "calendar": {
+    "id": 17668838,
+    "sourceURL": "https://www.pexels.com/photo/a-person-marking-a-day-in-a-calendar-17668838/",
+    "credit": "Pexels · 17668838",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A person marks a date on a calendar.",
+    "asset": "assets/english-photos/17668838.jpg",
+    "focalY": 0.95,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 18503,
+    "quality": 70,
+    "landscape": true
+  },
+  "tea": {
+    "id": 16921454,
+    "sourceURL": "https://www.pexels.com/photo/cup-of-tea-on-a-table-16921454/",
+    "credit": "Pexels · 16921454",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Close-up of a beautiful porcelain teacup on a table, lit by warm sunlight.Stock Photo",
+    "asset": "assets/english-photos/16921454.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 18926,
+    "quality": 78,
+    "landscape": true
+  },
+  "meal": {
+    "id": 5791670,
+    "sourceURL": "https://www.pexels.com/photo/a-high-angle-shot-of-people-sitting-near-the-table-while-having-dinner-5791670/",
+    "credit": "Pexels · 5791670",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Friends share a joyful meal indoors, enjoying food, conversation, and candles.Stock Photo",
+    "asset": "assets/english-photos/5791670.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19814,
+    "quality": 54,
+    "landscape": true
+  },
+  "sharing": {
+    "id": 7624934,
+    "sourceURL": "https://www.pexels.com/photo/friends-sharing-snacks-to-each-other-7624934/",
+    "credit": "Pexels · 7624934",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A diverse group of friends sharing a meal at a picnic table in a forest setting.Stock Photo",
+    "asset": "assets/english-photos/7624934.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 31695,
+    "quality": 42,
+    "landscape": true
+  },
+  "serving": {
+    "id": 6249016,
+    "sourceURL": "https://www.pexels.com/photo/couple-having-dinner-while-male-serving-food-at-table-6249016/",
+    "credit": "Pexels · 6249016",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A person serves food at a shared meal.",
+    "asset": "assets/english-photos/6249016.jpg",
+    "focalY": 0.7,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 21015,
+    "quality": 42,
+    "landscape": true
+  },
+  "portion": {
+    "id": 5855481,
+    "sourceURL": "https://www.pexels.com/photo/people-in-self-service-buffet-5855481/",
+    "credit": "Pexels · 5855481",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Black and white of crop anonymous group of people serving food in plates while visiting smorgasbord Stock Photo",
+    "asset": "assets/english-photos/5855481.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19780,
+    "quality": 66,
+    "landscape": true
+  },
+  "listening": {
+    "id": 7432245,
+    "sourceURL": "https://www.pexels.com/photo/a-man-listening-to-his-colleague-7432245/",
+    "credit": "Pexels · 7432245",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Two men talking and listening in an indoor setting, capturing a moment of engagement and communication.Stock Photo ... 3:2",
+    "asset": "assets/english-photos/7432245.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 13237,
+    "quality": 78,
+    "landscape": true
+  },
+  "discussion": {
+    "id": 8837579,
+    "sourceURL": "https://www.pexels.com/photo/people-sitting-and-talking-in-an-office-8837579/",
+    "credit": "Pexels · 8837579",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Two diverse colleagues engaging in a thoughtful discussion in a modern office setting.Stock Photo",
+    "asset": "assets/english-photos/8837579.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19976,
+    "quality": 50,
+    "landscape": true
+  },
+  "team": {
+    "id": 7652134,
+    "sourceURL": "https://www.pexels.com/photo/colleagues-working-and-discussing-inside-an-office-room-7652134/",
+    "credit": "Pexels · 7652134",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Two young professionals collaborating and discussing work in a modern office setting.Stock Photo",
+    "asset": "assets/english-photos/7652134.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 15691,
+    "quality": 78,
+    "landscape": true
+  },
+  "train": {
+    "id": 11218784,
+    "sourceURL": "https://www.pexels.com/photo/a-blue-train-on-railroad-near-green-trees-11218784/",
+    "credit": "Pexels · 11218784",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A passenger train travels along a railway.",
+    "asset": "assets/english-photos/11218784.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 18989,
+    "quality": 42,
+    "landscape": true
+  },
+  "station": {
+    "id": 5617385,
+    "sourceURL": "https://www.pexels.com/photo/people-standing-on-a-platform-on-a-train-station-5617385/",
+    "credit": "Pexels · 5617385",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Two people waiting on a platform beside a high-speed train.Stock Photo",
+    "asset": "assets/english-photos/5617385.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      798
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 18888,
+    "quality": 62,
+    "landscape": true
+  },
+  "ticket": {
+    "id": 13418602,
+    "sourceURL": "https://www.pexels.com/photo/people-holding-tickets-13418602/",
+    "credit": "Pexels · 13418602",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Close-up of hands holding transportation tickets, showcasing numbers and fare details.Stock Photo",
+    "asset": "assets/english-photos/13418602.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 17537,
+    "quality": 78,
+    "landscape": true
+  },
+  "ticket-gate": {
+    "id": 7252259,
+    "sourceURL": "https://www.pexels.com/photo/a-person-inserting-a-ticket-7252259/",
+    "credit": "Pexels · 7252259",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A person inserting a ticket into a turnstile at a train station, showcasing public transportation usage.Stock Photo",
+    "asset": "assets/english-photos/7252259.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 18308,
+    "quality": 74,
+    "landscape": true
+  },
+  "map": {
+    "id": 5622107,
+    "sourceURL": "https://www.pexels.com/photo/a-group-of-friends-looking-at-the-map-5622107/",
+    "credit": "Pexels · 5622107",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Three friends study a map in a sunny park, planning their adventure with smiles and excitement.Stock Photo",
+    "asset": "assets/english-photos/5622107.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19412,
+    "quality": 50,
+    "landscape": true
+  },
+  "itinerary": {
+    "id": 6108074,
+    "sourceURL": "https://www.pexels.com/photo/unrecognizable-man-examining-map-while-planning-travel-at-home-6108074/",
+    "credit": "Pexels · 6108074",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Top view of anonymous young male in casual clothes sitting on wooden floor with photo camera and coffee cup and pointing on paper map while planning trip route Stock Photo",
+    "asset": "assets/english-photos/6108074.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      940
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19963,
+    "quality": 42,
+    "landscape": true
+  },
+  "walk": {
+    "id": 6016949,
+    "sourceURL": "https://www.pexels.com/photo/man-walking-on-city-street-in-daytime-6016949/",
+    "credit": "Pexels · 6016949",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Back view of unrecognizable old man walking on sidewalk near road on city street in daytime Stock Photo ... # A pedestrian with a backpack walks down a busy urban street on a clear day.",
+    "asset": "assets/english-photos/6016949.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19121,
+    "quality": 50,
+    "landscape": true
+  },
+  "crossing": {
+    "id": 109919,
+    "sourceURL": "https://www.pexels.com/photo/people-walking-on-pedestrian-lane-during-daytime-109919/",
+    "credit": "Pexels · 109919",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A diverse group of people crossing a street in a bustling city setting with skyscrapers.Stock Photo",
+    "asset": "assets/english-photos/109919.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      675
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 30575,
+    "quality": 42,
+    "landscape": true
+  },
+  "market": {
+    "id": 12527092,
+    "sourceURL": "https://www.pexels.com/photo/vegetables-in-market-12527092/",
+    "credit": "Pexels · 12527092",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Close-up of fresh vegetables with prices in an indoor market setting.Stock Photo",
+    "asset": "assets/english-photos/12527092.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      795
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 25582,
+    "quality": 42,
+    "landscape": true
+  },
+  "produce": {
+    "id": 3873912,
+    "sourceURL": "https://www.pexels.com/photo/assorted-fresh-ripe-vegetables-in-market-stall-3873912/",
+    "credit": "Pexels · 3873912",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "From above set of fresh colorful vegetables placed on table with price tag in grocery market at daytime Stock Photo",
+    "asset": "assets/english-photos/3873912.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      802
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 27433,
+    "quality": 42,
+    "landscape": true
+  },
+  "budget": {
+    "id": 5466798,
+    "sourceURL": "https://www.pexels.com/photo/white-notebook-on-the-table-5466798/",
+    "credit": "Pexels · 5466798",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Desk setup showing calculator, cash, coins, and financial notes for budgeting.Stock Photo",
+    "asset": "assets/english-photos/5466798.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19400,
+    "quality": 74,
+    "landscape": true
+  },
+  "saving": {
+    "id": 6328972,
+    "sourceURL": "https://www.pexels.com/photo/a-person-writing-on-notebook-using-a-pen-6328972/",
+    "credit": "Pexels · 6328972",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Hands writing financial calculations on notebook with money and coins on table.Stock Photo ... https://kaboompics.com/Kaboompics, a real free stock photos for web design, branding, and content.",
+    "asset": "assets/english-photos/6328972.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19100,
+    "quality": 62,
+    "landscape": true
+  },
+  "shopping": {
+    "id": 9475666,
+    "sourceURL": "https://www.pexels.com/photo/woman-buying-fruits-in-a-supermarket-9475666/",
+    "credit": "Pexels · 9475666",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Woman choosing fresh fruits in a grocery store aisle with a reusable tote bag.Stock Photo",
+    "asset": "assets/english-photos/9475666.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19281,
+    "quality": 42,
+    "landscape": true
+  },
+  "bag": {
+    "id": 31666160,
+    "sourceURL": "https://www.pexels.com/photo/elegant-brown-leather-handbag-on-fabric-background-31666160/",
+    "credit": "Pexels · 31666160",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Close-up of a brown leather handbag laid on a light fabric surface, showcasing its elegant design.Stock Photo",
+    "asset": "assets/english-photos/31666160.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19322,
+    "quality": 78,
+    "landscape": true
+  },
+  "leather": {
+    "id": 10340652,
+    "sourceURL": "https://www.pexels.com/photo/close-up-photo-of-a-brown-leather-bag-10340652/",
+    "credit": "Pexels · 10340652",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Detail view of a high-quality brown leather bag with smooth texture.Stock Photo",
+    "asset": "assets/english-photos/10340652.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      803
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19826,
+    "quality": 62,
+    "landscape": true
+  },
+  "repair": {
+    "id": 5526307,
+    "sourceURL": "https://www.pexels.com/photo/woman-sewing-clothes-in-workshop-5526307/",
+    "credit": "Pexels · 5526307",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Close-up of hands working with fabric in a sewing workshop, surrounded by spools and machinery.Stock Photo",
+    "asset": "assets/english-photos/5526307.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19064,
+    "quality": 62,
+    "landscape": true,
+    "scene": "repair"
+  },
+  "fabric": {
+    "id": 6045262,
+    "sourceURL": "https://www.pexels.com/photo/texture-of-leather-fabric-with-fur-6045262/",
+    "credit": "Pexels · 6045262",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Full frame textured background of uneven natural leather fabric made of animal skin Stock Photo ... Abstract Accessory Background Close Up Photos Craftsmanship Creased Dark Brown Decor Design Detailed Durable Earthy Fabric Fashion Full Frame Furniture Garment Grained Hide Interior Leather Macro Material Minimalist Mottled Natural Neutral Pattern Premium Quality Rough Soft Style Supple Surface Textile Texture Upholstery Warm Wrinkled",
+    "asset": "assets/english-photos/6045262.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      795
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 43091,
+    "quality": 42,
+    "landscape": true
+  },
+  "plant": {
+    "id": 7659467,
+    "sourceURL": "https://www.pexels.com/photo/a-person-watering-a-plant-7659467/",
+    "credit": "Pexels · 7659467",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Detailed shot of hands watering a potted plant indoors, promoting growth.Stock Photo",
+    "asset": "assets/english-photos/7659467.jpg",
+    "focalY": 0.6,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19346,
+    "quality": 78,
+    "landscape": true
+  },
+  "watering": {
+    "id": 5622461,
+    "sourceURL": "https://www.pexels.com/photo/close-up-shot-of-person-watering-a-potted-plant-with-spray-bottle-5622461/",
+    "credit": "Pexels · 5622461",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Close-up of gardeners spraying potted plant with water outdoors.Stock Photo",
+    "asset": "assets/english-photos/5622461.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19702,
+    "quality": 50,
+    "landscape": true
+  },
+  "leaf": {
+    "id": 1420021,
+    "sourceURL": "https://www.pexels.com/photo/close-up-photography-green-leafed-plants-1420021/",
+    "credit": "Pexels · 1420021",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Close-up of vibrant green foliage in a natural setting, showcasing the beauty of lush plant life.Stock Photo",
+    "asset": "assets/english-photos/1420021.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 24723,
+    "quality": 42,
+    "landscape": true
+  },
+  "pollination": {
+    "id": 34256469,
+    "sourceURL": "https://www.pexels.com/photo/macro-view-of-bee-on-flower-collecting-pollen-34256469/",
+    "credit": "Pexels · 34256469",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Close-up of a honeybee on a flower, showcasing pollination in nature.Stock Photo",
+    "asset": "assets/english-photos/34256469.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 14627,
+    "quality": 78,
+    "landscape": true
+  },
+  "seasons": {
+    "id": 34193050,
+    "sourceURL": "https://www.pexels.com/photo/sunlit-autumn-forest-scene-with-falling-leaves-34193050/",
+    "credit": "Pexels · 34193050",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Golden autumn trees in a sunlit forest with fallen leaves on the ground.Stock Photo",
+    "asset": "assets/english-photos/34193050.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 36453,
+    "quality": 42,
+    "landscape": true
+  },
+  "rain": {
+    "id": 19116705,
+    "sourceURL": "https://www.pexels.com/photo/people-on-a-street-during-rain-19116705/",
+    "credit": "Pexels · 19116705",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A bustling city street scene in the rain with people huddling under umbrellas.Stock Photo",
+    "asset": "assets/english-photos/19116705.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 24850,
+    "quality": 42,
+    "landscape": true
+  },
+  "storm": {
+    "id": 4609228,
+    "sourceURL": "https://www.pexels.com/photo/storm-clouds-forming-over-the-open-sea-4609228/",
+    "credit": "Pexels · 4609228",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A powerful storm approaches over a calm ocean, showcasing dramatic rain clouds and a moody seascape.Stock Photo",
+    "asset": "assets/english-photos/4609228.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      899
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 15380,
+    "quality": 78,
+    "landscape": true
+  },
+  "music": {
+    "id": 3978313,
+    "sourceURL": "https://www.pexels.com/photo/couple-playing-music-in-living-room-3978313/",
+    "credit": "Pexels · 3978313",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A couple enjoying music together, playing guitar and singing indoors. ... Stock Photo",
+    "asset": "assets/english-photos/3978313.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      862
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19687,
+    "quality": 74,
+    "landscape": true
+  },
+  "guitar": {
+    "id": 4670179,
+    "sourceURL": "https://www.pexels.com/photo/men-playing-the-guitars-and-smiling-4670179/",
+    "credit": "Pexels · 4670179",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Two friends enjoying music and playing acoustic guitars together inside a room.Stock Photo",
+    "asset": "assets/english-photos/4670179.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 18798,
+    "quality": 62,
+    "landscape": true
+  },
+  "headphones": {
+    "id": 8867041,
+    "sourceURL": "https://www.pexels.com/photo/man-wearing-a-headset-and-listening-8867041/",
+    "credit": "Pexels · 8867041",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A close-up, moody shot of a man listening to music with headphones.Stock Photo",
+    "asset": "assets/english-photos/8867041.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 9328,
+    "quality": 78,
+    "landscape": true
+  },
+  "music-work": {
+    "id": 1181367,
+    "sourceURL": "https://www.pexels.com/photo/photography-of-woman-listening-to-music-1181367/",
+    "credit": "Pexels · 1181367",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A woman with headphones listens to music while using a laptop by a window.Stock Photo",
+    "asset": "assets/english-photos/1181367.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      801
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 16951,
+    "quality": 78,
+    "landscape": true
+  },
+  "desk": {
+    "id": 8296953,
+    "sourceURL": "https://www.pexels.com/photo/office-tools-and-equipment-on-a-desk-8296953/",
+    "credit": "Pexels · 8296953",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "An organized office desk featuring a laptop, calculator, payment terminal, and documents.Stock Photo",
+    "asset": "assets/english-photos/8296953.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19770,
+    "quality": 50,
+    "landscape": true
+  },
+  "minimal": {
+    "id": 34147402,
+    "sourceURL": "https://www.pexels.com/photo/minimalist-workspace-with-laptop-and-notebook-34147402/",
+    "credit": "Pexels · 34147402",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A clean and organized desk with a laptop, notebook, pen, and smartphone in natural light.Stock Photo",
+    "asset": "assets/english-photos/34147402.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 18856,
+    "quality": 62,
+    "landscape": true
+  },
+  "checklist": {
+    "id": 6192123,
+    "sourceURL": "https://www.pexels.com/photo/close-up-of-to-do-list-near-laptop-6192123/",
+    "credit": "Pexels · 6192123",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A minimalistic desk setup featuring a laptop, to-do list, and pen on a dark background. Ideal for productivity themes. Stock Photo",
+    "asset": "assets/english-photos/6192123.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 11991,
+    "quality": 78,
+    "landscape": true
+  },
+  "whiteboard": {
+    "id": 7654188,
+    "sourceURL": "https://www.pexels.com/photo/people-working-in-the-office-7654188/",
+    "credit": "Pexels · 7654188",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A diverse team collaborating around a whiteboard in a contemporary office setting, discussing quarterly data.Stock Photo",
+    "asset": "assets/english-photos/7654188.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      801
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19830,
+    "quality": 42,
+    "landscape": true
+  },
+  "strategy": {
+    "id": 7984479,
+    "sourceURL": "https://www.pexels.com/photo/man-and-woman-doing-a-writing-a-plan-on-the-board-7984479/",
+    "credit": "Pexels · 7984479",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Two professionals strategize using a whiteboard during a business meeting indoors.Stock Photo",
+    "asset": "assets/english-photos/7984479.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 18665,
+    "quality": 66,
+    "landscape": true
+  },
+  "options": {
+    "id": 7212946,
+    "sourceURL": "https://www.pexels.com/photo/colleagues-using-a-laptop-7212946/",
+    "credit": "Pexels · 7212946",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A group of people discussing ideas around laptops in a bright, modern office space.Stock Photo",
+    "asset": "assets/english-photos/7212946.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 18930,
+    "quality": 54,
+    "landscape": true
+  },
+  "document": {
+    "id": 6814539,
+    "sourceURL": "https://www.pexels.com/photo/man-signing-a-contract-6814539/",
+    "credit": "Pexels · 6814539",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A businessman is reviewing a contract while holding a pen at a desk with a glass of water nearby.Stock Photocottonbro studio check out our collections, grouped by topics. your donation creates inspiration😉 [email protected]",
+    "asset": "assets/english-photos/6814539.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 18802,
+    "quality": 74,
+    "landscape": true
+  },
+  "fineprint": {
+    "id": 175045,
+    "sourceURL": "https://www.pexels.com/photo/person-holding-silver-pen-signing-photographers-signature-175045/",
+    "credit": "Pexels · 175045",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Magnifying glass focusing on 'Terms and Conditions' in a document. Ideal for business and legal themes. Stock Photo",
+    "asset": "assets/english-photos/175045.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      900
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 16556,
+    "quality": 78,
+    "landscape": true
+  },
+  "morning": {
+    "id": 7622509,
+    "sourceURL": "https://www.pexels.com/photo/sleepy-woman-waking-up-on-bed-in-morning-7622509/",
+    "credit": "Pexels · 7622509",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Young brunette with closed eyes sitting on comfortable bed under white blanket and stretching arms up while waking up in morning at home Stock Photo",
+    "asset": "assets/english-photos/7622509.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 13470,
+    "quality": 78,
+    "landscape": true
+  },
+  "alarm": {
+    "id": 8090973,
+    "sourceURL": "https://www.pexels.com/photo/woman-wearing-headscarf-lying-in-bed-8090973/",
+    "credit": "Pexels · 8090973",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Woman in a black headscarf reaching for an alarm clock on a cozy morning.Stock Photo",
+    "asset": "assets/english-photos/8090973.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      798
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19714,
+    "quality": 74,
+    "landscape": true
+  },
+  "coat": {
+    "id": 7679877,
+    "sourceURL": "https://www.pexels.com/photo/person-replenishing-the-clothes-hanging-on-the-rack-7679877/",
+    "credit": "Pexels · 7679877",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A person holds a jacket while organizing clothes on a rack in a stylish boutique.Stock Photo",
+    "asset": "assets/english-photos/7679877.jpg",
+    "focalY": 0.65,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 20727,
+    "quality": 42,
+    "landscape": true
+  },
+  "clothes": {
+    "id": 8580761,
+    "sourceURL": "https://www.pexels.com/photo/close-up-shot-of-a-person-arranging-clothes-8580761/",
+    "credit": "Pexels · 8580761",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Close-up of hands arranging beige clothes on hangers indoors, focusing on organizing fashion items. Stock Photo",
+    "asset": "assets/english-photos/8580761.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 13673,
+    "quality": 78,
+    "landscape": true
+  },
+  "city": {
+    "id": 30726137,
+    "sourceURL": "https://www.pexels.com/photo/bustling-city-street-with-historic-architecture-30726137/",
+    "credit": "Pexels · 30726137",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A vibrant city street lined with historic buildings, bustling with vehicles. Stock Photo",
+    "asset": "assets/english-photos/30726137.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 28612,
+    "quality": 42,
+    "landscape": true
+  },
+  "water": {
+    "id": 4098281,
+    "sourceURL": "https://www.pexels.com/photo/clear-drinking-glass-on-table-4098281/",
+    "credit": "Pexels · 4098281",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A minimalist composition featuring a glass of water and notebook on a reflective glass table.Stock Photo",
+    "asset": "assets/english-photos/4098281.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 15105,
+    "quality": 78,
+    "landscape": true
+  },
+  "sitting": {
+    "id": 7544847,
+    "sourceURL": "https://www.pexels.com/photo/an-elderly-man-sitting-on-a-lounge-chair-7544847/",
+    "credit": "Pexels · 7544847",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Senior man with a beard and grey hair sitting in a stylish lounge chair indoors.Stock Photo",
+    "asset": "assets/english-photos/7544847.jpg",
+    "focalY": 0.15,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 18251,
+    "quality": 70,
+    "landscape": true
+  },
+  "lifting": {
+    "id": 4245978,
+    "sourceURL": "https://www.pexels.com/photo/woman-lifting-heavy-cardboard-box-while-standing-near-floor-lamp-4245978/",
+    "credit": "Pexels · 4245978",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Slim female in cardigan taking big rectangular cardboard box while standing near suitcases and sofa in attic style living room in daylight Stock Photo",
+    "asset": "assets/english-photos/4245978.jpg",
+    "focalY": 0.2,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 12899,
+    "quality": 78,
+    "landscape": true
+  },
+  "helping": {
+    "id": 7464393,
+    "sourceURL": "https://www.pexels.com/photo/close-up-shot-of-men-carrying-a-couch-7464393/",
+    "credit": "Pexels · 7464393",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Two men carrying a green sofa on a city street, showcasing teamwork and moving services.Stock Photo",
+    "asset": "assets/english-photos/7464393.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19800,
+    "quality": 50,
+    "landscape": true
+  },
+  "relaxing": {
+    "id": 5698385,
+    "sourceURL": "https://www.pexels.com/photo/woman-sitting-and-reading-book-5698385/",
+    "credit": "Pexels · 5698385",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Senior woman relaxing and reading a book in a cozy armchair with warm lighting. Stock Photo",
+    "asset": "assets/english-photos/5698385.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19761,
+    "quality": 66,
+    "landscape": true
+  },
+  "puzzle": {
+    "id": 8535582,
+    "sourceURL": "https://www.pexels.com/photo/close-up-shot-of-a-person-assembling-the-puzzle-8535582/",
+    "credit": "Pexels · 8535582",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Close-up of child assembling colorful puzzle pieces on a wooden table, top view.Stock Photo",
+    "asset": "assets/english-photos/8535582.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      801
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 18917,
+    "quality": 58,
+    "landscape": true
+  },
+  "phone": {
+    "id": 3850201,
+    "sourceURL": "https://www.pexels.com/photo/anonymous-crop-person-using-smartphone-while-working-with-gadgets-on-table-3850201/",
+    "credit": "Pexels · 3850201",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Young man checking smartphone at modern desk setup, focusing on work.Stock Photo",
+    "asset": "assets/english-photos/3850201.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19139,
+    "quality": 74,
+    "landscape": true
+  },
+  "library": {
+    "id": 37559006,
+    "sourceURL": "https://www.pexels.com/photo/vintage-library-books-on-wooden-shelves-37559006/",
+    "credit": "Pexels · 37559006",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A collection of aged, classic books lined up on wooden shelves, evoking a vintage aesthetic.Stock Photo",
+    "asset": "assets/english-photos/37559006.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 23754,
+    "quality": 42,
+    "landscape": true
+  },
+  "clock": {
+    "id": 13151698,
+    "sourceURL": "https://www.pexels.com/photo/close-up-on-hands-of-clock-13151698/",
+    "credit": "Pexels · 13151698",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Detailed close-up of an analog clock face showing numbers and clock hands.Stock Photo",
+    "asset": "assets/english-photos/13151698.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      801
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 12244,
+    "quality": 78,
+    "landscape": true
+  },
+  "room": {
+    "id": 6914713,
+    "sourceURL": "https://www.pexels.com/photo/a-cozy-couch-near-the-window-and-plants-6914713/",
+    "credit": "Pexels · 6914713",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A living room with a sofa, daylight and indoor plants.",
+    "asset": "assets/english-photos/6914713.jpg",
+    "focalY": 0.5,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19861,
+    "quality": 58,
+    "landscape": true
+  },
+  "resilience": {
+    "id": 11092207,
+    "sourceURL": "https://www.pexels.com/photo/lone-tiny-sprout-11092207/",
+    "credit": "Pexels · 11092207",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A small green sprout emerging from a crack in the concrete symbolizing growth and resilience.Stock Photo",
+    "asset": "assets/english-photos/11092207.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 14454,
+    "quality": 78,
+    "landscape": true
+  },
+  "community": {
+    "id": 39778154,
+    "sourceURL": "https://www.pexels.com/photo/volunteers-working-in-bloomington-community-garden-39778154/",
+    "credit": "Pexels · 39778154",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A group of volunteers collaborates on a garden project in Bloomington, Indiana, during a sunny spring day. ... Zack Gilbert My photo gallery features a collection of special moments, adventures, and memories from my travels and everyday life.",
+    "asset": "assets/english-photos/39778154.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 25516,
+    "quality": 42,
+    "landscape": true
+  },
+  "growth": {
+    "id": 4377079,
+    "sourceURL": "https://www.pexels.com/photo/uprooted-plants-on-white-surface-4377079/",
+    "credit": "Pexels · 4377079",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Series of young plant seedlings arranged on white background illustrating growth stages.Stock Photo ... 8 Evie Shaffer Brand designer, photographer, and strategist.",
+    "asset": "assets/english-photos/4377079.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      801
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 11338,
+    "quality": 78,
+    "landscape": true
+  },
+  "sewing": {
+    "id": 5526307,
+    "sourceURL": "https://www.pexels.com/photo/woman-sewing-clothes-in-workshop-5526307/",
+    "credit": "Pexels · 5526307",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Close-up of hands working with fabric in a sewing workshop, surrounded by spools and machinery.Stock Photo",
+    "asset": "assets/english-photos/5526307.jpg",
+    "focalY": 0.45,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19064,
+    "quality": 62,
+    "landscape": true
+  },
+  "halloween-costume": {
+    "id": 28958109,
+    "asset": "assets/english-photos/28958109.jpg",
+    "sourceURL": "https://www.pexels.com/photo/person-wearing-halloween-pumpkin-head-costume-28958109/",
+    "credit": "Pexels · 28958109",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "halloween-costume",
+    "focalY": 0.5,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 18929,
+    "quality": 70,
+    "landscape": true
+  },
+  "halloween-candy": {
+    "id": 29111982,
+    "asset": "assets/english-photos/29111982.jpg",
+    "sourceURL": "https://www.pexels.com/photo/halloween-candy-display-with-pumpkin-bucket-29111982/",
+    "credit": "Pexels · 29111982",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "halloween-candy",
+    "focalY": 0.5,
+    "originalDimensions": [
+      1200,
+      795
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 18892,
+    "quality": 42,
+    "landscape": true
+  },
+  "christmas": {
+    "id": 35281507,
+    "sourceURL": "https://www.pexels.com/photo/family-christmas-celebration-with-tree-and-gifts-35281507/",
+    "asset": "assets/english-photos/35281507.jpg",
+    "credit": "Pexels · 35281507",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "christmas",
+    "focalY": 0.5,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19377,
+    "quality": 58,
+    "landscape": true
+  },
+  "lunar": {
+    "id": 35045708,
+    "asset": "assets/english-photos/35045708.jpg",
+    "sourceURL": "https://www.pexels.com/photo/vibrant-lunar-new-year-decorations-with-red-envelopes-35045708/",
+    "credit": "Pexels · 35045708",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "lunar",
+    "focalY": 0.5,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19092,
+    "quality": 42,
+    "landscape": true
+  },
+  "easter-hunt": {
+    "id": 7169576,
+    "asset": "assets/english-photos/7169576.jpg",
+    "sourceURL": "https://www.pexels.com/photo/content-diverse-girls-looking-for-easter-eggs-in-garden-7169576/",
+    "credit": "Pexels · 7169576",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "easter-hunt",
+    "focalY": 0.5,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 33387,
+    "quality": 42,
+    "landscape": true
+  },
+  "easter": {
+    "id": 15428991,
+    "asset": "assets/english-photos/15428991.jpg",
+    "sourceURL": "https://www.pexels.com/photo/close-up-of-eggs-in-a-basket-15428991/",
+    "credit": "Pexels · 15428991",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "easter",
+    "focalY": 0.5,
+    "originalDimensions": [
+      1200,
+      900
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19263,
+    "quality": 58,
+    "landscape": true
+  },
+  "valentine": {
+    "id": 6765929,
+    "asset": "assets/english-photos/6765929.jpg",
+    "sourceURL": "https://www.pexels.com/photo/crop-woman-showing-pop-up-gift-card-with-decorative-heart-6765929/",
+    "credit": "Pexels · 6765929",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "valentine",
+    "focalY": 0.5,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19711,
+    "quality": 66,
+    "landscape": true
+  },
+  "family": {
+    "id": 16949210,
+    "asset": "assets/english-photos/16949210.jpg",
+    "sourceURL": "https://www.pexels.com/photo/mother-and-father-posing-with-children-16949210/",
+    "credit": "Pexels · 16949210",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "family",
+    "focalY": 0.5,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 21419,
+    "quality": 42,
+    "landscape": true
+  },
+  "independence": {
+    "id": 12711524,
+    "asset": "assets/english-photos/12711524.jpg",
+    "sourceURL": "https://www.pexels.com/photo/people-horseback-riding-holding-american-flags-during-a-parade-12711524/",
+    "credit": "Pexels · 12711524",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "independence",
+    "focalY": 0.5,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 20849,
+    "quality": 42,
+    "landscape": true
+  },
+  "lunar-lantern": {
+    "id": 34224305,
+    "asset": "assets/english-photos/34224305.jpg",
+    "sourceURL": "https://www.pexels.com/photo/vibrant-red-lanterns-illuminating-festival-night-34224305/",
+    "credit": "Pexels · 34224305",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "lunar-lantern",
+    "focalY": 0.5,
+    "originalDimensions": [
+      1200,
+      901
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19156,
+    "quality": 42,
+    "landscape": true
+  },
+  "recycling": {
+    "id": 11666823,
+    "asset": "assets/english-photos/11666823.jpg",
+    "sourceURL": "https://www.pexels.com/photo/urban-garbage-containers-11666823/",
+    "credit": "Pexels · 11666823",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "recycling",
+    "focalY": 0.5,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19702,
+    "quality": 54,
+    "landscape": true
+  },
+  "wrapping": {
+    "id": 5272210,
+    "asset": "assets/english-photos/5272210.jpg",
+    "sourceURL": "https://www.pexels.com/photo/close-up-shot-of-a-person-wrapping-a-gift-5272210/",
+    "credit": "Pexels · 5272210",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "wrapping",
+    "focalY": 0.5,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19518,
+    "quality": 62,
+    "landscape": true
+  },
+  "ornament": {
+    "id": 5991577,
+    "asset": "assets/english-photos/5991577.jpg",
+    "sourceURL": "https://www.pexels.com/photo/christmas-decoration-and-gifts-5991577/",
+    "credit": "Pexels · 5991577",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "christmas",
+    "focalY": 0.5,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19182,
+    "quality": 50,
+    "landscape": true
+  },
+  "candy": {
+    "id": 4115025,
+    "sourceURL": "https://www.pexels.com/photo/candies-wrapped-in-blue-and-red-cellophane-4115025/",
+    "asset": "assets/english-photos/4115025.jpg",
+    "credit": "Pexels · 4115025",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "candy",
+    "focalY": 0.5,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 19105,
+    "quality": 58,
+    "landscape": true
+  },
+  "pumpkin": {
+    "id": 38757012,
+    "sourceURL": "https://www.pexels.com/photo/vibrant-harvest-pumpkins-for-autumn-decor-38757012/",
+    "asset": "assets/english-photos/38757012.jpg",
+    "credit": "Pexels · 38757012",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "pumpkin",
+    "focalY": 0.5,
+    "originalDimensions": [
+      1200,
+      800
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 18934,
+    "quality": 42,
+    "landscape": true
+  },
+  "basket": {
+    "id": 7232501,
+    "sourceURL": "https://www.pexels.com/photo/close-up-shot-of-a-wicker-basket-7232501/",
+    "asset": "assets/english-photos/7232501.jpg",
+    "credit": "Pexels · 7232501",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "basket",
+    "focalY": 0.5,
+    "originalDimensions": [
+      1200,
+      675
+    ],
+    "dimensions": [
+      644,
+      285
+    ],
+    "bytes": 27273,
+    "quality": 42,
+    "landscape": true
+  }
+}

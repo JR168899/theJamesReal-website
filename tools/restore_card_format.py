@@ -7,7 +7,7 @@ import json, re, html, importlib.util, base64
 from functools import lru_cache
 from PIL import ImageFont
 ROOT=Path(__file__).resolve().parents[1];D=ROOT/'dist'
-PHOTOS=json.loads((ROOT/'content/photo-pilot.json').read_text()) if (ROOT/'content/photo-pilot.json').exists() else {}
+PHOTOS=json.loads((ROOT/'content/photo-assignments.json').read_text()) if (ROOT/'content/photo-assignments.json').exists() else {}
 REF={}
 for line in (ROOT/'content/word-reference.tsv').read_text().splitlines():
  if line.strip():
@@ -46,8 +46,12 @@ def wrap(copy,size,width,bold=False):
 def comic(card):
  photo=PHOTOS.get(card['id'])
  if photo:
-  raw=base64.b64encode((D/photo['asset']).read_bytes()).decode()
-  return f'<svg xmlns="http://www.w3.org/2000/svg" width="660" height="338" viewBox="0 0 660 338"><title>{E(photo["caption"])}</title><rect width="660" height="338" fill="#faf8f1"/><image x="8" y="5" width="644" height="285" preserveAspectRatio="{photo.get("fit","xMidYMid meet")}" href="data:image/jpeg;base64,{raw}"/><text x="12" y="310" font-family="Arial, sans-serif" font-size="13" fill="#454545">{E(photo['caption'])}</text><a href="{E(photo['sourceURL'])}"><text x="12" y="329" font-family="Arial, sans-serif" font-size="11" fill="#676767">{E(photo['credit'])}</text></a></svg>'
+  raw='__JR_PHOTO__'
+  caption=wrap(photo['caption'],12,636)
+  assert len(caption)<=2,(card['id'],'photo caption overflow')
+  lines=''.join(f'<tspan x="12" y="{305+i*14}">{E(line)}</tspan>' for i,line in enumerate(caption))
+  return f'<svg xmlns="http://www.w3.org/2000/svg" width="660" height="338" viewBox="0 0 660 338"><title>{E(photo["caption"])}</title><rect width="660" height="338" fill="#faf8f1"/><image x="0" y="0" width="660" height="292" preserveAspectRatio="xMidYMid slice" href="{raw}"/><text font-family="Arial, sans-serif" font-size="12" fill="#454545">{lines}</text><a href="{E(photo["sourceURL"])}"><text x="12" y="333" font-family="Arial, sans-serif" font-size="10" fill="#676767">{E(photo["credit"])}</text></a></svg>'
+
  key=art.subject(card)
  # Original, round-faced characters and clean, expressive Japanese family-manga
  # linework. The object/scene is selected from the actual lesson, not randomly.
@@ -58,7 +62,9 @@ def comic(card):
  return f'''<svg xmlns="http://www.w3.org/2000/svg" width="660" height="338" viewBox="0 0 660 338"><title>{E(card['title'])}</title><desc>Original family-manga illustration: {E(key)}, related to {E(card['title'])}.</desc><defs><pattern id="dots" width="13" height="13" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".7" fill="#a5b8c6" opacity=".22"/></pattern></defs><rect width="660" height="338" fill="#fffdf6"/><rect x="12" y="12" width="636" height="314" rx="3" fill="#f2f9fc" stroke="#b9cbd1"/><path d="M13 278Q170 251 330 278T647 275V325H13Z" fill="#e5efda"/><rect x="13" y="13" width="634" height="312" fill="url(#dots)"/><ellipse cx="151" cy="315" rx="83" ry="8" fill="#cad7cd"/>{person}<g transform="translate(445 176) scale(1.15)" stroke="#252b35" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" fill="none">{obj}</g><path d="M226 134L238 121M239 151L258 148M531 92L540 81" stroke="#5ba9c9" stroke-width="3" stroke-linecap="round"/></svg>'''
 
 def enrich(c,lev):
- typ=c['type'];meaning=text(c.get('meaning'));title=c['title'];example=text(c.get('example'))
+ typ=c['type']
+ if typ=='essay' and c.get('paragraphs'):c['paragraphs']=[re.sub(r'\b(First|Next|Second), (We|Our|This|The)\b',lambda m:m[1]+', '+m[2].lower(),p) for p in c['paragraphs']]
+ meaning=text(c.get('meaning'));title=c['title'];example=text(c.get('example'))
  if typ=='phrases':
   separable={'bear out':('bear something out','bear out something'),'bring along':('bring something along','bring along something'),'carve out':('carve something out','carve out something'),'factor in':('factor something in','factor in something'),'find out':('find something out','find out something'),'iron out':('iron something out','iron out something'),'map out':('map something out','map out something'),'pick up':('pick something up','pick up something'),'put on':('put something on','put on something'),'set aside':('set something aside','set aside something'),'weigh up':('weigh something up','weigh up something'),'work out':('work something out','work out something')}
   if title in separable:c['displayTitle']='\n'.join(separable[title])
@@ -81,7 +87,9 @@ def enrich(c,lev):
   elif typ=='smalltalk':c['conversation']='A: '+title+'\nB: I would like to hear more about that.\nA: What interests you most?\nB: Let us start with your experience.'
   else:c['conversation']='A: How would you express this idea?\nB: '+title+'\nA: What does that mean here?\nB: '+meaning
  if typ!='essay' and len(text(c.get('conversation')).split('\n'))==3:c['conversation']=text(c['conversation'])+'\nB: Let us try it together.'
- c['formatVersion']='oct15-restored-v1';c['illustrationAlt']='Original family-manga scene illustrating '+title+'.'
+ c['formatVersion']='landscape-portrait-photos-v2';c['illustrationAlt']='Original family-manga scene illustrating '+title+'.'
+ from word_forms import forms
+ if typ=='vocabulary':c['wordForms']=forms(title,c['partOfSpeech'])
  from refine_teaching_fields import refine
  c=refine(c)
  if c['id'] in PHOTOS:c['photoCredit']={k:v for k,v in PHOTOS[c['id']].items() if k!='fit'};c['illustrationAlt']=PHOTOS[c['id']]['caption']
@@ -110,34 +118,40 @@ def render(c,day,lev,answer):
  category='Phrasal verb' if typ=='phrases' else name
  heading='Everyday English - '+lev+' - '+day.replace('-','/')+' - '+str(c['categoryNumber']).zfill(2)+' - '+category
  parts.append(block([heading],x,headerY,22 if essay else 15,18,True,fg))
- artwork=(D/c['illustration']).read_text()
  if essay:
-  artwork=re.sub(r'<svg[^>]*>','<svg x="1132" y="70" width="260" height="134" viewBox="0 0 660 338">',artwork,count=1);parts.append(artwork)
-  title=wrap(c['title'],34,1050,True);parts.append(block(title,42,90,34,40,True,fg))
+  photo=PHOTOS[c['id']];raw='__JR_PHOTO__'
+  parts.append(f'<g aria-label="Essay portrait photograph"><rect x="1066" y="96" width="328" height="488" fill="#faf8f1" stroke="{border}" stroke-width="2"/><image x="1070" y="100" width="320" height="480" preserveAspectRatio="xMidYMid slice" href="{raw}"/></g>')
+  parts.append(block(wrap(photo['caption'],12,320),1070,601,12,15,False,fg))
+  parts.append(f'<a href="{E(photo["sourceURL"])}">'+block([photo['credit']],1070,640,11,13,False,fg)+'</a>')
+  title=wrap(c['title'],36,1000,True);parts.append(block(title,42,90,36,42,True,fg))
   roleNames=['INTRODUCTION','DEVELOP THE IDEA','EXAMPLE & REFLECTION','CONCLUSION']
   # Preserve the existing four-paragraph learning structure; never convert it
   # into columns or truncate it to fit the landscape canvas.
 
-  for size in range(26,12,-1):
+  for size in range(32,14,-1):
    y=max(126,66+len(title)*40+26);bs=[];leading=size*1.17
    for i,p in enumerate(c['paragraphs']):
-    width=1050 if y<207 else 1350;ls=wrap(p,size,width);bs.append((i,ls,y));y+=18+len(ls)*leading+21
+    width=1000;ls=wrap(p,size,width);bs.append((i,ls,y));y+=18+len(ls)*leading+15
    guide='BUILD YOUR OWN · '+text(c.get('structure'))
    if c.get('notes'):guide+=' '+text(c['notes'])
    prompt=text(c['exercise'])
    if answer:prompt+=' (Model: '+text(c.get('answer'))+')'
-   footer=wrap(guide+'\n'+prompt,18,1350);bottom=y+len(footer)*22
+   footerSize=min(18,size);footerLeading=footerSize*1.22;footer=wrap(guide+'\n'+prompt,footerSize,1000);bottom=y+len(footer)*footerLeading
    if bottom<=622:break
   assert bottom<=622,(c['id'],'essay overflow',bottom)
   for i,ls,y0 in bs:
    parts.append(label(str(i+1)+' · '+roleNames[i],42,y0,17));parts.append(block(ls,42,y0+size+5,size,leading,False,fg))
-  parts.append(block(footer,42,y+18,18,22,False,fg))
+  parts.append(block(footer,42,y+footerSize,footerSize,footerLeading,False,fg))
  else:
+  artwork=comic(c)
   artwork=re.sub(r'<svg[^>]*>','<svg x="28" y="80" width="604" height="310" viewBox="0 0 660 338">',artwork,count=1);parts.append(artwork)
   r=rows(c,answer)
   for step in range(101):
-   scale=1-step*.005;ts=46*scale;size=28*scale;leading=35*scale;lab=16*scale;gap=29*scale
+   scale=1.1-step*.005;ts=max(36,min(50,46*scale));size=28*scale;leading=35*scale;lab=16*scale;gap=29*scale
    titles=wrap(c.get('displayTitle',c['title']),ts,604,True);y=432+len(titles)*ts*1.25;meta=[]
+   if typ=='reflection' and c.get('quoteAuthor'):
+    copy=c['quoteAuthor']+' · '+c['quoteWork']+' · Published '+str(c['quoteYear'])
+    ls=wrap(copy,20*scale,604);meta.append((ls,y,20*scale));y+=len(ls)*24*scale
    if typ=='vocabulary':
     for copy,sz in [('US '+text(c['ipa'])+'   '+text(c['partOfSpeech']),28*scale),(text(c.get('wordForms')),22*scale)]:
      ls=wrap(copy,sz,604);meta.append((ls,y,sz));y+=len(ls)*sz*1.22
@@ -160,7 +174,9 @@ def main():
   data=json.loads(p.read_text())
   for lev,u in data.items():
    for ci,c in enumerate(u['cards']):
-    c=enrich(c,lev);u['cards'][ci]=c;asset=D/'assets/english-story'/f'{c["id"]}.svg';asset.write_text(comic(c));c['illustration']='assets/english-story/'+asset.name
+    c=enrich(c,lev);u['cards'][ci]=c
+    assert c['id'] in PHOTOS,('Missing photo',c['id'])
+    c['illustration']=PHOTOS[c['id']]['asset']
     folder=D/'data/english-cards'/p.stem/lev;folder.mkdir(parents=True,exist_ok=True)
     for answer,suffix in [(False,''),(True,'-download')]:
      svg,stat=render(c,p.stem,lev,answer);target=folder/(str(c['number']).zfill(2)+suffix+'.svg');target.write_text(svg);stats.append(stat)

@@ -32,7 +32,7 @@
   let speechId = '', speechGeneration = 0, currentUtterance = null;
   let paintGeneration = 0;
   const KEY = 'james-real-english-progress-v1';
-  const imageCache = new Map(), posterCache = new Map();
+  const imageCache = new Map(), posterCache = new Map(), photoDataCache = new Map(), previewCache = new Map();
   const diagnostics = [];
   try { completed = JSON.parse(localStorage.getItem(KEY) || '{}'); if (!completed || Array.isArray(completed) || typeof completed !== 'object') completed = {}; }
   catch (_) { storageAvailable = false; }
@@ -83,24 +83,49 @@
     const done = !!completed[card.id];
     return `<article class="jr-en-card jr-en-${type}${done ? ' is-complete' : ''}" data-jr-card="${escape(card.id)}" aria-label="${escape(palette(card).label + ': ' + card.title)}">
       <button class="jr-en-poster-open" type="button" data-jr-do="preview" data-jr-id="${escape(card.id)}" aria-label="Open full-size ${escape(card.title)} card"><span class="jr-en-poster-loading" data-jr-loading="${escape(card.id)}">Preparing your complete ${escape(palette(card).label.toLowerCase())} card…</span><img class="jr-en-poster" id="jr-poster-${escape(card.id)}" width="${isEssay ? 1434 : 660}" height="${isEssay ? 660 : 1434}" alt="${escape(card.title)}. ${escape(palette(card).label)} card. Full accessible text follows." hidden></button>
+      ${card.quoteSourceURL ? `<p class="jr-en-photo-source">Quote: <a href="${escape(card.quoteSourceURL)}" target="_blank" rel="noopener noreferrer">${escape(card.quoteAuthor)} · ${escape(card.quoteWork)} · Published ${card.quoteYear}</a></p>` : ''}
       ${card.photoCredit ? `<p class="jr-en-photo-source">Photo: <a href="${escape(card.photoCredit.sourceURL)}" target="_blank" rel="noopener noreferrer">${escape(card.photoCredit.credit)}</a></p>` : ''}
       <div class="jr-en-card-tools"><div class="jr-en-card-top"><span>${escape(palette(card).label)}</span><b>${String(card.number).padStart(2, '0')} / 11 · ${level}</b></div>
       <div class="jr-en-audio-actions"><button type="button" data-jr-do="speak-title" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen title</button>${card.conversation ? `<button type="button" data-jr-do="speak-conversation" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen conversation</button>` : ''}<button type="button" data-jr-do="speak-all" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen ${isEssay ? 'essay' : 'all'}</button></div>
       <details class="jr-en-export"><summary>Save, share or print</summary><div class="jr-en-file-actions"><button type="button" data-jr-do="share" data-jr-id="${escape(card.id)}">↗ Share PNG</button><button type="button" data-jr-do="save" data-jr-id="${escape(card.id)}">↓ Save PNG</button><button type="button" data-jr-do="print" data-jr-id="${escape(card.id)}">▤ Print</button><button type="button" data-jr-do="print-ink" data-jr-id="${escape(card.id)}">▤ Print · ink saving</button></div></details>
       <div class="jr-en-practice"><h4>Your turn</h4><p>${escape(exerciseText(card))}</p>${answerHTML(card)}</div>${guideHTML(card)}${accessibleHTML(card)}<button type="button" class="jr-en-done${done ? ' is-done' : ''}" data-jr-do="done" data-jr-id="${escape(card.id)}" aria-pressed="${done}">${done ? '✓ Completed' : '○ Mark as complete'}</button></div></article>`;
   }
+  let subscriptionDraft={email:'',levels:null,consent:false};
+  const SUBSCRIPTION_API='https://br-winter-pond-b5yda82s-everydayenglish.compute.c-7.us-east-2.aws.neon.tech';
+  function subscriptionHTML(){
+    const selected=subscriptionDraft.levels||[level];
+    return `<section class="jr-en-subscribe" aria-labelledby="jr-en-sub-title"><p class="jr-en-kicker">YOUR DAILY PRACTICE</p><h2 id="jr-en-sub-title">Make room for a little English.</h2><p>Choose one or more levels. Each selected level arrives as a separate email with eleven cards, at around 7 a.m. Pacific Time.</p><form id="jr-en-subscribe-form"><label for="jr-en-sub-email">Email address</label><input id="jr-en-sub-email" name="email" type="email" autocomplete="email" maxlength="254" required value="${escape(subscriptionDraft.email)}"><fieldset><legend>Your levels</legend><div class="jr-en-sub-levels">${LEVELS.map(l=>`<label><input type="checkbox" name="levels" value="${l[0]}" ${selected.includes(l[0])?'checked':''}> ${l[0]}</label>`).join('')}</div></fieldset><div class="jr-en-honey" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div><label class="jr-en-sub-consent"><input type="checkbox" name="consent" required ${subscriptionDraft.consent?'checked':''}> I would like to receive these daily English lessons. I can change levels or unsubscribe at any time.</label><button type="submit">Subscribe to my selected levels ↗</button><p class="jr-en-sub-status" role="status" aria-live="polite"></p><small>We will send a confirmation link before activating your subscription.</small></form></section>`;
+  }
+  document.addEventListener('input',event=>{
+    const form=event.target.closest('#jr-en-subscribe-form');if(!form)return;
+    subscriptionDraft={email:form.elements.email.value,levels:[...form.querySelectorAll('[name="levels"]:checked')].map(x=>x.value),consent:form.elements.consent.checked};
+  });
+  document.addEventListener('submit',async event=>{
+    const form=event.target;if(form.id!=='jr-en-subscribe-form')return;event.preventDefault();
+    const selected=[...form.querySelectorAll('[name="levels"]:checked')].map(x=>x.value),status=form.querySelector('[role="status"]'),button=form.querySelector('button[type="submit"]');
+    if(!selected.length){status.textContent='Please select at least one level.';return;}
+    if(!form.reportValidity())return;
+    button.disabled=true;status.textContent='Sending your confirmation…';
+    try{
+      const response=await fetch(SUBSCRIPTION_API+'/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:form.elements.email.value,levels:selected,consent:form.elements.consent.checked,website:form.elements.website.value})});
+      const result=await response.json();if(!response.ok)throw new Error(result.error||'The request could not be completed.');
+      status.textContent=result.message;subscriptionDraft={email:'',levels:selected,consent:false};
+      form.elements.email.value='';form.elements.consent.checked=false;
+    }catch(error){status.textContent=error.message==='Failed to fetch'?'The subscription service could not be reached. Please try again later.':error.message;}
+    finally{button.disabled=false;}
+  });
   function pageBody() {
     const edition = unit(), info = LEVELS.find(l => l[0] === level);
     if(!edition) return '<div class="page-head"><h1>Everyday English</h1><p role="status">Loading your prepared '+level+' edition for '+date+'…</p><button type="button" data-jr-do="retry">Try again</button></div>';
     const visible = edition.cards.filter(c => filter === 'all' || typeOf(c) === filter);
-    return `<div class="page-head jr-en-heading"><div><p class="jr-en-kicker">EDUCATION / EVERYDAY ENGLISH</p><h1>English for<br><em>everyday life.</em></h1><p class="jr-en-intro">Choose your level. Read and listen, then answer “Your turn” before checking the model answer.<br>Finish with an essay that shows how four paragraphs build one clear argument.</p></div><aside class="jr-en-summary" aria-label="Eleven cards per edition, six levels from A1 to C2"><p class="jr-en-summary-label">YOUR DAILY EDITION</p><div class="jr-en-summary-count"><strong>11</strong><span>cards to read,<br>listen &amp; practise</span></div><div class="jr-en-summary-levels"><span>A1 — C2</span><span>Six levels</span></div></aside></div>
+    return `<div class="page-head jr-en-heading"><div><p class="jr-en-kicker">EDUCATION / EVERYDAY ENGLISH</p><h1>English for<br><em>everyday life.</em></h1><p class="jr-en-intro">Choose your level. Read and listen, then answer “Your turn” before checking the model answer.<br>Finish with an essay that shows how four paragraphs build one clear argument.</p><p><a class="jr-en-voice-preview" href="voice-preview.html" target="_blank" rel="noopener">Listen to six American English voice samples ↗</a></p></div><aside class="jr-en-summary" aria-label="Eleven cards per edition, six levels from A1 to C2"><p class="jr-en-summary-label">YOUR DAILY EDITION</p><div class="jr-en-summary-count"><strong>11</strong><span>cards to read,<br>listen &amp; practise</span></div><div class="jr-en-summary-levels"><span>A1 — C2</span><span>Six levels</span></div></aside></div>
       <div class="jr-en-levels" role="group" aria-label="English level">${LEVELS.map(l => `<button type="button" class="jr-en-level${l[0] === level ? ' is-active' : ''}" data-jr-do="level" data-jr-level="${l[0]}" aria-pressed="${l[0] === level}"><span>${l[0]}</span><b>${l[1]}</b><small>${l[2]}</small></button>`).join('')}</div>
-      <section class="jr-en-edition" aria-label="Selected English edition"><div><p class="jr-en-kicker">${level} · ${info[1].toUpperCase()} / SELECTED EDITION</p><h2>${escape(edition.theme)}</h2><p>2 vocabulary · 2 phrasal verbs · 2 idioms · 1 life phrase · 1 quote · 1 grammar · 1 small talk · 1 four-paragraph essay.</p></div><div class="jr-en-edition-tools"><label for="jr-en-date">Choose an edition · Pacific Time</label><select id="jr-en-date" data-jr-date>${DATES.map(d => `<option value="${d}"${d === date ? ' selected' : ''}>${d}${d > currentDate ? ' · Prepared ahead' : d === defaultDate ? ' · Current edition' : ''}</option>`).join('')}</select></div></section>
+      <section class="jr-en-edition" aria-label="Selected English edition"><div><p class="jr-en-kicker">${level} · ${info[1].toUpperCase()} / SELECTED EDITION</p><h2>${escape(edition.theme)}</h2><p>2 vocabulary · 2 phrasal verbs · 2 idioms · 1 life phrase · 1 quote · 1 grammar · 1 small talk · 1 four-paragraph essay.</p></div><div class="jr-en-edition-tools"><label for="jr-en-date">Find an edition by date · Pacific Time</label><input id="jr-en-date" data-jr-date type="date" value="${date}" min="2026-01-01" max="2026-12-31" aria-describedby="jr-en-date-help"><small id="jr-en-date-help">Enter or choose a date in 2026.</small></div></section>
       <div class="jr-en-bulk-actions"><button type="button" data-jr-do="zip">↓ Download all 11 PNG cards · ZIP</button><button type="button" data-jr-do="print-all">▤ Print all 11 cards</button><button type="button" data-jr-do="print-all-ink">▤ Print all · ink saving</button></div>
       <div class="jr-en-progress-row"><div class="jr-en-progress-copy"><span>YOUR PROGRESS</span><b id="jr-en-progress-label">${count()} / 11 completed</b></div><progress id="jr-en-progress" value="${count()}" max="11" aria-label="Completed lessons">${count()} / 11</progress><span class="jr-en-progress-note">${storageAvailable ? 'Progress stays in this browser.' : 'Progress is available for this visit only.'}</span></div>
       <div class="jr-en-filter-row"><div class="jr-en-filters" role="group" aria-label="Card category"><button type="button" data-jr-do="filter" data-jr-filter="all" aria-pressed="${filter === 'all'}" class="${filter === 'all' ? 'is-active' : ''}">All 11 cards</button>${Object.entries(TYPES).map(([key, value]) => `<button type="button" data-jr-do="filter" data-jr-filter="${key}" aria-pressed="${filter === key}" class="${filter === key ? 'is-active' : ''}">${value.label}</button>`).join('')}</div><span class="jr-en-visible-count">${visible.length} cards</span></div>
       <p id="jr-en-status" class="jr-en-status" role="status" aria-live="polite"></p><div class="jr-en-grid">${visible.map(cardHTML).join('')}</div>
-      <div class="jr-en-footnote"><span class="jr-en-footnote-mark" aria-hidden="true">Aa</span><div><strong>A little English, every day.</strong><p>Prepared editions run from October 6 to December 31, 2026. Each date has six levels and eleven cards. Themes return with different practice lenses for deliberate review. Newly filled dates were prepared on October 24; the original archive remains available below.</p><p>Try one new expression in a sentence of your own. For the essay, follow the writing guide: introduction, two supporting paragraphs, and conclusion.</p></div></div>`;
+      ${subscriptionHTML()}<div class="jr-en-footnote"><span class="jr-en-footnote-mark" aria-hidden="true">Aa</span><div><strong>A little English, every day.</strong><p>Explore January 1 to December 31, 2026. Every date offers six levels and eleven cards. Return to familiar themes for practice, and explore seasonal language around selected holidays. The original lesson archive remains available below.</p><p>Try one new expression in a sentence of your own. For the essay, follow the writing guide: introduction, two supporting paragraphs, and conclusion.</p></div></div>`;
   }
   window.jrEnglishPage = () => '<section id="jr-english" class="jr-english" lang="en" translate="no">' + pageBody() + '</section>';
   function renderLocal(focus) {
@@ -271,16 +296,34 @@
     diagnostics.push({ id: card.id, kind: 'essay', size: plan.size, bottom: plan.bottom, limit: 622, ink: !!ink });
     return canvas;
   }
+  async function storedSVG(card, ink, includeAnswer) {
+    const source = includeAnswer ? card.downloadPoster : card.poster;
+    if (!source) throw new Error('The stored card is unavailable. Please refresh.');
+    const response = await fetch(source + '?format=year2026-v4');
+    if (!response.ok) throw new Error('The complete card could not load.');
+    let svg = await response.text();
+    if (svg.includes('__JR_PHOTO__')) {
+      const asset = card.photoCredit.asset;
+      if (!photoDataCache.has(asset)) photoDataCache.set(asset,(async()=>{
+        const r=await fetch(asset); if(!r.ok) throw new Error('The photograph could not load.');
+        const blob=await r.blob();
+        return new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(blob);});
+      })());
+      svg=svg.replaceAll('__JR_PHOTO__',await photoDataCache.get(asset));
+    }
+    if (ink) svg = svg.replaceAll('fill="' + palette(card).bg + '"', 'fill="#ffffff"');
+    return svg;
+  }
+  function previewPoster(card) {
+    if(!previewCache.has(card.id)) previewCache.set(card.id,storedSVG(card,false,false).then(svg=>({url:URL.createObjectURL(new Blob([svg],{type:'image/svg+xml'}))})));
+    return previewCache.get(card.id);
+  }
   function poster(card, ink, includeAnswer = true) {
     const source = includeAnswer ? card.downloadPoster : card.poster;
     const key = card.id + ':' + !!ink + ':' + includeAnswer + ':' + source;
     if (posterCache.has(key)) return posterCache.get(key);
     const promise = (async () => {
-      if (!source) throw new Error('The stored card is unavailable. Please refresh.');
-      const response = await fetch(source + '?format=review-v2');
-      if (!response.ok) throw new Error('The complete card could not load.');
-      let svg = await response.text();
-      if (ink) svg = svg.replaceAll('fill="' + palette(card).bg + '"', 'fill="#ffffff"');
+      const svg = await storedSVG(card,ink,includeAnswer);
       const svgURL = URL.createObjectURL(new Blob([svg], {type:'image/svg+xml'}));
       try {
         const image = await new Promise((resolve,reject) => { const i = new Image(); i.onload=()=>resolve(i); i.onerror=reject; i.src=svgURL; });
@@ -300,7 +343,7 @@
       const requestedDate=date;
       if(editionLoading===requestedDate)return;
       editionLoading=requestedDate;
-      fetch('data/english-levels/'+requestedDate+'.json?format=review-v2').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{
+      fetch('data/english-levels/'+requestedDate+'.json?format=year2026-v4').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{
         DATA[requestedDate]=data;
         if(date===requestedDate&&document.getElementById('jr-english'))renderLocal();
       }).catch(()=>{if(date===requestedDate){root.innerHTML='<h1>Everyday English</h1><p role="status">This stored edition could not load.</p><button type="button" data-jr-do="retry">Try again</button>';}}).finally(()=>{if(editionLoading===requestedDate)editionLoading=null});
@@ -308,7 +351,7 @@
     }
     const generation = ++paintGeneration;
     unit().cards.filter(c => filter === 'all' || typeOf(c) === filter).forEach(card => {
-      (card.poster ? Promise.resolve({url:card.poster+'?format=review-v2'}) : poster(card, false)).then(result => {
+      previewPoster(card).then(result => {
         if (generation !== paintGeneration) return;
         const img = document.getElementById('jr-poster-' + card.id); if (!img) return;
         img.src = result.url; img.hidden = false;
@@ -424,7 +467,7 @@
     } catch (error) { if (error.name === 'AbortError') announce('Sharing cancelled.'); else announce('The complete card could not be prepared. Please refresh and try again.'); }
     finally { button.disabled = false; if (action !== 'preview') button.textContent = originalLabel; }
   });
-  document.addEventListener('change', event => { if (event.target.matches('#jr-english [data-jr-date]') && DATES.includes(event.target.value)) { date = event.target.value; filter = 'all'; persistSelection(); renderLocal('#jr-en-date'); announce('Showing ' + date + ' · ' + level + '.'); } });
+  document.addEventListener('change', event => { if(event.target.matches('#jr-english [data-jr-date]')&&!DATES.includes(event.target.value)){event.target.setCustomValidity('Choose a date from January 1 to December 31, 2026.');event.target.reportValidity();return;} if (event.target.matches('#jr-english [data-jr-date]') && DATES.includes(event.target.value)) { event.target.setCustomValidity(''); date = event.target.value; filter = 'all'; persistSelection(); renderLocal('#jr-en-date'); announce('Showing ' + date + ' · ' + level + '.'); } });
   window.addEventListener('hashchange', () => { if (location.hash !== '#english') stopSpeech(); });
   window.jrEnglishDiagnostics = diagnostics;
 })();

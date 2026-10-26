@@ -1,0 +1,38 @@
+{
+  "resilience": {
+    "id": 11092207,
+    "sourceURL": "https://www.pexels.com/photo/lone-tiny-sprout-11092207/",
+    "credit": "Pexels · 11092207",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A small green sprout emerging from a crack in the concrete symbolizing growth and resilience.Stock Photo",
+    "asset": "assets/english-photos/11092207.jpg",
+    "focalY": 0.45
+  },
+  "community": {
+    "id": 39778154,
+    "sourceURL": "https://www.pexels.com/photo/volunteers-working-in-bloomington-community-garden-39778154/",
+    "credit": "Pexels · 39778154",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "A group of volunteers collaborates on a garden project in Bloomington, Indiana, during a sunny spring day. ... Zack Gilbert My photo gallery features a collection of special moments, adventures, and memories from my travels and everyday life.",
+    "asset": "assets/english-photos/39778154.jpg",
+    "focalY": 0.45
+  },
+  "growth": {
+    "id": 4377079,
+    "sourceURL": "https://www.pexels.com/photo/uprooted-plants-on-white-surface-4377079/",
+    "credit": "Pexels · 4377079",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Series of young plant seedlings arranged on white background illustrating growth stages.Stock Photo ... 8 Evie Shaffer Brand designer, photographer, and strategist.",
+    "asset": "assets/english-photos/4377079.jpg",
+    "focalY": 0.45
+  },
+  "sewing": {
+    "id": 5526307,
+    "sourceURL": "https://www.pexels.com/photo/woman-sewing-clothes-in-workshop-5526307/",
+    "credit": "Pexels · 5526307",
+    "licenseURL": "https://www.pexels.com/license/",
+    "description": "Close-up of hands working with fabric in a sewing workshop, surrounded by spools and machinery.Stock Photo",
+    "asset": "assets/english-photos/5526307.jpg",
+    "focalY": 0.45
+  }
+}

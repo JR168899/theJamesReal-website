@@ -1,0 +1,16 @@
+{
+  "cards": 24090,
+  "scenes": 79,
+  "missing": 0,
+  "landscapeCards": 21900,
+  "portraitEssays": 2190,
+  "landscapeSize": [
+    644,
+    285
+  ],
+  "essayPhotoSize": [
+    320,
+    480
+  ],
+  "scaling": "Aspect-preserving cover crop; no stretching"
+}
