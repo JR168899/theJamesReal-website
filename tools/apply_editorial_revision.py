@@ -170,7 +170,7 @@ def rewrite(c,u,level,day):
  if typ!='essay':
   lines=c['conversation'].split('\n');assert len(lines)>=4
   # A real exchange replaces the previous invented dictionary-example sentence.
-  
+
   if typ=='smalltalk':c['example']=c['title']
   elif 'We use “' in c.get('example','') or 'How should we' in c.get('example','') or 'How can we' in c.get('example',''):
    c['example']='\n'.join(lines[:2])
