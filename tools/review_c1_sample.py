@@ -94,6 +94,16 @@ revise(11,
  notes='Each body paragraph needs a distinct supporting point and a concrete example. The conclusion draws the argument together without introducing a third proposal.',
  structure='Introduce a clear position; develop two different supporting points with examples; conclude with their shared value.')
 
+# Keep the landscape essay comfortably readable beside its fixed portrait frame.
+revise(11, paragraphs=[
+'A welcoming Halloween event gives people choices rather than testing everyone’s courage. At our neighborhood gathering, we wanted a lively atmosphere without pressuring guests to enjoy the same activities. Clear options and careful preparation proved more useful than an increasingly elaborate spectacle.',
+'First, we made two experiences easy to identify. A lantern-lit route led to the main attraction; a quieter room offered pumpkin carving and warm drinks. Volunteers explained both at the entrance, allowing guests to change their minds without having to justify their preferences.',
+'Practical details mattered just as much. Only when we tested a costume outside did we notice that its mask restricted the wearer’s view. We adjusted it and checked the route for obstacles. Ingredient labels and non-food treats also helped guests decide what suited them.',
+'The event worked because its atmosphere invited participation while its arrangements preserved a sense of control. Preparation did not remove the surprise; it removed avoidable pressure. Next year, we would retain that balance: make the possibilities clear, anticipate small obstacles, and leave people room to choose.'
+], structure='State a position; develop two distinct points with concrete examples; draw them together in the conclusion.',
+exercise='Outline four paragraphs improving a school fair. Include two different changes, a concrete example for each, and a conclusion linking their benefits.',
+answer='Introduction: a more welcoming fair. Body 1: clear signs at the entrance. Body 2: quiet seating away from the stage. Conclusion: better guidance and choice help guests enjoy themselves.')
+
 catalog=json.loads((ROOT/'content/photo-catalog.json').read_text());portraits=json.loads((ROOT/'content/essay-photo-catalog.json').read_text())
 new=[('uncanny',5288094,'https://www.pexels.com/photo/tall-trees-in-the-forest-covered-in-fog-5288094/','Mist makes the familiar forest difficult to recognize.'),('commemoration',29190201,'https://www.pexels.com/photo/votive-candles-illuminating-a-memorial-tribute-29190201/','Memorial candles express remembrance rather than a costume celebration.'),('cauldron',33635613,'https://www.pexels.com/photo/vintage-cauldron-on-rustic-background-showcasing-age-33635613/','A cauldron is a large cooking pot: the central object in the witches’ chant.')]
 for scene,pid,url,caption in new:

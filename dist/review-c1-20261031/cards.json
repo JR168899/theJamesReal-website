@@ -519,12 +519,12 @@
       "title": "A little room to choose",
       "meaning": "A four-paragraph model with a main idea, two developed points, and a conclusion.",
       "example": "We use “A Halloween evening that welcomes everyone” when we discuss this idea.",
-      "exercise": "Plan a four-paragraph essay about an event you would improve. State one main idea; develop two distinct changes with concrete examples; conclude by explaining what those changes achieve together.",
-      "answer": "Introduction: make a school fair easier to navigate. Body 1: clear signs and a staffed entrance. Body 2: a quiet seating area away from the stage. Conclusion: better guidance and a place to pause help more guests enjoy the same event.",
+      "exercise": "Outline four paragraphs improving a school fair. Include two different changes, a concrete example for each, and a conclusion linking their benefits.",
+      "answer": "Introduction: a more welcoming fair. Body 1: clear signs at the entrance. Body 2: quiet seating away from the stage. Conclusion: better guidance and choice help guests enjoy themselves.",
       "level": "C1",
       "conversation": "",
       "notes": "Each body paragraph needs a distinct supporting point and a concrete example. The conclusion draws the argument together without introducing a third proposal.",
-      "structure": "Introduce a clear position; develop two different supporting points with examples; conclude with their shared value.",
+      "structure": "State a position; develop two distinct points with concrete examples; draw them together in the conclusion.",
       "highlights": [],
       "partOfSpeech": "",
       "ipa": "",
@@ -534,10 +534,10 @@
       "topicId": "halloween",
       "visualSubject": "halloween-costume",
       "paragraphs": [
-        "A memorable Halloween gathering does not have to frighten every guest equally. At our neighborhood event, the aim was to create a lively evening without making participation feel like a test of courage. We found that clear choices, rather than an ever more elaborate spectacle, made the event welcoming.",
-        "First, we made the different experiences easy to identify. A lantern-lit route led to the main attraction, while a quieter room offered pumpkin carving and warm drinks. A volunteer explained both options at the entrance. Guests could change their minds without having to explain themselves, which mattered more than any promise that the event was suitable for everyone.",
-        "Choice also depended on details that were easy to miss during planning. Only when we tested a costume outside did we notice how much the mask restricted the wearer’s view. We adjusted it before opening and checked that the route remained clear. At the refreshment table, ingredient labels and a non-food treat gave guests another practical way to decide what suited them.",
-        "The evening succeeded because its atmosphere invited people in while its arrangements let them remain in control. Preparation did not remove the surprise or playfulness; it removed avoidable pressure. Next year, we would keep the same principle: make the possibilities clear, pay attention to the small obstacles, and leave people a little room to choose."
+        "A welcoming Halloween event gives people choices rather than testing everyone’s courage. At our neighborhood gathering, we wanted a lively atmosphere without pressuring guests to enjoy the same activities. Clear options and careful preparation proved more useful than an increasingly elaborate spectacle.",
+        "First, we made two experiences easy to identify. A lantern-lit route led to the main attraction; a quieter room offered pumpkin carving and warm drinks. Volunteers explained both at the entrance, allowing guests to change their minds without having to justify their preferences.",
+        "Practical details mattered just as much. Only when we tested a costume outside did we notice that its mask restricted the wearer’s view. We adjusted it and checked the route for obstacles. Ingredient labels and non-food treats also helped guests decide what suited them.",
+        "The event worked because its atmosphere invited participation while its arrangements preserved a sense of control. Preparation did not remove the surprise; it removed avoidable pressure. Next year, we would retain that balance: make the possibilities clear, anticipate small obstacles, and leave people room to choose."
       ],
       "paragraphRoles": [
         "Introduction — state the main idea",
