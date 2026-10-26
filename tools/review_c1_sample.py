@@ -118,12 +118,12 @@ for i,c in enumerate(cards):
  photo.update(caption=captions[i],orientation='portrait' if i==10 else 'landscape')
  renderer.PHOTOS[c['id']]=photo;c['photoCredit']=photo;c['illustration']=photo['asset'];c['illustrationAlt']=photo['caption']
  category='Phrasal verb' if c['type']=='phrases' else renderer.P[c['type']][0]
- name=f'Everyday English - C1 - 2026-10-31 - {category} -{c["categoryNumber"]:02}'
+ name=f'Everyday English - C1 - 2026-10-31 - {category} - {c["categoryNumber"]:02}'
  photo_uri='data:image/jpeg;base64,'+base64.b64encode((D/photo['asset']).read_bytes()).decode()
  for answer,suffix in [(False,''),(True,'-download')]:
   svg,stat=renderer.render(c,'2026-10-31','C1',answer)
   old=f'Everyday English - C1 - 2026/10/31 - {c["categoryNumber"]:02} - {category}'
-  newtitle=f'Everyday English - C1 - 2026/10/31 - {category} -{c["categoryNumber"]:02}'
+  newtitle=f'Everyday English - C1 - 2026/10/31 - {category} - {c["categoryNumber"]:02}'
   svg=svg.replace(html.escape(old,quote=True),html.escape(newtitle,quote=True)).replace('__JR_PHOTO__',photo_uri)
   (OUT/f'{i+1:02}{suffix}.svg').write_text(svg);stats.append(stat)
  manifest.append({'number':i+1,'title':c['title'],'category':category,'filename':name+'.png','sourceURL':photo['sourceURL'],'skill':c['exercise']})

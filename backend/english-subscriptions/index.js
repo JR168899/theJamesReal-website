@@ -52,7 +52,7 @@ function cardHTML(card,day,level){
   }
  }
  body+='<h3 style="font-size:12px">YOUR TURN</h3><p>'+escape(card.exercise)+'</p><p><a href="'+link(day,level)+'">Open the card, listen & check the model answer ↗</a></p>';
- return '<section style="background:'+colors[card.type]+';border:1px solid #948a76;border-radius:4px;margin:24px 0;padding:20px;color:#302e29;line-height:1.5"><p style="font-size:11px">Everyday English - '+level+' - '+day.replaceAll('-','/')+' - '+String(card.categoryNumber).padStart(2,'0')+' - '+names[card.type]+'</p>'+body+'</section>';
+ return '<section style="background:'+colors[card.type]+';border:1px solid #948a76;border-radius:4px;margin:24px 0;padding:20px;color:#302e29;line-height:1.5"><p style="font-size:11px">Everyday English - '+level+' - '+day.replaceAll('-','/')+' - '+names[card.type]+' - '+String(card.categoryNumber).padStart(2,'0')+'</p>'+body+'</section>';
 }
 async function editionEmail(email,level,day,api,key){
  const response=await fetch(SITE+'/data/english-levels/'+day+'.json',{headers:{'Cache-Control':'no-cache'}});

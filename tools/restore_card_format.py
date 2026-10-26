@@ -116,7 +116,7 @@ def render(c,day,lev,answer):
  parts=[f'<rect width="{W}" height="{H}" fill="#f7f4eb"/>',f'<rect x="{edge}" y="{edge}" width="{W-2*edge}" height="{H-2*edge}" rx="{10 if essay else 5}" fill="{bg}" stroke="{border}" stroke-width="{5 if essay else 2.5}"/>',f'<rect x="{inset}" y="{inset}" width="{W-2*inset}" height="{H-2*inset}" rx="3" fill="none" stroke="#f7f1e5" stroke-width="{10 if essay else 5}"/>']
  x=42 if essay else 28;headerY=42 if essay else 55
  category='Phrasal verb' if typ=='phrases' else name
- heading='Everyday English - '+lev+' - '+day.replace('-','/')+' - '+str(c['categoryNumber']).zfill(2)+' - '+category
+ heading='Everyday English - '+lev+' - '+day.replace('-','/')+' - '+category+' - '+str(c['categoryNumber']).zfill(2)
  parts.append(block([heading],x,headerY,22 if essay else 15,18,True,fg))
  if essay:
   photo=PHOTOS[c['id']];raw='__JR_PHOTO__'

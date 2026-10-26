@@ -45,7 +45,7 @@
   const cardById = id => unit()?.cards.find(c => c.id === id);
   const dateOf = card => /^\d{4}-\d{2}-\d{2}/.exec(card.id)?.[0] || date;
   const levelOf = card => /-(A1|A2|B1|B2|C1|C2)-/.exec(card.id)?.[1] || card.level || level;
-  const fileName = (card, ink) => ['Everyday English',levelOf(card),dateOf(card),String(card.categoryNumber || card.number).padStart(2,'0'),typeOf(card)==='phrases'?'Phrasal verb':palette(card).label].join(' - ') + (ink?' - ink saving':'') + '.png';
+  const fileName = (card, ink) => ['Everyday English',levelOf(card),dateOf(card),typeOf(card)==='phrases'?'Phrasal verb':palette(card).label,String(card.categoryNumber || card.number).padStart(2,'0')].join(' - ') + (ink?' - ink saving':'') + '.png';
   function announce(message) { const el = document.getElementById('jr-en-status'); if (el) el.textContent = message; }
   function saveProgress() { try { localStorage.setItem(KEY, JSON.stringify(completed)); storageAvailable = true; } catch (_) { storageAvailable = false; } }
   function exerciseText(card) { return text(card.exercise).split(/\n?Model Answer\s*:/i)[0].trim(); }
@@ -299,7 +299,7 @@
   async function storedSVG(card, ink, includeAnswer) {
     const source = includeAnswer ? card.downloadPoster : card.poster;
     if (!source) throw new Error('The stored card is unavailable. Please refresh.');
-    const response = await fetch(source + '?format=year2026-v4');
+    const response = await fetch(source + '?format=editorial2026-v1');
     if (!response.ok) throw new Error('The complete card could not load.');
     let svg = await response.text();
     if (svg.includes('__JR_PHOTO__')) {
@@ -343,7 +343,7 @@
       const requestedDate=date;
       if(editionLoading===requestedDate)return;
       editionLoading=requestedDate;
-      fetch('data/english-levels/'+requestedDate+'.json?format=year2026-v4').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{
+      fetch('data/english-levels/'+requestedDate+'.json?format=editorial2026-v1').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{
         DATA[requestedDate]=data;
         if(date===requestedDate&&document.getElementById('jr-english'))renderLocal();
       }).catch(()=>{if(date===requestedDate){root.innerHTML='<h1>Everyday English</h1><p role="status">This stored edition could not load.</p><button type="button" data-jr-do="retry">Try again</button>';}}).finally(()=>{if(editionLoading===requestedDate)editionLoading=null});

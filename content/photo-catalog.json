@@ -1719,5 +1719,65 @@
     "bytes": 27273,
     "quality": 42,
     "landscape": true
+  },
+  "uncanny": {
+    "id": 5288094,
+    "sourceURL": "https://www.pexels.com/photo/tall-trees-in-the-forest-covered-in-fog-5288094/",
+    "credit": "Pexels · 5288094",
+    "licenseURL": "https://www.pexels.com/license/",
+    "asset": "assets/english-photos/5288094.jpg",
+    "landscape": true,
+    "dimensions": [
+      644,
+      285
+    ]
+  },
+  "commemoration": {
+    "id": 29190201,
+    "sourceURL": "https://www.pexels.com/photo/votive-candles-illuminating-a-memorial-tribute-29190201/",
+    "credit": "Pexels · 29190201",
+    "licenseURL": "https://www.pexels.com/license/",
+    "asset": "assets/english-photos/29190201.jpg",
+    "landscape": true,
+    "dimensions": [
+      644,
+      285
+    ]
+  },
+  "cauldron": {
+    "id": 33635613,
+    "sourceURL": "https://www.pexels.com/photo/vintage-cauldron-on-rustic-background-showcasing-age-33635613/",
+    "credit": "Pexels · 33635613",
+    "licenseURL": "https://www.pexels.com/license/",
+    "asset": "assets/english-photos/33635613.jpg",
+    "landscape": true,
+    "dimensions": [
+      644,
+      285
+    ]
+  },
+  "moving": {
+    "id": 7415047,
+    "sourceURL": "https://www.pexels.com/photo/7415047/",
+    "credit": "Pexels · 7415047",
+    "licenseURL": "https://www.pexels.com/license/",
+    "asset": "assets/english-photos/7415047.jpg",
+    "landscape": true,
+    "dimensions": [
+      644,
+      285
+    ]
+  },
+  "volunteers": {
+    "id": 6590929,
+    "sourceURL": "https://www.pexels.com/photo/two-volunteers-packing-the-charity-goods-6590929/",
+    "credit": "Pexels · 6590929",
+    "licenseURL": "https://www.pexels.com/license/",
+    "asset": "assets/english-photos/6590929.jpg",
+    "landscape": true,
+    "dimensions": [
+      644,
+      285
+    ]
   }
 }

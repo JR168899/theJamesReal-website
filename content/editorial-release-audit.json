@@ -1,0 +1,15 @@
+{
+  "days": 365,
+  "editions": 2190,
+  "cards": 24090,
+  "svgVariants": 48180,
+  "sameEditionPhotoDuplicates": 0,
+  "sameEditionConversationDuplicates": 0,
+  "sameEditionExerciseDuplicates": 0,
+  "reviewedPhotoSources": 107,
+  "authoredDialogueBankEntries": 395,
+  "distinctExercisePrompts": 676,
+  "namingExample": "Everyday English - A1 - 2026/10/26 - Idioms & slang - 01",
+  "reviewDesign": "Taught items can return across dates for review; checks prohibit duplicates within each eleven-card edition.",
+  "errors": []
+}

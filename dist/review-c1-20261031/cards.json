@@ -42,7 +42,8 @@
       },
       "illustration": "review-c1-20261031/5288094.jpg",
       "poster": "data/english-cards/2026-10-31/C1/01.svg",
-      "downloadPoster": "data/english-cards/2026-10-31/C1/01-download.svg"
+      "downloadPoster": "data/english-cards/2026-10-31/C1/01-download.svg",
+      "editorialVersion": "approved-C1-sample"
     },
     {
       "id": "2026-10-31-C1-2",
@@ -83,7 +84,8 @@
       },
       "illustration": "review-c1-20261031/29190201.jpg",
       "poster": "data/english-cards/2026-10-31/C1/02.svg",
-      "downloadPoster": "data/english-cards/2026-10-31/C1/02-download.svg"
+      "downloadPoster": "data/english-cards/2026-10-31/C1/02-download.svg",
+      "editorialVersion": "approved-C1-sample"
     },
     {
       "id": "2026-10-31-C1-3",
@@ -139,7 +141,8 @@
       },
       "illustration": "assets/english-photos/5622107.jpg",
       "poster": "data/english-cards/2026-10-31/C1/03.svg",
-      "downloadPoster": "data/english-cards/2026-10-31/C1/03-download.svg"
+      "downloadPoster": "data/english-cards/2026-10-31/C1/03-download.svg",
+      "editorialVersion": "approved-C1-sample"
     },
     {
       "id": "2026-10-31-C1-4",
@@ -195,7 +198,8 @@
       },
       "illustration": "assets/english-photos/7984479.jpg",
       "poster": "data/english-cards/2026-10-31/C1/04.svg",
-      "downloadPoster": "data/english-cards/2026-10-31/C1/04-download.svg"
+      "downloadPoster": "data/english-cards/2026-10-31/C1/04-download.svg",
+      "editorialVersion": "approved-C1-sample"
     },
     {
       "id": "2026-10-31-C1-5",
@@ -250,7 +254,8 @@
       },
       "illustration": "assets/english-photos/6814539.jpg",
       "poster": "data/english-cards/2026-10-31/C1/05.svg",
-      "downloadPoster": "data/english-cards/2026-10-31/C1/05-download.svg"
+      "downloadPoster": "data/english-cards/2026-10-31/C1/05-download.svg",
+      "editorialVersion": "approved-C1-sample"
     },
     {
       "id": "2026-10-31-C1-6",
@@ -305,7 +310,8 @@
       },
       "illustration": "assets/english-photos/3850201.jpg",
       "poster": "data/english-cards/2026-10-31/C1/06.svg",
-      "downloadPoster": "data/english-cards/2026-10-31/C1/06-download.svg"
+      "downloadPoster": "data/english-cards/2026-10-31/C1/06-download.svg",
+      "editorialVersion": "approved-C1-sample"
     },
     {
       "id": "2026-10-31-C1-7",
@@ -360,7 +366,8 @@
       },
       "illustration": "assets/english-photos/8837579.jpg",
       "poster": "data/english-cards/2026-10-31/C1/07.svg",
-      "downloadPoster": "data/english-cards/2026-10-31/C1/07-download.svg"
+      "downloadPoster": "data/english-cards/2026-10-31/C1/07-download.svg",
+      "editorialVersion": "approved-C1-sample"
     },
     {
       "id": "2026-10-31-C1-8",
@@ -406,7 +413,8 @@
       },
       "illustration": "review-c1-20261031/33635613.jpg",
       "poster": "data/english-cards/2026-10-31/C1/08.svg",
-      "downloadPoster": "data/english-cards/2026-10-31/C1/08-download.svg"
+      "downloadPoster": "data/english-cards/2026-10-31/C1/08-download.svg",
+      "editorialVersion": "approved-C1-sample"
     },
     {
       "id": "2026-10-31-C1-9",
@@ -458,7 +466,8 @@
       },
       "illustration": "assets/english-photos/28958109.jpg",
       "poster": "data/english-cards/2026-10-31/C1/09.svg",
-      "downloadPoster": "data/english-cards/2026-10-31/C1/09-download.svg"
+      "downloadPoster": "data/english-cards/2026-10-31/C1/09-download.svg",
+      "editorialVersion": "approved-C1-sample"
     },
     {
       "id": "2026-10-31-C1-10",
@@ -510,7 +519,8 @@
       },
       "illustration": "assets/english-photos/38757012.jpg",
       "poster": "data/english-cards/2026-10-31/C1/10.svg",
-      "downloadPoster": "data/english-cards/2026-10-31/C1/10-download.svg"
+      "downloadPoster": "data/english-cards/2026-10-31/C1/10-download.svg",
+      "editorialVersion": "approved-C1-sample"
     },
     {
       "id": "2026-10-31-C1-11",
@@ -572,7 +582,8 @@
       },
       "illustration": "assets/english-essay-photos/29225548.jpg",
       "poster": "data/english-cards/2026-10-31/C1/11.svg",
-      "downloadPoster": "data/english-cards/2026-10-31/C1/11-download.svg"
+      "downloadPoster": "data/english-cards/2026-10-31/C1/11-download.svg",
+      "editorialVersion": "approved-C1-sample"
     }
   ],
   "preparedAt": "2026-10-24",
