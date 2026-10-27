@@ -63,6 +63,10 @@ def comic(card):
 
 def enrich(c,lev):
  typ=c['type']
+ if typ=='reflection' and c.get('quoteBackground'):
+  for key in ['meaning','synonyms','synonymNote','example','notes','conversation','displayTitle']:c.pop(key,None)
+  c['readingVoiceRole']='teacher'
+  return c
  if typ=='essay' and c.get('paragraphs'):c['paragraphs']=[re.sub(r'\b(First|Next|Second), (We|Our|This|The)\b',lambda m:m[1]+', '+m[2].lower(),p) for p in c['paragraphs']]
  meaning=text(c.get('meaning'));title=c['title'];example=text(c.get('example'))
  if typ=='phrases':
@@ -100,6 +104,10 @@ def block(lines,x,y,size,leading,bold=False,color='#37322b'):
  return f'<text font-family="Arial, sans-serif" font-size="{size}" font-weight="{700 if bold else 400}" fill="{color}">'+''.join(f'<tspan x="{x}" y="{y+i*leading}">{E(l)}</tspan>' for i,l in enumerate(lines))+'</text>'
 
 def rows(c,answer):
+ if c['type']=='reflection' and c.get('quoteBackground'):
+  question=text(c.get('exercise'))
+  if answer:question+=' (Model: '+text(c.get('answer'))+')'
+  return [('The story',text(c['quoteBackground'])),('A closer look',text(c['quoteCloserLook'])),('Your turn',question)]
  r=[]
  for field,title in [('meaning','Meaning'),('synonyms','Synonyms'),('example','In context'),('notes','Usage note'),('conversation','Conversation')]:
   if field=='synonyms' and c['type'] not in ['vocabulary','phrases','idioms','daily','reflection']:continue
@@ -150,7 +158,7 @@ def render(c,day,lev,answer):
    scale=1.1-step*.005;ts=max(36,min(50,46*scale));size=28*scale;leading=35*scale;lab=16*scale;gap=29*scale
    titles=wrap(c.get('displayTitle',c['title']),ts,604,True);y=432+len(titles)*ts*1.25;meta=[]
    if typ=='reflection' and c.get('quoteAuthor'):
-    copy=c['quoteAuthor']+' · '+c['quoteWork']+' · Published '+str(c['quoteYear'])
+    copy=c.get('attribution') or c['quoteAuthor']+' · '+c['quoteWork']+' · Published '+str(c['quoteYear'])
     ls=wrap(copy,20*scale,604);meta.append((ls,y,20*scale));y+=len(ls)*24*scale
    if typ=='vocabulary':
     for copy,sz in [('US '+text(c['ipa'])+'   '+text(c['partOfSpeech']),28*scale),(text(c.get('wordForms')),22*scale)]:

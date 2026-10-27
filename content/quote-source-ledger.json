@@ -1,0 +1,56 @@
+[
+  {
+    "date": "2026-10-27",
+    "level": "A1",
+    "target": "there is no place like home",
+    "author": "L. Frank Baum",
+    "speaker": "Dorothy (fictional character)",
+    "source": "https://www.gutenberg.org/cache/epub/55/pg55-images.html",
+    "voiceRole": "teacher"
+  },
+  {
+    "date": "2026-10-27",
+    "level": "A2",
+    "target": "marilla isn't it nice to think that tomorrow is a new day with no mistakes in it yet",
+    "author": "L. M. Montgomery",
+    "speaker": "Anne Shirley (fictional character)",
+    "source": "https://www.gutenberg.org/cache/epub/45/pg45-images.html",
+    "voiceRole": "teacher"
+  },
+  {
+    "date": "2026-10-27",
+    "level": "B1",
+    "target": "i'm not afraid of storms for i'm learning how to sail my ship",
+    "author": "Louisa May Alcott",
+    "speaker": "Amy March (fictional character)",
+    "source": "https://www.gutenberg.org/cache/epub/514/pg514-images.html",
+    "voiceRole": "teacher"
+  },
+  {
+    "date": "2026-10-27",
+    "level": "B2",
+    "target": "i went to the woods because i wished to live deliberately",
+    "author": "Henry David Thoreau",
+    "speaker": "Henry David Thoreau (first-person narrator)",
+    "source": "https://www.gutenberg.org/files/205/205-h/205-h.htm",
+    "voiceRole": "teacher"
+  },
+  {
+    "date": "2026-10-27",
+    "level": "C1",
+    "target": "it was the best of times it was the worst of times",
+    "author": "Charles Dickens",
+    "speaker": "The narrator",
+    "source": "https://www.gutenberg.org/cache/epub/98/pg98-images.html",
+    "voiceRole": "teacher"
+  },
+  {
+    "date": "2026-10-27",
+    "level": "C2",
+    "target": "the truth is rarely pure and never simple",
+    "author": "Oscar Wilde",
+    "speaker": "Algernon Moncrieff (fictional character)",
+    "source": "https://www.gutenberg.org/cache/epub/844/pg844-images.html",
+    "voiceRole": "teacher"
+  }
+]

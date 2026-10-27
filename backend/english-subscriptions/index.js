@@ -42,8 +42,10 @@ function cardHTML(card,day,level){
  if(photo)body+='<img alt="'+escape(card.illustrationAlt)+'" src="'+SITE+'/'+escape(photo.asset)+'" width="'+(card.type==='essay'?210:560)+'" style="display:block;width:'+(card.type==='essay'?'210px':'100%')+';max-width:100%;height:auto"><p style="font-size:10px"><a href="'+escape(photo.sourceURL)+'">'+escape(photo.credit)+'</a></p>';
  body+='<h2 style="font-size:26px;line-height:1.2">'+escape(card.title).replaceAll('\n','<br>')+'</h2>';
  if(card.ipa)body+='<p>'+escape(card.ipa)+' · '+escape(card.partOfSpeech)+'<br>'+escape(card.wordForms)+'</p>';
- if(card.quoteAuthor)body+='<p style="font-size:14px"><a href="'+escape(card.quoteSourceURL)+'">'+escape(card.quoteAuthor)+' · '+escape(card.quoteWork)+' · Published '+card.quoteYear+'</a></p>';
- if(card.type==='essay'){
+ if(card.quoteAuthor)body+='<p style="font-size:14px"><a href="'+escape(card.quoteSourceURL)+'">'+escape(card.attribution||[card.quoteAuthor,card.quoteWork,'Published '+card.quoteYear].join(' · '))+'</a></p>';
+ if(card.quoteBackground){
+  for(const[field,title]of [['quoteBackground','The story'],['quoteCloserLook','A closer look']])body+='<h3 style="font-size:12px;text-transform:uppercase">'+title+'</h3><p>'+escape(card[field])+'</p>';
+ }else if(card.type==='essay'){
   const roles=['INTRODUCTION','DEVELOP THE IDEA','EXAMPLE & REFLECTION','CONCLUSION'];
   card.paragraphs.forEach((p,i)=>{body+='<h3 style="font-size:12px">'+(i+1)+' · '+roles[i]+'</h3><p>'+escape(p)+'</p>';});
  }else{
@@ -62,7 +64,7 @@ async function editionEmail(email,level,day,api,key){
  const title=level+' · '+day+' · '+unit.theme;
  const intro='<p>Your eleven cards for today are below. Read at your own pace, then try the questions.</p><p><a href="'+link(day,level)+'">Open today’s '+level+' edition & listen ↗</a></p>';
  const html=shell(title,intro+unit.cards.map(c=>cardHTML(c,day,level)).join(''),unsubscribe);
- const plain=title+'\n\n'+unit.cards.map(c=>c.title+'\n'+(c.paragraphs?c.paragraphs.join('\n\n'):c.meaning+'\n'+c.example)).join('\n\n')+'\n\nRead and listen: '+link(day,level)+'\nManage subscription: '+unsubscribe;
+ const plain=title+'\n\n'+unit.cards.map(c=>c.title+'\n'+(c.quoteBackground?[c.attribution,c.quoteBackground,c.quoteCloserLook,c.exercise].join('\n\n'):c.paragraphs?c.paragraphs.join('\n\n'):[c.meaning,c.example].filter(Boolean).join('\n'))).join('\n\n')+'\n\nRead and listen: '+link(day,level)+'\nManage subscription: '+unsubscribe;
  return sendMail({to:email,subject:'Everyday English - '+level+' - '+day.replaceAll('-','/')+' - 11 cards',html,text:plain,key,unsubscribe});
 }
 async function subscribe(request){

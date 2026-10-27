@@ -1779,5 +1779,40 @@
       644,
       285
     ]
+  },
+  "theatre": {
+    "id": 12616961,
+    "sourceURL": "https://www.pexels.com/photo/red-theater-chairs-near-red-curtains-12616961/",
+    "credit": "Ann H / Pexels · 12616961",
+    "licenseURL": "https://www.pexels.com/license/",
+    "asset": "assets/english-photos/12616961.jpg",
+    "description": "An empty theatre with red curtains and seating.",
+    "dimensions": [
+      644,
+      285
+    ],
+    "originalDimensions": [
+      3648,
+      2736
+    ],
+    "landscape": true
+  },
+  "cake": {
+    "id": 7855284,
+    "sourceURL": "https://www.pexels.com/photo/cake-on-a-table-7855284/",
+    "credit": "Anna Pyshniuk / Pexels · 7855284",
+    "licenseURL": "https://www.pexels.com/license/",
+    "asset": "assets/english-photos/7855284.jpg",
+    "description": "A cake with white icing sits on a table.",
+    "dimensions": [
+      644,
+      285
+    ],
+    "originalDimensions": [
+      4640,
+      6960
+    ],
+    "landscape": true,
+    "focalY": 0.7
   }
 }

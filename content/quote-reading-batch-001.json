@@ -1,0 +1,89 @@
+{
+  "date": "2026-10-27",
+  "cards": {
+    "A1": {
+      "title": "There is no place like home.",
+      "quoteAuthor": "L. Frank Baum",
+      "quoteSpeaker": "Dorothy (fictional character)",
+      "quoteWork": "The Wonderful Wizard of Oz, Chapter IV",
+      "quoteYear": 1900,
+      "quoteSourceURL": "https://www.gutenberg.org/cache/epub/55/pg55-images.html",
+      "quoteBackground": "Dorothy is far from home. She walks with the Scarecrow. He likes the beautiful land. But Dorothy wants to go back to Kansas. Her home is not bright or beautiful. It is special to her. She says these words to her friend. This is a line in a story.",
+      "quoteCloserLook": "Home is a special place for Dorothy. A beautiful place is not always the place she wants to live.",
+      "exercise": "Does Dorothy want a beautiful new home, or her old home in Kansas?",
+      "answer": "She wants her old home in Kansas.",
+      "photoScene": "room",
+      "photoCaption": "A familiar living room connects the photograph with Dorothy's idea of home."
+    },
+    "A2": {
+      "title": "Marilla, isn't it nice to think that tomorrow is a new day with no mistakes in it yet?",
+      "quoteAuthor": "L. M. Montgomery",
+      "quoteSpeaker": "Anne Shirley (fictional character)",
+      "quoteWork": "Anne of Green Gables, Chapter XXI",
+      "quoteYear": 1908,
+      "quoteSourceURL": "https://www.gutenberg.org/cache/epub/45/pg45-images.html",
+      "quoteBackground": "Anne makes a cake for visitors. But she uses medicine instead of vanilla, and the cake tastes terrible. She is very upset. Mrs. Allan is kind to her, so Anne feels better. Later, Anne says these words to Marilla. The day has gone wrong, but tomorrow is still new. She can learn from her mistake and try again.",
+      "quoteCloserLook": "The word yet means before now. Tomorrow has no mistakes yet because it has not started. Anne is looking for a fresh start.",
+      "exercise": "Why does Anne feel hopeful about tomorrow after making a bad cake?",
+      "answer": "Tomorrow gives her another chance to learn and do better.",
+      "photoScene": "cake",
+      "photoCaption": "A cake recalls the baking mistake behind Anne's hopeful words."
+    },
+    "B1": {
+      "title": "I'm not afraid of storms, for I'm learning how to sail my ship.",
+      "quoteAuthor": "Louisa May Alcott",
+      "quoteSpeaker": "Amy March (fictional character)",
+      "quoteWork": "Little Women, Part Two, Chapter XLIV",
+      "quoteYear": 1869,
+      "quoteSourceURL": "https://www.gutenberg.org/cache/epub/514/pg514-images.html",
+      "quoteBackground": "Amy has returned to her family after marrying Laurie. Her mother asks how married life is going. Amy answers with the image of a ship. Life has been pleasant so far, but she knows that difficulties may come. She does not claim to know everything. Instead, she says she is learning to manage her own journey. Her confidence comes from practice, not from expecting perfect weather.",
+      "quoteCloserLook": "Storms represent difficulties, and sailing represents managing life. For means because here: learning gives Amy a reason to feel less afraid.",
+      "exercise": "Does Amy expect an easy life, or believe she can learn to handle difficulties? Explain.",
+      "answer": "She believes she can learn to handle difficulties. The storms may still come.",
+      "photoScene": "storm",
+      "photoCaption": "Storm clouds over the sea make Amy's sailing metaphor visible."
+    },
+    "B2": {
+      "title": "I went to the woods because I wished to live deliberately...",
+      "quoteAuthor": "Henry David Thoreau",
+      "quoteSpeaker": "Henry David Thoreau (first-person narrator)",
+      "quoteWork": "Walden, Where I Lived, and What I Lived For",
+      "quoteYear": 1854,
+      "quoteSourceURL": "https://www.gutenberg.org/files/205/205-h/205-h.htm",
+      "quoteBackground": "In Walden, Thoreau reflects on living beside Walden Pond in Massachusetts. He describes a simple house and a life shaped by close observation. In this passage, he explains what he hoped to learn by moving to the woods. He wanted to examine what mattered instead of following familiar routines without thinking. The quotation is an excerpt from a longer sentence. It presents an experiment in living, rather than a rule that everyone must move away from society.",
+      "quoteCloserLook": "Deliberately means with conscious intention. The place matters, but the central question is how to live. The ellipsis shows that the original sentence continues.",
+      "exercise": "Suggest one small change that could help someone live deliberately without moving to the woods.",
+      "answer": "They could set aside time to decide which commitments matter, rather than accepting every request automatically.",
+      "photoScene": "seasons",
+      "photoCaption": "A woodland scene accompanies Thoreau's reflection on living with greater intention."
+    },
+    "C1": {
+      "title": "It was the best of times, it was the worst of times...",
+      "quoteAuthor": "Charles Dickens",
+      "quoteSpeaker": "The narrator",
+      "quoteWork": "A Tale of Two Cities, Book I, Chapter I",
+      "quoteYear": 1859,
+      "quoteSourceURL": "https://www.gutenberg.org/cache/epub/98/pg98-images.html",
+      "quoteBackground": "Dickens opens his historical novel with a sequence of apparent contradictions. The narrator sets the opening in 1775, while also comparing that period with the narrator's present. Wisdom sits beside foolishness; hope beside despair. This is narrative framing, not a recorded public speech. Before introducing particular characters, Dickens unsettles the idea that an entire age can be summed up by one triumphant or disastrous label. The opposing descriptions prepare readers to notice how sharply experiences can differ within the same society.",
+      "quoteCloserLook": "The repeated structure creates antithesis: contrasting ideas are placed in parallel. The effect questions sweeping judgments without requiring either extreme to be wholly false.",
+      "exercise": "How could both descriptions apply to the same period without the narrator simply contradicting himself?",
+      "answer": "Different groups may experience the same period differently; progress and suffering can also coexist.",
+      "photoScene": "city",
+      "photoCaption": "Historic buildings provide a visual setting for a reading about contrasting experiences of an age."
+    },
+    "C2": {
+      "title": "The truth is rarely pure and never simple.",
+      "quoteAuthor": "Oscar Wilde",
+      "quoteSpeaker": "Algernon Moncrieff (fictional character)",
+      "quoteWork": "The Importance of Being Earnest, Act I",
+      "quoteYear": 1895,
+      "quoteSourceURL": "https://www.gutenberg.org/cache/epub/844/pg844-images.html",
+      "quoteBackground": "Algernon has discovered that Jack uses different names in town and in the country. Pressed to explain himself, Jack supplies the background to his double identity. Algernon responds with this polished paradox. In context, the line belongs to a comedy about social performance and convenient deception. Its charm need not make Algernon a reliable moral authority. Readers can admire the wit while noticing how readily an elegant generalization can excuse the speaker's own evasions.",
+      "quoteCloserLook": "Rarely qualifies pure, whereas never makes an absolute claim about simple. That imbalance gives the sentence its snap. Its dramatic setting complicates any attempt to treat it as Wilde's straightforward personal doctrine.",
+      "exercise": "Distinguish an insight about complicated facts from an excuse for dishonesty in Algernon's remark.",
+      "answer": "Facts may resist a simple account, but that complexity does not make deliberately misleading someone acceptable.",
+      "photoScene": "theatre",
+      "photoCaption": "A theatre stage recalls that Algernon speaks this line in a comedy."
+    }
+  }
+}

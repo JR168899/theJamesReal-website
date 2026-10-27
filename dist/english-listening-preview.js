@@ -37,10 +37,10 @@
   function prepareSampleAudio(){
     if(date!==SAMPLE_DATE||samplePreparations.has(level))return;
     const selectedLevel=level;
-    const pending=fetch('assets/lesson-audio/'+SAMPLE_DATE+'/'+selectedLevel+'/manifest.json?v=sixpaces1').then(r=>{if(!r.ok)throw Error('Sample not ready');return r.json();}).then(manifest=>{
+    const pending=fetch('assets/lesson-audio/'+SAMPLE_DATE+'/'+selectedLevel+'/manifest.json?v=quotestory1').then(r=>{if(!r.ok)throw Error('Sample not ready');return r.json();}).then(manifest=>{
       sampleAudioByLevel.set(selectedLevel,manifest);
       Object.values(manifest.cards).forEach(card=>{
-        for(const url of [card.title,card.conversation].filter(Boolean))window.JRVoicePlayer?.prepareFile(url).catch(()=>{});
+        for(const url of [card.title,card.conversation,card.reading].filter(Boolean))window.JRVoicePlayer?.prepareFile(url).catch(()=>{});
       });
     }).catch(()=>{samplePreparations.delete(selectedLevel);});
     samplePreparations.set(selectedLevel,pending);
@@ -70,6 +70,7 @@
   function guideHTML(card) { return typeOf(card) === 'essay' ? '<details class="jr-en-writing-guide"><summary>A four-paragraph writing guide <span aria-hidden="true">＋</span></summary><ol>' + roles(card).map(r => '<li>' + escape(text(r)) + '</li>').join('') + '</ol><p>' + escape(card.structure) + '</p></details>' : ''; }
 
   function sections(card) {
+    if(typeOf(card)==='reflection'&&card.quoteBackground)return [['The story',text(card.quoteBackground)],['A closer look',text(card.quoteCloserLook)],['Your turn',exerciseText(card)]];
     const rows = [];
     if (card.meaning) rows.push(['Meaning', text(card.meaning)]);
     if (['vocabulary','phrases','idioms','daily','reflection'].includes(typeOf(card)) && card.synonyms?.length) rows.push(['Synonyms', (Array.isArray(card.synonyms) ? card.synonyms.join('; ') : text(card.synonyms)) + (card.synonymNote ? '\n' + text(card.synonymNote) : '')]);
@@ -97,10 +98,10 @@
     const done = !!completed[card.id];
     return `<article class="jr-en-card jr-en-${type}${done ? ' is-complete' : ''}" data-jr-card="${escape(card.id)}" aria-label="${escape(palette(card).label + ': ' + card.title)}">
       <button class="jr-en-poster-open" type="button" data-jr-do="preview" data-jr-id="${escape(card.id)}" aria-label="Open full-size ${escape(card.title)} card"><span class="jr-en-poster-loading" data-jr-loading="${escape(card.id)}">Preparing your complete ${escape(palette(card).label.toLowerCase())} card…</span><img class="jr-en-poster" id="jr-poster-${escape(card.id)}" width="${isEssay ? 1434 : 660}" height="${isEssay ? 660 : 1434}" alt="${escape(card.title)}. ${escape(palette(card).label)} card. Full accessible text follows." hidden></button>
-      ${card.quoteSourceURL ? `<p class="jr-en-photo-source">Quote: <a href="${escape(card.quoteSourceURL)}" target="_blank" rel="noopener noreferrer">${escape(card.quoteAuthor)} · ${escape(card.quoteWork)} · Published ${card.quoteYear}</a></p>` : ''}
+      ${card.quoteSourceURL ? `<p class="jr-en-photo-source">Quote: <a href="${escape(card.quoteSourceURL)}" target="_blank" rel="noopener noreferrer">${escape(card.attribution||[card.quoteAuthor,card.quoteWork,'Published '+card.quoteYear].join(' · '))}</a></p>` : ''}
       ${card.photoCredit ? `<p class="jr-en-photo-source">Photo: <a href="${escape(card.photoCredit.sourceURL)}" target="_blank" rel="noopener noreferrer">${escape(card.photoCredit.credit)}</a></p>` : ''}
       <div class="jr-en-card-tools"><div class="jr-en-card-top"><span>${escape(palette(card).label)}</span><b>${String(card.number).padStart(2, '0')} / 11 · ${level}</b></div>
-      <div class="jr-en-audio-actions"><button type="button" data-jr-do="speak-title" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen title</button>${card.conversation ? `<button type="button" data-jr-do="speak-conversation" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen conversation</button>` : ''}<button type="button" data-jr-do="speak-all" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen ${isEssay ? 'essay' : 'all'}</button></div>
+      <div class="jr-en-audio-actions"><button type="button" data-jr-do="speak-title" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen title</button>${card.conversation ? `<button type="button" data-jr-do="speak-conversation" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen conversation</button>` : ''}<button type="button" data-jr-do="speak-all" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen ${isEssay ? 'essay' : card.quoteBackground ? 'reading' : 'all'}</button></div>
       <details class="jr-en-export"><summary>Save, share or print</summary><div class="jr-en-file-actions"><button type="button" data-jr-do="share" data-jr-id="${escape(card.id)}">↗ Share PNG</button><button type="button" data-jr-do="save" data-jr-id="${escape(card.id)}">↓ Save PNG</button><button type="button" data-jr-do="print" data-jr-id="${escape(card.id)}">▤ Print</button><button type="button" data-jr-do="print-ink" data-jr-id="${escape(card.id)}">▤ Print · ink saving</button></div></details>
       <div class="jr-en-practice"><h4>Your turn</h4><p>${escape(exerciseText(card))}</p>${answerHTML(card)}</div>${guideHTML(card)}${accessibleHTML(card)}<button type="button" class="jr-en-done${done ? ' is-done' : ''}" data-jr-do="done" data-jr-id="${escape(card.id)}" aria-pressed="${done}">${done ? '✓ Completed' : '○ Mark as complete'}</button></div></article>`;
   }
@@ -137,7 +138,7 @@
       <section class="jr-en-edition" aria-label="Selected English edition"><div><p class="jr-en-kicker">${level} · ${info[1].toUpperCase()} / SELECTED EDITION</p><h2>${escape(edition.theme)}</h2><p>2 vocabulary · 2 phrasal verbs · 2 idioms · 1 life phrase · 1 quote · 1 grammar · 1 small talk · 1 four-paragraph essay.</p></div><div class="jr-en-edition-tools"><label for="jr-en-date">Find an edition by date · Pacific Time</label><input id="jr-en-date" data-jr-date type="date" value="${date}" min="2026-01-01" max="2026-12-31" aria-describedby="jr-en-date-help"><small id="jr-en-date-help">Enter or choose a date in 2026.</small></div></section>
       <div class="jr-en-bulk-actions"><button type="button" data-jr-do="zip">↓ Download all 11 PNG cards · ZIP</button><button type="button" data-jr-do="print-all">▤ Print all 11 cards</button><button type="button" data-jr-do="print-all-ink">▤ Print all · ink saving</button></div>
       <div class="jr-en-progress-row"><div class="jr-en-progress-copy"><span>YOUR PROGRESS</span><b id="jr-en-progress-label">${count()} / 11 completed</b></div><progress id="jr-en-progress" value="${count()}" max="11" aria-label="Completed lessons">${count()} / 11</progress><span class="jr-en-progress-note">${storageAvailable ? 'Progress stays in this browser.' : 'Progress is available for this visit only.'}</span></div>
-      <div class="jr-en-filter-row"><div class="jr-en-filters" role="group" aria-label="Card category"><button type="button" data-jr-do="filter" data-jr-filter="all" aria-pressed="${filter === 'all'}" class="${filter === 'all' ? 'is-active' : ''}">All 11 cards</button>${Object.entries(TYPES).map(([key, value]) => `<button type="button" data-jr-do="filter" data-jr-filter="${key}" aria-pressed="${filter === key}" class="${filter === key ? 'is-active' : ''}">${value.label}</button>`).join('')}</div><span class="jr-en-visible-count">${visible.length} cards</span></div>
+      <div class="jr-en-filter-row"><div class="jr-en-filters" role="group" aria-label="Card category"><button type="button" data-jr-do="filter" data-jr-filter="all" aria-pressed="${filter === 'all'}" class="${filter === 'all' ? 'is-active' : ''}">All 11 cards</button>${Object.entries(TYPES).map(([key, value]) => `<button type="button" data-jr-do="filter" data-jr-filter="${key}" aria-pressed="${filter === key}" class="${filter === key ? 'is-active' : ''}">${value.label}</button>`).join('')}</div><span class="jr-en-visible-count">${visible.length} ${visible.length===1?"card":"cards"}</span></div>
       <p id="jr-en-status" class="jr-en-status" role="status" aria-live="polite"></p><div class="jr-en-grid">${visible.map(cardHTML).join('')}</div>
       ${subscriptionHTML()}<div class="jr-en-footnote"><span class="jr-en-footnote-mark" aria-hidden="true">Aa</span><div><strong>A little English, every day.</strong><p>Explore January 1 to December 31, 2026. Every date offers six levels and eleven cards. Return to familiar themes for practice, and explore seasonal language around selected holidays. The original lesson archive remains available below.</p><p>Try one new expression in a sentence of your own. For the essay, follow the writing guide: introduction, two supporting paragraphs, and conclusion.</p></div></div>`;
   }
@@ -313,7 +314,7 @@
   async function storedSVG(card, ink, includeAnswer) {
     const source = includeAnswer ? card.downloadPoster : card.poster;
     if (!source) throw new Error('The stored card is unavailable. Please refresh.');
-    const response = await fetch(source + '?format=namedvoices2026-v1');
+    const response = await fetch(source + '?format=quotestory2026-v1');
     if (!response.ok) throw new Error('The complete card could not load.');
     let svg = await response.text();
     if (svg.includes('__JR_PHOTO__')) {
@@ -358,7 +359,7 @@
       const requestedDate=date;
       if(editionLoading===requestedDate)return;
       editionLoading=requestedDate;
-      fetch('data/english-levels/'+requestedDate+'.json?format=namedvoices2026-v1').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{
+      fetch('data/english-levels/'+requestedDate+'.json?format=quotestory2026-v1').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{
         DATA[requestedDate]=data;
         if(date===requestedDate&&document.getElementById('jr-english'))renderLocal();
       }).catch(()=>{if(date===requestedDate){root.innerHTML='<h1>Everyday English</h1><p role="status">This stored edition could not load.</p><button type="button" data-jr-do="retry">Try again</button>';}}).finally(()=>{if(editionLoading===requestedDate)editionLoading=null});
@@ -459,6 +460,7 @@
       [card.title,...(card.paragraphs||[]).map(text),card.structure,exerciseText(card)].filter(Boolean).forEach(copy=>add(copy));
     }else{
       add(card.title);
+      if(card.quoteBackground)add(card.attribution);
       sections(card).forEach(([label,copy])=>{add(label+'.');if(label==='Conversation')conversation(copy);else add(copy);});
     }
     if(!segments.length){stopSpeech();return;}
@@ -471,13 +473,13 @@
       onFinished:()=>{if(generation===speechGeneration){stopSpeech();announce('Audio finished.');}},
       onError:()=>{if(generation===speechGeneration){stopSpeech();announce('The selected voices could not load. Check your connection and try again.');}}
     };
-    if(dateOf(card)===SAMPLE_DATE&&(action==='speak-title'||action==='speak-conversation')){
+    if(dateOf(card)===SAMPLE_DATE&&(action==='speak-title'||action==='speak-conversation'||(action==='speak-all'&&card.quoteBackground))){
       await samplePreparations.get(levelOf(card));
       if(generation!==speechGeneration)return;
     }
-    const recording=sampleAudioByLevel.get(levelOf(card))?.cards[card.id],file=action==='speak-title'?recording?.title:action==='speak-conversation'?recording?.conversation:null;
+    const recording=sampleAudioByLevel.get(levelOf(card))?.cards[card.id],file=action==='speak-title'?recording?.title:action==='speak-conversation'?recording?.conversation:action==='speak-all'&&card.quoteBackground?recording?.reading:null;
     if(file)player.playFile(file,callbacks,action==='speak-conversation'?recording.turns:[{name:pair.teacher.name,start:0}]);
-    else if(dateOf(card)===SAMPLE_DATE&&(action==='speak-title'||action==='speak-conversation'))callbacks.onError();
+    else if(dateOf(card)===SAMPLE_DATE&&(action==='speak-title'||action==='speak-conversation'||(action==='speak-all'&&card.quoteBackground)))callbacks.onError();
     else player.play(segments,callbacks);
   }
   function toggleDone(card, button) {

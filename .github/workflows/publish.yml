@@ -25,6 +25,7 @@ jobs:
           node --check dist/english-listening-preview.js
           node --check dist/named-voice-player.js
           python3 tools/audit_oct27_listening.py
+          python3 tools/audit_quote_readings.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:

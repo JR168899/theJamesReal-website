@@ -18,7 +18,11 @@ for level,unit in units.items():
   if card.get('conversation'):
    assert recording['turns'][0]['name']==pair['teacher']['name']
    assert {t['name'] for t in recording['turns']}=={v['name'] for v in pair.values()}
-  for key in ['title','conversation']:
+  if card.get('quoteBackground'):
+   assert recording['readingVoice']==pair['teacher']['voice'] and recording['readingVoice'].startswith('af_')
+   assert recording['readingPace']==rates[level]
+   assert not card.get('conversation') and 'conversation' not in recording
+  for key in ['title','conversation','reading']:
    if key not in recording:continue
    with wave.open(str(d/recording[key])) as wav:
     assert wav.getnframes()>0 and wav.getsampwidth()==2 and wav.getnchannels()==1
