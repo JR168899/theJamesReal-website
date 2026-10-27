@@ -1,0 +1,6 @@
+Kokoro JS 1.2.1; Transformers.js; phonemizer; ONNX Runtime Web.
+Kokoro-82M model: https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX
+Model/voice origins: https://huggingface.co/hexgrad/Kokoro-82M
+The Kokoro voice loader is modified to load same-origin voice assets.
+Worker source and build instructions: tools/browser-voices in this public repository.
+Third-party licenses are provided in licenses/.

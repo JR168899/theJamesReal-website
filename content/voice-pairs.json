@@ -1,0 +1,86 @@
+{
+  "A1": {
+    "teacher": {
+      "name": "Heart",
+      "voice": "af_heart",
+      "pace": 0.75,
+      "pitch": 0.25
+    },
+    "partner": {
+      "name": "Puck",
+      "voice": "am_puck",
+      "pace": 0.75,
+      "pitch": 0
+    }
+  },
+  "A2": {
+    "teacher": {
+      "name": "Bella",
+      "voice": "af_bella",
+      "pace": 0.8,
+      "pitch": 0.15
+    },
+    "partner": {
+      "name": "Fenrir",
+      "voice": "am_fenrir",
+      "pace": 0.8,
+      "pitch": 0
+    }
+  },
+  "B1": {
+    "teacher": {
+      "name": "Sky",
+      "voice": "af_sky",
+      "pace": 0.85,
+      "pitch": 0
+    },
+    "partner": {
+      "name": "Michael",
+      "voice": "am_michael",
+      "pace": 0.85,
+      "pitch": 0
+    }
+  },
+  "B2": {
+    "teacher": {
+      "name": "Aoede",
+      "voice": "af_aoede",
+      "pace": 0.9,
+      "pitch": 0.4
+    },
+    "partner": {
+      "name": "Echo",
+      "voice": "am_echo",
+      "pace": 0.9,
+      "pitch": 0
+    }
+  },
+  "C1": {
+    "teacher": {
+      "name": "Kore",
+      "voice": "af_kore",
+      "pace": 0.95,
+      "pitch": 0.6
+    },
+    "partner": {
+      "name": "Onyx",
+      "voice": "am_onyx",
+      "pace": 0.95,
+      "pitch": 0
+    }
+  },
+  "C2": {
+    "teacher": {
+      "name": "Sarah",
+      "voice": "af_sarah",
+      "pace": 1,
+      "pitch": 0.35
+    },
+    "partner": {
+      "name": "Liam",
+      "voice": "am_liam",
+      "pace": 1,
+      "pitch": 0
+    }
+  }
+}
