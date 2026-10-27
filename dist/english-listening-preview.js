@@ -434,7 +434,7 @@
     window.JRVoicePlayer?.stop();
     document.querySelectorAll('#jr-english [data-jr-do^="speak-"]').forEach(button => { button.setAttribute('aria-pressed', 'false'); if (button.dataset.jrLabel) button.textContent = button.dataset.jrLabel; });
   }
-  function speak(card, action, button) {
+  async function speak(card, action, button) {
     const pairs=window.JR_ENGLISH_SPEAKERS, player=window.JRVoicePlayer, pair=pairs?.[levelOf(card)];
     if(!pair||!player){announce('The selected voices are unavailable. Please refresh and try again.');return;}
     const key=card.id+':'+action;
@@ -471,8 +471,13 @@
       onFinished:()=>{if(generation===speechGeneration){stopSpeech();announce('Audio finished.');}},
       onError:()=>{if(generation===speechGeneration){stopSpeech();announce('The selected voices could not load. Check your connection and try again.');}}
     };
+    if(dateOf(card)===SAMPLE_DATE&&(action==='speak-title'||action==='speak-conversation')){
+      await samplePreparations.get(levelOf(card));
+      if(generation!==speechGeneration)return;
+    }
     const recording=sampleAudioByLevel.get(levelOf(card))?.cards[card.id],file=action==='speak-title'?recording?.title:action==='speak-conversation'?recording?.conversation:null;
     if(file)player.playFile(file,callbacks,action==='speak-conversation'?recording.turns:[{name:pair.teacher.name,start:0}]);
+    else if(dateOf(card)===SAMPLE_DATE&&(action==='speak-title'||action==='speak-conversation'))callbacks.onError();
     else player.play(segments,callbacks);
   }
   function toggleDone(card, button) {
