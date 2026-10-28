@@ -101,7 +101,7 @@
       ${card.quoteSourceURL ? `<p class="jr-en-photo-source">Quote: <a href="${escape(card.quoteSourceURL)}" target="_blank" rel="noopener noreferrer">${escape(card.attribution||[card.quoteAuthor,card.quoteWork,'Published '+card.quoteYear].join(' · '))}</a></p>` : ''}
       ${card.photoCredit ? `<p class="jr-en-photo-source">Photo: <a href="${escape(card.photoCredit.sourceURL)}" target="_blank" rel="noopener noreferrer">${escape(card.photoCredit.credit)}</a></p>` : ''}
       <div class="jr-en-card-tools"><div class="jr-en-card-top"><span>${escape(palette(card).label)}</span><b>${String(card.number).padStart(2, '0')} / 11 · ${level}</b></div>
-      <div class="jr-en-audio-actions"><button type="button" data-jr-do="speak-title" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen title</button>${card.conversation ? `<button type="button" data-jr-do="speak-conversation" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen conversation</button>` : ''}<button type="button" data-jr-do="speak-all" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen ${isEssay ? 'essay' : card.quoteBackground ? 'reading' : 'all'}</button></div>
+      <div class="jr-en-audio-actions"><button type="button" data-jr-do="speak-title" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen title</button>${card.conversation && !window.JREnglishVoiceRouting.isNarrative(card) ? `<button type="button" data-jr-do="speak-conversation" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen conversation</button>` : ''}<button type="button" data-jr-do="speak-all" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen ${isEssay ? 'essay' : card.quoteBackground ? 'reading' : 'all'}</button></div>
       <details class="jr-en-export"><summary>Save, share or print</summary><div class="jr-en-file-actions"><button type="button" data-jr-do="share" data-jr-id="${escape(card.id)}">↗ Share PNG</button><button type="button" data-jr-do="save" data-jr-id="${escape(card.id)}">↓ Save PNG</button><button type="button" data-jr-do="print" data-jr-id="${escape(card.id)}">▤ Print</button><button type="button" data-jr-do="print-ink" data-jr-id="${escape(card.id)}">▤ Print · ink saving</button></div></details>
       <div class="jr-en-practice"><h4>Your turn</h4><p>${escape(exerciseText(card))}</p>${answerHTML(card)}</div>${guideHTML(card)}${accessibleHTML(card)}<button type="button" class="jr-en-done${done ? ' is-done' : ''}" data-jr-do="done" data-jr-id="${escape(card.id)}" aria-pressed="${done}">${done ? '✓ Completed' : '○ Mark as complete'}</button></div></article>`;
   }
@@ -133,7 +133,7 @@
     const edition = unit(), info = LEVELS.find(l => l[0] === level);
     if(!edition) return '<div class="page-head"><h1>Everyday English</h1><p role="status">Loading your prepared '+level+' edition for '+date+'…</p><button type="button" data-jr-do="retry">Try again</button></div>';
     const visible = edition.cards.filter(c => filter === 'all' || typeOf(c) === filter);
-    return `<div class="page-head jr-en-heading"><div><p class="jr-en-kicker">EDUCATION / EVERYDAY ENGLISH</p><h1>English for<br><em>everyday life.</em></h1><p class="jr-en-intro">Choose your level. Read and listen, then answer “Your turn” before checking the model answer.<br>Finish with an essay that shows how four paragraphs build one clear argument.</p><p class="jr-en-speakers">Your speakers: ${escape(window.JR_ENGLISH_SPEAKERS?.[level]?.teacher.name||'')} &amp; ${escape(window.JR_ENGLISH_SPEAKERS?.[level]?.partner.name||'')}. ${date===SAMPLE_DATE?level+' listening pace: '+Math.round(LEVEL_PACES[level]*100)+'%. Smooth, continuous conversations.':'First playback downloads the voice data; later visits can reuse it.'}</p><p><a class="jr-en-voice-preview" href="voice-preview.html" target="_blank" rel="noopener">Meet the twelve American English voices ↗</a></p></div><aside class="jr-en-summary" aria-label="Eleven cards per edition, six levels from A1 to C2"><p class="jr-en-summary-label">YOUR DAILY EDITION</p><div class="jr-en-summary-count"><strong>11</strong><span>cards to read,<br>listen &amp; practise</span></div><div class="jr-en-summary-levels"><span>A1 — C2</span><span>Six levels</span></div></aside></div>
+    return `<div class="page-head jr-en-heading"><div><p class="jr-en-kicker">EDUCATION / EVERYDAY ENGLISH</p><h1>English for<br><em>everyday life.</em></h1><p class="jr-en-intro">Choose your level. Read and listen, then answer “Your turn” before checking the model answer.<br>Finish with an essay that shows how four paragraphs build one clear argument.</p><p class="jr-en-speakers">Your speakers: ${escape(window.JR_ENGLISH_SPEAKERS?.[level]?.teacher.name||'')} &amp; ${escape(window.JR_ENGLISH_SPEAKERS?.[level]?.partner.name||'')}. ${level+' listening pace: '+Math.round(LEVEL_PACES[level]*100)+'%. '+escape(window.JR_ENGLISH_SPEAKERS?.[level]?.partner.name||'')+' joins the dialogue; all other reading is by '+escape(window.JR_ENGLISH_SPEAKERS?.[level]?.teacher.name||'')+'.'}</p><p><a class="jr-en-voice-preview" href="voice-preview.html" target="_blank" rel="noopener">Meet the twelve American English voices ↗</a></p></div><aside class="jr-en-summary" aria-label="Eleven cards per edition, six levels from A1 to C2"><p class="jr-en-summary-label">YOUR DAILY EDITION</p><div class="jr-en-summary-count"><strong>11</strong><span>cards to read,<br>listen &amp; practise</span></div><div class="jr-en-summary-levels"><span>A1 — C2</span><span>Six levels</span></div></aside></div>
       <div class="jr-en-levels" role="group" aria-label="English level">${LEVELS.map(l => `<button type="button" class="jr-en-level${l[0] === level ? ' is-active' : ''}" data-jr-do="level" data-jr-level="${l[0]}" aria-pressed="${l[0] === level}"><span>${l[0]}</span><b>${l[1]}</b><small>${l[2]}</small></button>`).join('')}</div>
       <section class="jr-en-edition" aria-label="Selected English edition"><div><p class="jr-en-kicker">${level} · ${info[1].toUpperCase()} / SELECTED EDITION</p><h2>${escape(edition.theme)}</h2><p>2 vocabulary · 2 phrasal verbs · 2 idioms · 1 life phrase · 1 quote · 1 grammar · 1 small talk · 1 four-paragraph essay.</p></div><div class="jr-en-edition-tools"><label for="jr-en-date">Find an edition by date · Pacific Time</label><input id="jr-en-date" data-jr-date type="date" value="${date}" min="2026-01-01" max="2026-12-31" aria-describedby="jr-en-date-help"><small id="jr-en-date-help">Enter or choose a date in 2026.</small></div></section>
       <div class="jr-en-bulk-actions"><button type="button" data-jr-do="zip">↓ Download all 11 PNG cards · ZIP</button><button type="button" data-jr-do="print-all">▤ Print all 11 cards</button><button type="button" data-jr-do="print-all-ink">▤ Print all · ink saving</button></div>
@@ -315,7 +315,7 @@
   async function storedSVG(card, ink, includeAnswer) {
     const source = includeAnswer ? card.downloadPoster : card.poster;
     if (!source) throw new Error('The stored card is unavailable. Please refresh.');
-    const response = await fetch(source + '?format=quote-readings2026-v2');
+    const response = await fetch(source + '?format=all-level-roles-v1');
     if (!response.ok) throw new Error('The complete card could not load.');
     let svg = await response.text();
     if (svg.includes('__JR_PHOTO__')) {
@@ -360,7 +360,7 @@
       const requestedDate=date;
       if(editionLoading===requestedDate)return;
       editionLoading=requestedDate;
-      fetch('data/english-levels/'+requestedDate+'.json?format=quote-readings2026-v2').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{
+      fetch('data/english-levels/'+requestedDate+'.json?format=all-level-roles-v1').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{
         DATA[requestedDate]=data;
         if(date===requestedDate&&document.getElementById('jr-english'))renderLocal();
       }).catch(()=>{if(date===requestedDate){root.innerHTML='<h1>Everyday English</h1><p role="status">This stored edition could not load.</p><button type="button" data-jr-do="retry">Try again</button>';}}).finally(()=>{if(editionLoading===requestedDate)editionLoading=null});
@@ -464,31 +464,10 @@
     const key=card.id+':'+action;
     if(speechId===key){stopSpeech();announce('Audio stopped.');return;}
     stopSpeech();speechId=key;const generation=speechGeneration,segments=[];
-    function add(copy,speaker=pair.teacher){
-      if(dateOf(card)===SAMPLE_DATE)speaker={...speaker,pace:LEVEL_PACES[levelOf(card)]};
-      const words=text(copy).split(/\s+/).filter(Boolean);let chunk='';
-      for(const word of words){if(chunk.length+word.length>220){segments.push({...speaker,text:chunk});chunk='';}chunk+=(chunk?' ':'')+word;}
-      if(chunk)segments.push({...speaker,text:chunk});
-    }
-    function conversation(copy){
-      text(copy).replace(/\\n/g,'\n').split('\n').filter(Boolean).forEach(line=>{
-        const colon=line.indexOf(':'),name=colon>=0?line.slice(0,colon).trim():'';
-        const speaker=name===pair.partner.name||name==='B'?pair.partner:pair.teacher;
-        add(colon>=0&&[pair.teacher.name,pair.partner.name,'A','B'].includes(name)?line.slice(colon+1).trim():line,speaker);
-      });
-    }
-    if(action==='speak-title')add(card.title);
-    else if(action==='speak-conversation')conversation(card.conversation);
-    else if(typeOf(card)==='essay'){
-      [card.title,...(card.paragraphs||[]).map(text),card.structure,exerciseText(card)].filter(Boolean).forEach(copy=>add(copy));
-    }else{
-      add(card.title);
-      if(card.quoteBackground)add(card.attribution);
-      sections(card).forEach(([label,copy])=>{add(label+'.');if(label==='Conversation')conversation(copy);else add(copy);});
-    }
+    segments.push(...window.JREnglishVoiceRouting.segments(card,action,sections(card),exerciseText(card)));
     if(!segments.length){stopSpeech();return;}
     button.dataset.jrLabel=button.textContent;button.textContent='□ Stop audio';button.setAttribute('aria-pressed','true');
-    announce('Preparing '+pair.teacher.name+' and '+pair.partner.name+'.');
+    announce('Preparing '+(segments.some(s=>s.voice===pair.partner.voice)?pair.teacher.name+' and '+pair.partner.name:pair.teacher.name)+'.');
     let lastSpeaker='';
     const callbacks={
       onLoading:()=>{if(generation===speechGeneration)announce('Preparing your voices. First use downloads voice data to this device.');},

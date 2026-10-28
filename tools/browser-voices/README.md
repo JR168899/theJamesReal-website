@@ -1,13 +1,15 @@
-# Fixed-voice listening trial
+# Fixed voices for all daily editions
 
-The public trial is limited to the October 27, 2026 edition (66 cards).
-`dist/english-listening-loader.js` keeps all other dates on the existing player.
+Every date uses the same fixed female teacher / male dialogue partner policy.
+`dist/english-listening-loader.js` loads the unified player for all 2026 editions.
+`dist/english-voice-routing.js` is the shared, tested source of role decisions.
+Quote and Essay are female only. Only B turns in Conversation use the male voice.
 
 Teachers / partners: Heart / Puck, Bella / Fenrir, Sky / Michael,
 Aoede / Echo, Kore / Onyx, Sarah / Liam.
 The speaking paces are 0.75, 0.80, 0.85, 0.90, 0.95 and 1.00.
 
-Title and conversation recordings are prepared ahead of playback. Conversation
+The October 27 title and conversation recordings are prepared ahead of playback. Conversation
 turns share a single WAV file, with a 160 ms inserted gap and short natural
 leading/trailing margins. Voice pitch is kept independent of the speaking pace.
 The browser preloads and decodes only the selected level's recordings.
@@ -16,7 +18,8 @@ Full-card narration uses the same fixed voices in a lazy-loaded, on-device
 Kokoro worker. Its first playback still needs model download and synthesis.
 Lesson text is never sent to a speech API. PNG downloads remain silent.
 
-Run `python3 tools/audit_oct27_listening.py` to check this edition.
+Run `node tools/audit_voice_roles.mjs` to check all 24,090 cards and 72,270 playback actions.
+Run `python3 tools/audit_oct27_listening.py` to check the prepared trial recordings.
 
 To rebuild the browser worker, run `npm ci` and `npm run build` here.
 Set JR_KOKORO_MODEL_CACHE to a local copy of the official

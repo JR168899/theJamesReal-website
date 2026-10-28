@@ -77,7 +77,7 @@
 .jr-en-audio-actions{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:9px}
 .jr-en-audio-actions button,.jr-en-file-actions button{color:var(--jr-card-fg);border:1px solid var(--jr-card-border);background:#ffffff45;border-radius:4px;font:11px/1.35 Arial,sans-serif;padding:8px 9px;min-height:35px}
 .jr-en-audio-actions button{flex:1 1 auto}
-.jr-en-audio-actions button[aria-pressed=true]{background:var(--jr-card-fg);color:#fff}
+.jr-en-audio-actions button[aria-pressed=true],.jr-en-audio-actions button[aria-pressed=true]:hover{background:var(--jr-card-fg);color:#fff}
 .jr-en-audio-actions button:hover,.jr-en-file-actions button:hover{background:#ffffffb0}
 .jr-en-file-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-bottom:15px}
 .jr-en-file-actions button:disabled{opacity:.65;cursor:wait}

@@ -31,6 +31,20 @@
   let storageAvailable = true;
   let speechId = '', speechGeneration = 0, currentUtterance = null;
   let paintGeneration = 0;
+  const SAMPLE_DATE='2026-10-27';
+  const LEVEL_PACES={A1:.75,A2:.80,B1:.85,B2:.90,C1:.95,C2:1};
+  const sampleAudioByLevel=new Map(),samplePreparations=new Map();
+  function prepareSampleAudio(){
+    if(date!==SAMPLE_DATE||samplePreparations.has(level))return;
+    const selectedLevel=level;
+    const pending=fetch('assets/lesson-audio/'+SAMPLE_DATE+'/'+selectedLevel+'/manifest.json?v=quotestory1').then(r=>{if(!r.ok)throw Error('Sample not ready');return r.json();}).then(manifest=>{
+      sampleAudioByLevel.set(selectedLevel,manifest);
+      Object.values(manifest.cards).forEach(card=>{
+        for(const url of [card.title,card.conversation,card.reading].filter(Boolean))window.JRVoicePlayer?.prepareFile(url).catch(()=>{});
+      });
+    }).catch(()=>{samplePreparations.delete(selectedLevel);});
+    samplePreparations.set(selectedLevel,pending);
+  }
   const KEY = 'james-real-english-progress-v1';
   const imageCache = new Map(), posterCache = new Map(), photoDataCache = new Map(), previewCache = new Map();
   const diagnostics = [];
@@ -87,7 +101,7 @@
       ${card.quoteSourceURL ? `<p class="jr-en-photo-source">Quote: <a href="${escape(card.quoteSourceURL)}" target="_blank" rel="noopener noreferrer">${escape(card.attribution||[card.quoteAuthor,card.quoteWork,'Published '+card.quoteYear].join(' · '))}</a></p>` : ''}
       ${card.photoCredit ? `<p class="jr-en-photo-source">Photo: <a href="${escape(card.photoCredit.sourceURL)}" target="_blank" rel="noopener noreferrer">${escape(card.photoCredit.credit)}</a></p>` : ''}
       <div class="jr-en-card-tools"><div class="jr-en-card-top"><span>${escape(palette(card).label)}</span><b>${String(card.number).padStart(2, '0')} / 11 · ${level}</b></div>
-      <div class="jr-en-audio-actions"><button type="button" data-jr-do="speak-title" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen title</button>${card.conversation ? `<button type="button" data-jr-do="speak-conversation" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen conversation</button>` : ''}<button type="button" data-jr-do="speak-all" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen ${isEssay ? 'essay' : card.quoteBackground ? 'reading' : 'all'}</button></div>
+      <div class="jr-en-audio-actions"><button type="button" data-jr-do="speak-title" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen title</button>${card.conversation && !window.JREnglishVoiceRouting.isNarrative(card) ? `<button type="button" data-jr-do="speak-conversation" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen conversation</button>` : ''}<button type="button" data-jr-do="speak-all" data-jr-id="${escape(card.id)}" aria-pressed="false">▷ Listen ${isEssay ? 'essay' : card.quoteBackground ? 'reading' : 'all'}</button></div>
       <details class="jr-en-export"><summary>Save, share or print</summary><div class="jr-en-file-actions"><button type="button" data-jr-do="share" data-jr-id="${escape(card.id)}">↗ Share PNG</button><button type="button" data-jr-do="save" data-jr-id="${escape(card.id)}">↓ Save PNG</button><button type="button" data-jr-do="print" data-jr-id="${escape(card.id)}">▤ Print</button><button type="button" data-jr-do="print-ink" data-jr-id="${escape(card.id)}">▤ Print · ink saving</button></div></details>
       <div class="jr-en-practice"><h4>Your turn</h4><p>${escape(exerciseText(card))}</p>${answerHTML(card)}</div>${guideHTML(card)}${accessibleHTML(card)}<button type="button" class="jr-en-done${done ? ' is-done' : ''}" data-jr-do="done" data-jr-id="${escape(card.id)}" aria-pressed="${done}">${done ? '✓ Completed' : '○ Mark as complete'}</button></div></article>`;
   }
@@ -119,7 +133,7 @@
     const edition = unit(), info = LEVELS.find(l => l[0] === level);
     if(!edition) return '<div class="page-head"><h1>Everyday English</h1><p role="status">Loading your prepared '+level+' edition for '+date+'…</p><button type="button" data-jr-do="retry">Try again</button></div>';
     const visible = edition.cards.filter(c => filter === 'all' || typeOf(c) === filter);
-    return `<div class="page-head jr-en-heading"><div><p class="jr-en-kicker">EDUCATION / EVERYDAY ENGLISH</p><h1>English for<br><em>everyday life.</em></h1><p class="jr-en-intro">Choose your level. Read and listen, then answer “Your turn” before checking the model answer.<br>Finish with an essay that shows how four paragraphs build one clear argument.</p><p><a class="jr-en-voice-preview" href="voice-preview.html" target="_blank" rel="noopener">Listen to six American English voice samples ↗</a></p></div><aside class="jr-en-summary" aria-label="Eleven cards per edition, six levels from A1 to C2"><p class="jr-en-summary-label">YOUR DAILY EDITION</p><div class="jr-en-summary-count"><strong>11</strong><span>cards to read,<br>listen &amp; practise</span></div><div class="jr-en-summary-levels"><span>A1 — C2</span><span>Six levels</span></div></aside></div>
+    return `<div class="page-head jr-en-heading"><div><p class="jr-en-kicker">EDUCATION / EVERYDAY ENGLISH</p><h1>English for<br><em>everyday life.</em></h1><p class="jr-en-intro">Choose your level. Read and listen, then answer “Your turn” before checking the model answer.<br>Finish with an essay that shows how four paragraphs build one clear argument.</p><p class="jr-en-speakers">Your speakers: ${escape(window.JR_ENGLISH_SPEAKERS?.[level]?.teacher.name||'')} &amp; ${escape(window.JR_ENGLISH_SPEAKERS?.[level]?.partner.name||'')}. ${level+' listening pace: '+Math.round(LEVEL_PACES[level]*100)+'%. '+escape(window.JR_ENGLISH_SPEAKERS?.[level]?.partner.name||'')+' joins the dialogue; all other reading is by '+escape(window.JR_ENGLISH_SPEAKERS?.[level]?.teacher.name||'')+'.'}</p><p><a class="jr-en-voice-preview" href="voice-preview.html" target="_blank" rel="noopener">Meet the twelve American English voices ↗</a></p></div><aside class="jr-en-summary" aria-label="Eleven cards per edition, six levels from A1 to C2"><p class="jr-en-summary-label">YOUR DAILY EDITION</p><div class="jr-en-summary-count"><strong>11</strong><span>cards to read,<br>listen &amp; practise</span></div><div class="jr-en-summary-levels"><span>A1 — C2</span><span>Six levels</span></div></aside></div>
       <div class="jr-en-levels" role="group" aria-label="English level">${LEVELS.map(l => `<button type="button" class="jr-en-level${l[0] === level ? ' is-active' : ''}" data-jr-do="level" data-jr-level="${l[0]}" aria-pressed="${l[0] === level}"><span>${l[0]}</span><b>${l[1]}</b><small>${l[2]}</small></button>`).join('')}</div>
       <section class="jr-en-edition" aria-label="Selected English edition"><div><p class="jr-en-kicker">${level} · ${info[1].toUpperCase()} / SELECTED EDITION</p><h2>${escape(edition.theme)}</h2><p>2 vocabulary · 2 phrasal verbs · 2 idioms · 1 life phrase · 1 quote · 1 grammar · 1 small talk · 1 four-paragraph essay.</p></div><div class="jr-en-edition-tools"><label for="jr-en-date">Find an edition by date · Pacific Time</label><input id="jr-en-date" data-jr-date type="date" value="${date}" min="2026-01-01" max="2026-12-31" aria-describedby="jr-en-date-help"><small id="jr-en-date-help">Enter or choose a date in 2026.</small></div></section>
       <div class="jr-en-bulk-actions"><button type="button" data-jr-do="zip">↓ Download all 11 PNG cards · ZIP</button><button type="button" data-jr-do="print-all">▤ Print all 11 cards</button><button type="button" data-jr-do="print-all-ink">▤ Print all · ink saving</button></div>
@@ -301,7 +315,7 @@
   async function storedSVG(card, ink, includeAnswer) {
     const source = includeAnswer ? card.downloadPoster : card.poster;
     if (!source) throw new Error('The stored card is unavailable. Please refresh.');
-    const response = await fetch(source + '?format=editorial2026-v1');
+    const response = await fetch(source + '?format=all-level-roles-v1');
     if (!response.ok) throw new Error('The complete card could not load.');
     let svg = await response.text();
     if (svg.includes('__JR_PHOTO__')) {
@@ -341,11 +355,12 @@
   window.jrEnglishInit = function () {
     const root = document.getElementById('jr-english');
     if (!root) { stopSpeech(); return; }
+    prepareSampleAudio();
     if(!unit()) {
       const requestedDate=date;
       if(editionLoading===requestedDate)return;
       editionLoading=requestedDate;
-      fetch('data/english-levels/'+requestedDate+'.json?format=editorial2026-v1').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{
+      fetch('data/english-levels/'+requestedDate+'.json?format=all-level-roles-v1').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{
         DATA[requestedDate]=data;
         if(date===requestedDate&&document.getElementById('jr-english'))renderLocal();
       }).catch(()=>{if(date===requestedDate){root.innerHTML='<h1>Everyday English</h1><p role="status">This stored edition could not load.</p><button type="button" data-jr-do="retry">Try again</button>';}}).finally(()=>{if(editionLoading===requestedDate)editionLoading=null});
@@ -420,7 +435,6 @@
   function stopSpeech() {
     speechGeneration++; speechId = ''; currentUtterance = null;
     window.JRVoicePlayer?.stop();
-    if ('speechSynthesis' in window) speechSynthesis.cancel();
     document.querySelectorAll('#jr-english [data-jr-do^="speak-"]').forEach(button => { button.setAttribute('aria-pressed', 'false'); if (button.dataset.jrLabel) button.textContent = button.dataset.jrLabel; });
   }
   function prepareQuoteAudio(){
@@ -443,26 +457,32 @@
       onError:()=>{if(generation===speechGeneration){stopSpeech();announce('This reading could not load. Check your connection and try again.');}}
     },[{name:pair.teacher.name,start:0}]);return true;
   }
-  function speak(card, action, button) {
+  async function speak(card, action, button) {
     if(playPreparedQuote(card,action,button))return;
-    if (!('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)) { announce('This browser does not support speech. The complete lesson text is available below the card.'); return; }
-    const key = card.id + ':' + action;
-    if (speechId === key) { stopSpeech(); announce('Audio stopped.'); return; }
-    stopSpeech(); speechId = key; const generation = speechGeneration;
-    let copy = card.title;
-    if (action === 'speak-conversation') copy = text(card.conversation);
-    if (action === 'speak-all') copy = typeOf(card) === 'essay' ? [card.title, ...(card.paragraphs || []).map(text), card.structure, exerciseText(card)].filter(Boolean).join('\n') : [card.title, ...sections(card).map(([label, value]) => label + '. ' + value)].join('\n');
-    const chunks = copy.replace(/^[AB]:\s*/gm, '').split(/\n/).flatMap(p => p.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || []).map(s => s.trim()).filter(Boolean);
-    const voices = speechSynthesis.getVoices(), voice = voices.find(v => v.lang === 'en-US') || voices.find(v => /^en[-_]/i.test(v.lang));
-    button.dataset.jrLabel = button.textContent; button.textContent = '□ Stop audio'; button.setAttribute('aria-pressed', 'true');
-    announce('Playing: ' + card.title + '. Select the same button to stop.'); let index = 0;
-    function next() {
-      if (generation !== speechGeneration || speechId !== key) return;
-      if (index >= chunks.length) { stopSpeech(); announce('Audio finished.'); return; }
-      currentUtterance = new SpeechSynthesisUtterance(chunks[index++]); currentUtterance.lang = 'en-US'; currentUtterance.rate = ['A1', 'A2'].includes(levelOf(card)) ? 0.83 : 0.93; if (voice) currentUtterance.voice = voice;
-      currentUtterance.onend = next; currentUtterance.onerror = event => { if (generation === speechGeneration && !['canceled', 'interrupted'].includes(event.error)) { stopSpeech(); announce('The English voice is unavailable. Check your device’s speech settings and try again.'); } }; speechSynthesis.speak(currentUtterance);
+    const pairs=window.JR_ENGLISH_SPEAKERS, player=window.JRVoicePlayer, pair=pairs?.[levelOf(card)];
+    if(!pair||!player){announce('The selected voices are unavailable. Please refresh and try again.');return;}
+    const key=card.id+':'+action;
+    if(speechId===key){stopSpeech();announce('Audio stopped.');return;}
+    stopSpeech();speechId=key;const generation=speechGeneration,segments=[];
+    segments.push(...window.JREnglishVoiceRouting.segments(card,action,sections(card),exerciseText(card)));
+    if(!segments.length){stopSpeech();return;}
+    button.dataset.jrLabel=button.textContent;button.textContent='□ Stop audio';button.setAttribute('aria-pressed','true');
+    announce('Preparing '+(segments.some(s=>s.voice===pair.partner.voice)?pair.teacher.name+' and '+pair.partner.name:pair.teacher.name)+'.');
+    let lastSpeaker='';
+    const callbacks={
+      onLoading:()=>{if(generation===speechGeneration)announce('Preparing your voices. First use downloads voice data to this device.');},
+      onSpeaker:name=>{if(generation===speechGeneration&&name!==lastSpeaker){lastSpeaker=name;announce('Playing: '+name+'. Select the same button to stop.');}},
+      onFinished:()=>{if(generation===speechGeneration){stopSpeech();announce('Audio finished.');}},
+      onError:()=>{if(generation===speechGeneration){stopSpeech();announce('The selected voices could not load. Check your connection and try again.');}}
+    };
+    if(dateOf(card)===SAMPLE_DATE&&(action==='speak-title'||action==='speak-conversation'||(action==='speak-all'&&card.quoteBackground))){
+      await samplePreparations.get(levelOf(card));
+      if(generation!==speechGeneration)return;
     }
-    next();
+    const recording=sampleAudioByLevel.get(levelOf(card))?.cards[card.id],file=action==='speak-title'?recording?.title:action==='speak-conversation'?recording?.conversation:action==='speak-all'&&card.quoteBackground?recording?.reading:null;
+    if(file)player.playFile(file,callbacks,action==='speak-conversation'?recording.turns:[{name:pair.teacher.name,start:0}]);
+    else if(dateOf(card)===SAMPLE_DATE&&(action==='speak-title'||action==='speak-conversation'||(action==='speak-all'&&card.quoteBackground)))callbacks.onError();
+    else player.play(segments,callbacks);
   }
   function toggleDone(card, button) {
     if (completed[card.id]) delete completed[card.id]; else completed[card.id] = true;
