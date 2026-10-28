@@ -1,0 +1,92 @@
+{
+  "id": "quote-reading-002",
+  "date": "2026-10-28",
+  "cards": {
+    "A1": {
+      "title": "I shall take the heart.",
+      "quoteAuthor": "L. Frank Baum",
+      "quoteSpeaker": "The Tin Woodman (fictional character)",
+      "quoteWork": "The Wonderful Wizard of Oz, Chapter V",
+      "quoteYear": 1900,
+      "quoteSourceURL": "https://www.gutenberg.org/cache/epub/55/pg55-images.html",
+      "quoteBackground": "The Tin Woodman is made of metal. He wants a heart. The Scarecrow wants a brain. They talk about what is important. The Woodman thinks a heart can help him love and be happy. The friends do not want the same thing.",
+      "quoteCloserLook": "Shall here means will. The Woodman says what he wants. His friend wants something different.",
+      "exercise": "What does the Tin Woodman want, and what does his friend want?",
+      "answer": "The Tin Woodman wants a heart. The Scarecrow wants a brain.",
+      "photoScene": "family",
+      "photoCaption": "A family photograph represents the love the Tin Woodman hopes to feel."
+    },
+    "A2": {
+      "title": "Isn't it splendid to think of all the things there are to find out about?",
+      "quoteAuthor": "L. M. Montgomery",
+      "quoteSpeaker": "Anne Shirley (fictional character)",
+      "quoteWork": "Anne of Green Gables, Chapter II",
+      "quoteYear": 1908,
+      "quoteSourceURL": "https://www.gutenberg.org/cache/epub/45/pg45-images.html",
+      "quoteBackground": "Anne is travelling with Matthew. She talks about the island's flowers and its red roads. She wants to know why the roads are red. Matthew does not know. Anne is not upset about the missing answer. She is happy that there are so many things to learn. For her, a question can begin an interesting conversation.",
+      "quoteCloserLook": "Splendid means wonderful. Find out about means learn about. Anne enjoys asking questions, even before she knows the answers.",
+      "exercise": "When Matthew cannot answer her question, does Anne lose interest? Explain.",
+      "answer": "No. She is excited because there are still many things to learn.",
+      "photoScene": "library",
+      "photoCaption": "Library shelves hold many subjects an interested reader can explore."
+    },
+    "B1": {
+      "title": "I like good strong words that mean something.",
+      "quoteAuthor": "Louisa May Alcott",
+      "quoteSpeaker": "Jo March (fictional character)",
+      "quoteWork": "Little Women, Part One, Chapter IV",
+      "quoteYear": 1868,
+      "quoteSourceURL": "https://www.gutenberg.org/cache/epub/514/pg514-images.html",
+      "quoteBackground": "Jo and Meg are walking in the snow. Jo feels that they have been ungrateful and uses a strong expression to describe them both. Meg objects to her language. Jo replies that she likes words with force and meaning. The exchange shows their different habits of speaking. Jo values energy, but Meg reminds her that a word can also upset the person who hears it.",
+      "quoteCloserLook": "Strong describes expressive force, not physical strength. Jo's preference does not mean that every strong word is suitable for every listener or situation.",
+      "exercise": "A friend dislikes a word you used about them. How could you keep your meaning but show more care?",
+      "answer": "I could explain my concern using a clear description instead of an insulting label.",
+      "photoScene": "notebook",
+      "photoCaption": "A pen and notebook suggest careful choices about words."
+    },
+    "B2": {
+      "title": "Our life is frittered away by detail.",
+      "quoteAuthor": "Henry David Thoreau",
+      "quoteSpeaker": "Henry David Thoreau (first-person narrator)",
+      "quoteWork": "Walden, Where I Lived, and What I Lived For",
+      "quoteYear": 1854,
+      "quoteSourceURL": "https://www.gutenberg.org/files/205/205-h/205-h.htm",
+      "quoteBackground": "After explaining why he went to the woods, Thoreau turns to the many small demands of ordinary life. He urges readers to simplify their affairs. His complaint is about attention being scattered across countless concerns, rather than directed towards what matters. The sentence is deliberately forceful. It need not mean that every detail is worthless: some details protect people or make work reliable. The useful question is which demands deserve our limited time.",
+      "quoteCloserLook": "Frittered away suggests something valuable being lost a little at a time. Detail is treated as an overwhelming accumulation here, rather than as one particular small fact.",
+      "exercise": "Name one unnecessary detail you could simplify and one important detail you would keep.",
+      "answer": "I could stop adjusting a routine message's layout repeatedly, but keep the date and meeting place clear.",
+      "photoScene": "minimal",
+      "photoCaption": "A simple workspace leaves fewer competing demands on attention."
+    },
+    "C1": {
+      "title": "A wonderful fact to reflect upon, that every human creature is constituted to be that profound secret and mystery to every other.",
+      "quoteAuthor": "Charles Dickens",
+      "quoteSpeaker": "The narrator",
+      "quoteWork": "A Tale of Two Cities, Book I, Chapter III",
+      "quoteYear": 1859,
+      "quoteSourceURL": "https://www.gutenberg.org/cache/epub/98/pg98-images.html",
+      "quoteBackground": "At the opening of The Night Shadows, Dickens pauses the journey to consider how little people can know of one another. The narrator imagines a city filled with houses, rooms and private thoughts. Even the person nearest to someone cannot enter every part of that person's inner life. The passage deepens the novel's atmosphere of secrecy. It also turns an ordinary encounter between travellers into a reflection on the limits of human understanding.",
+      "quoteCloserLook": "Constituted to be means formed or made in such a way. Profound intensifies the mystery: the narrator is considering inner experience, not merely information that could be obtained by asking a few more questions.",
+      "exercise": "How does the image of houses containing rooms help the narrator express the idea of private thought?",
+      "answer": "It suggests layers of interior life that remain hidden even when the outside of a person's world seems familiar.",
+      "photoScene": "window",
+      "photoCaption": "A window separates a visible exterior from a private interior."
+    },
+    "C2": {
+      "title": "The very essence of romance is uncertainty.",
+      "quoteAuthor": "Oscar Wilde",
+      "quoteSpeaker": "Algernon Moncrieff (fictional character)",
+      "quoteWork": "The Importance of Being Earnest, Act I",
+      "quoteYear": 1899,
+      "quoteEventYear": 1895,
+      "quoteEventLabel": "First performed",
+      "quoteSourceURL": "https://www.gutenberg.org/cache/epub/844/pg844-images.html",
+      "quoteBackground": "Jack has come to town hoping to propose to Gwendolen. Algernon distinguishes the excitement of being in love from the definite business of making a proposal. If the proposal is accepted, he argues, the uncertainty disappears and the excitement is over. His remark is witty precisely because it turns a conventional romantic destination into a disappointment. The exchange reveals a character enjoying his own cleverness; it does not establish a universal rule about relationships.",
+      "quoteCloserLook": "Very intensifies essence, presenting uncertainty as romance's defining quality. The categorical wording invites attention to what Algernon leaves out, such as trust, commitment and the pleasures of an established relationship.",
+      "exercise": "Explain how a sentence can be an effective comic generalization without being a reliable guide to relationships.",
+      "answer": "Its force can come from exaggerating one attractive idea while excluding important experiences that would complicate the claim.",
+      "photoScene": "valentine",
+      "photoCaption": "Heart-shaped decorations accompany a comic argument about romance."
+    }
+  }
+}

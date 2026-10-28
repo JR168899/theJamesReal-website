@@ -1,9 +1,9 @@
 {
   "scope": "All 365 dates, all six levels: 2190 Quote cards",
   "total": 2190,
-  "authoredAndLayoutChecked": 6,
-  "published": 0,
-  "remaining": 2184,
+  "authoredAndLayoutChecked": 12,
+  "published": 6,
+  "remaining": 2178,
   "batches": [
     {
       "id": "quote-reading-001",
@@ -16,9 +16,24 @@
         "C1",
         "C2"
       ],
+      "status": "published-and-archived",
+      "commit": "700b48281f7ef41cc6bc7c55fbc8783e8ac38bcb"
+    },
+    {
+      "id": "quote-reading-002",
+      "date": "2026-10-28",
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
       "status": "authored-and-layout-checked"
     }
   ],
   "voiceRule": "Female teacher voice only, at the corresponding level pace",
-  "archiveRule": "Upload only checked final PNG cards to Google Drive, retaining original archive"
+  "archiveRule": "Upload only checked final PNG cards to Google Drive, retaining original archive",
+  "archived": 6
 }

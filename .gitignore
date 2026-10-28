@@ -8,3 +8,7 @@ node_modules/
 __pycache__/
 
 backend/**/build/
+
+.cache/quote-audio/
+
+backend/english-subscriptions/node_modules

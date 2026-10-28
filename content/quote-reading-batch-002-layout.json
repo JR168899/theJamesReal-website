@@ -1,0 +1,74 @@
+[
+  {
+    "id": "2026-10-28-A1-8",
+    "answer": false,
+    "bottom": 1341.2,
+    "font": 30.8
+  },
+  {
+    "id": "2026-10-28-A1-8",
+    "answer": true,
+    "bottom": 1364.9,
+    "font": 27.44
+  },
+  {
+    "id": "2026-10-28-A2-8",
+    "answer": false,
+    "bottom": 1374.3,
+    "font": 30.8
+  },
+  {
+    "id": "2026-10-28-A2-8",
+    "answer": true,
+    "bottom": 1360.6,
+    "font": 26.46
+  },
+  {
+    "id": "2026-10-28-B1-8",
+    "answer": false,
+    "bottom": 1385.0,
+    "font": 30.66
+  },
+  {
+    "id": "2026-10-28-B1-8",
+    "answer": true,
+    "bottom": 1387.4,
+    "font": 25.34
+  },
+  {
+    "id": "2026-10-28-B2-8",
+    "answer": false,
+    "bottom": 1387.3,
+    "font": 28.42
+  },
+  {
+    "id": "2026-10-28-B2-8",
+    "answer": true,
+    "bottom": 1387.4,
+    "font": 25.34
+  },
+  {
+    "id": "2026-10-28-C1-8",
+    "answer": false,
+    "bottom": 1387.0,
+    "font": 25.62
+  },
+  {
+    "id": "2026-10-28-C1-8",
+    "answer": true,
+    "bottom": 1381.8,
+    "font": 24.36
+  },
+  {
+    "id": "2026-10-28-C2-8",
+    "answer": false,
+    "bottom": 1378.9,
+    "font": 27.16
+  },
+  {
+    "id": "2026-10-28-C2-8",
+    "answer": true,
+    "bottom": 1387.1,
+    "font": 20.72
+  }
+]

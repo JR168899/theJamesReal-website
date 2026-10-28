@@ -76,14 +76,17 @@
       "quoteAuthor": "Oscar Wilde",
       "quoteSpeaker": "Algernon Moncrieff (fictional character)",
       "quoteWork": "The Importance of Being Earnest, Act I",
-      "quoteYear": 1895,
+      "quoteYear": 1899,
       "quoteSourceURL": "https://www.gutenberg.org/cache/epub/844/pg844-images.html",
       "quoteBackground": "Algernon has discovered that Jack uses different names in town and in the country. Pressed to explain himself, Jack supplies the background to his double identity. Algernon responds with this polished paradox. In context, the line belongs to a comedy about social performance and convenient deception. Its charm need not make Algernon a reliable moral authority. Readers can admire the wit while noticing how readily an elegant generalization can excuse the speaker's own evasions.",
       "quoteCloserLook": "Rarely qualifies pure, whereas never makes an absolute claim about simple. That imbalance gives the sentence its snap. Its dramatic setting complicates any attempt to treat it as Wilde's straightforward personal doctrine.",
       "exercise": "Distinguish an insight about complicated facts from an excuse for dishonesty in Algernon's remark.",
       "answer": "Facts may resist a simple account, but that complexity does not make deliberately misleading someone acceptable.",
       "photoScene": "theatre",
-      "photoCaption": "A theatre stage recalls that Algernon speaks this line in a comedy."
+      "photoCaption": "A theatre stage recalls that Algernon speaks this line in a comedy.",
+      "quoteEventYear": 1895,
+      "quoteEventLabel": "First performed"
     }
-  }
+  },
+  "id": "quote-reading-001"
 }

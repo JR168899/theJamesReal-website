@@ -52,5 +52,59 @@
     "speaker": "Algernon Moncrieff (fictional character)",
     "source": "https://www.gutenberg.org/cache/epub/844/pg844-images.html",
     "voiceRole": "teacher"
+  },
+  {
+    "date": "2026-10-28",
+    "level": "A1",
+    "target": "i shall take the heart",
+    "author": "L. Frank Baum",
+    "speaker": "The Tin Woodman (fictional character)",
+    "source": "https://www.gutenberg.org/cache/epub/55/pg55-images.html",
+    "voiceRole": "teacher"
+  },
+  {
+    "date": "2026-10-28",
+    "level": "A2",
+    "target": "isn't it splendid to think of all the things there are to find out about",
+    "author": "L. M. Montgomery",
+    "speaker": "Anne Shirley (fictional character)",
+    "source": "https://www.gutenberg.org/cache/epub/45/pg45-images.html",
+    "voiceRole": "teacher"
+  },
+  {
+    "date": "2026-10-28",
+    "level": "B1",
+    "target": "i like good strong words that mean something",
+    "author": "Louisa May Alcott",
+    "speaker": "Jo March (fictional character)",
+    "source": "https://www.gutenberg.org/cache/epub/514/pg514-images.html",
+    "voiceRole": "teacher"
+  },
+  {
+    "date": "2026-10-28",
+    "level": "B2",
+    "target": "our life is frittered away by detail",
+    "author": "Henry David Thoreau",
+    "speaker": "Henry David Thoreau (first-person narrator)",
+    "source": "https://www.gutenberg.org/files/205/205-h/205-h.htm",
+    "voiceRole": "teacher"
+  },
+  {
+    "date": "2026-10-28",
+    "level": "C1",
+    "target": "a wonderful fact to reflect upon that every human creature is constituted to be that profound secret and mystery to every other",
+    "author": "Charles Dickens",
+    "speaker": "The narrator",
+    "source": "https://www.gutenberg.org/cache/epub/98/pg98-images.html",
+    "voiceRole": "teacher"
+  },
+  {
+    "date": "2026-10-28",
+    "level": "C2",
+    "target": "the very essence of romance is uncertainty",
+    "author": "Oscar Wilde",
+    "speaker": "Algernon Moncrieff (fictional character)",
+    "source": "https://www.gutenberg.org/cache/epub/844/pg844-images.html",
+    "voiceRole": "teacher"
   }
 ]

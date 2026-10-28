@@ -26,7 +26,7 @@
   const params = new URLSearchParams(location.search);
   let date = DATES.includes(params.get('jr-date')) ? params.get('jr-date') : defaultDate;
   let level = LEVELS.some(l => l[0] === params.get('jr-level')) ? params.get('jr-level') : 'A1';
-  let filter = 'all';
+  let filter = TYPES[params.get('jr-type')] ? params.get('jr-type') : 'all';
   let completed = {};
   let storageAvailable = true;
   let speechId = '', speechGeneration = 0, currentUtterance = null;
@@ -154,6 +154,7 @@
   function persistSelection() {
     const url = new URL(location.href);
     url.searchParams.set('jr-level', level); url.searchParams.set('jr-date', date);
+    if(filter==='all')url.searchParams.delete('jr-type');else url.searchParams.set('jr-type',filter);
     history.replaceState(null, '', url);
   }
   function loadIllustration(card) {
@@ -314,7 +315,7 @@
   async function storedSVG(card, ink, includeAnswer) {
     const source = includeAnswer ? card.downloadPoster : card.poster;
     if (!source) throw new Error('The stored card is unavailable. Please refresh.');
-    const response = await fetch(source + '?format=quotestory2026-v1');
+    const response = await fetch(source + '?format=quote-readings2026-v2');
     if (!response.ok) throw new Error('The complete card could not load.');
     let svg = await response.text();
     if (svg.includes('__JR_PHOTO__')) {
@@ -359,12 +360,13 @@
       const requestedDate=date;
       if(editionLoading===requestedDate)return;
       editionLoading=requestedDate;
-      fetch('data/english-levels/'+requestedDate+'.json?format=quotestory2026-v1').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{
+      fetch('data/english-levels/'+requestedDate+'.json?format=quote-readings2026-v2').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{
         DATA[requestedDate]=data;
         if(date===requestedDate&&document.getElementById('jr-english'))renderLocal();
       }).catch(()=>{if(date===requestedDate){root.innerHTML='<h1>Everyday English</h1><p role="status">This stored edition could not load.</p><button type="button" data-jr-do="retry">Try again</button>';}}).finally(()=>{if(editionLoading===requestedDate)editionLoading=null});
       return;
     }
+    prepareQuoteAudio();
     const generation = ++paintGeneration;
     unit().cards.filter(c => filter === 'all' || typeOf(c) === filter).forEach(card => {
       previewPoster(card).then(result => {
@@ -435,7 +437,28 @@
     window.JRVoicePlayer?.stop();
     document.querySelectorAll('#jr-english [data-jr-do^="speak-"]').forEach(button => { button.setAttribute('aria-pressed', 'false'); if (button.dataset.jrLabel) button.textContent = button.dataset.jrLabel; });
   }
+  function prepareQuoteAudio(){
+    for(const card of unit()?.cards||[]){
+      if(!card.quoteBackground||!card.quoteAudio)continue;
+      for(const file of [card.quoteAudio.title,card.quoteAudio.reading])window.JRVoicePlayer?.prepareFile(file).catch(()=>{});
+    }
+  }
+  function playPreparedQuote(card,action,button){
+    const audio=card.quoteAudio,player=window.JRVoicePlayer,pair=window.JR_ENGLISH_SPEAKERS?.[levelOf(card)];
+    if(!card.quoteBackground||!audio)return false;
+    if(!player||audio.voice!==pair?.teacher.voice){announce('This reading could not load. Please refresh and try again.');return true;}
+    const key=card.id+':'+action;if(speechId===key){stopSpeech();announce('Audio stopped.');return true;}
+    stopSpeech();speechId=key;const generation=speechGeneration;
+    button.dataset.jrLabel=button.textContent;button.textContent='□ Stop audio';button.setAttribute('aria-pressed','true');
+    announce('Preparing '+pair.teacher.name+'.');
+    player.playFile(action==='speak-title'?audio.title:audio.reading,{
+      onSpeaker:()=>{if(generation===speechGeneration)announce('Playing: '+pair.teacher.name+'. Select the same button to stop.');},
+      onFinished:()=>{if(generation===speechGeneration){stopSpeech();announce('Audio finished.');}},
+      onError:()=>{if(generation===speechGeneration){stopSpeech();announce('This reading could not load. Check your connection and try again.');}}
+    },[{name:pair.teacher.name,start:0}]);return true;
+  }
   async function speak(card, action, button) {
+    if(playPreparedQuote(card,action,button))return;
     const pairs=window.JR_ENGLISH_SPEAKERS, player=window.JRVoicePlayer, pair=pairs?.[levelOf(card)];
     if(!pair||!player){announce('The selected voices are unavailable. Please refresh and try again.');return;}
     const key=card.id+':'+action;
@@ -492,8 +515,8 @@
     const button = event.target.closest('#jr-english button[data-jr-do]'); if (!button) return;
     const action = button.dataset.jrDo;
     if(action==='retry'){editionLoading=null;window.jrEnglishInit();return;}
-    if (action === 'level') { if (LEVELS.some(l => l[0] === button.dataset.jrLevel)) { level = button.dataset.jrLevel; filter = 'all'; persistSelection(); renderLocal('[data-jr-level="' + level + '"]'); announce('Showing all eleven ' + level + ' cards for ' + date + '.'); } return; }
-    if (action === 'filter') { if (button.dataset.jrFilter === 'all' || TYPES[button.dataset.jrFilter]) { filter = button.dataset.jrFilter; renderLocal('[data-jr-filter="' + filter + '"]'); } return; }
+    if (action === 'level') { if (LEVELS.some(l => l[0] === button.dataset.jrLevel)) { level = button.dataset.jrLevel; persistSelection(); renderLocal('[data-jr-level="' + level + '"]'); announce('Showing all eleven ' + level + ' cards for ' + date + '.'); } return; }
+    if (action === 'filter') { if (button.dataset.jrFilter === 'all' || TYPES[button.dataset.jrFilter]) { filter = button.dataset.jrFilter; persistSelection(); renderLocal('[data-jr-filter="' + filter + '"]'); } return; }
     const card = cardById(button.dataset.jrId);
     if (action.startsWith('speak-')) { if (card) speak(card, action, button); return; }
     if (action === 'done') { if (card) toggleDone(card, button); return; }
@@ -510,7 +533,7 @@
     } catch (error) { if (error.name === 'AbortError') announce('Sharing cancelled.'); else announce('The complete card could not be prepared. Please refresh and try again.'); }
     finally { button.disabled = false; if (action !== 'preview') button.textContent = originalLabel; }
   });
-  document.addEventListener('change', event => { if(event.target.matches('#jr-english [data-jr-date]')&&!DATES.includes(event.target.value)){event.target.setCustomValidity('Choose a date from January 1 to December 31, 2026.');event.target.reportValidity();return;} if (event.target.matches('#jr-english [data-jr-date]') && DATES.includes(event.target.value)) { event.target.setCustomValidity(''); date = event.target.value; filter = 'all'; persistSelection(); renderLocal('#jr-en-date'); announce('Showing ' + date + ' · ' + level + '.'); } });
+  document.addEventListener('change', event => { if(event.target.matches('#jr-english [data-jr-date]')&&!DATES.includes(event.target.value)){event.target.setCustomValidity('Choose a date from January 1 to December 31, 2026.');event.target.reportValidity();return;} if (event.target.matches('#jr-english [data-jr-date]') && DATES.includes(event.target.value)) { event.target.setCustomValidity(''); date = event.target.value; persistSelection(); renderLocal('#jr-en-date'); announce('Showing ' + date + ' · ' + level + '.'); } });
   window.addEventListener('hashchange', () => { if (location.hash !== '#english') stopSpeech(); });
   window.jrEnglishDiagnostics = diagnostics;
 })();
