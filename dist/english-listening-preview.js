@@ -20,12 +20,11 @@
     ['C1', 'Advanced', 'Find the precise words.'], ['C2', 'Proficient', 'Make room for nuance.']
   ];
   const DATES = (window.JR_ENGLISH_DATES || Object.keys(DATA)).slice().sort().reverse();
-  const currentDate = window.jrToday?.() || DATES[0];
-  const defaultDate = DATES.find(d=>d<=currentDate)||DATES.at(-1);
-  let editionLoading = null;
-  const params = new URLSearchParams(location.search);
-  let date = DATES.includes(params.get('jr-date')) ? params.get('jr-date') : defaultDate;
-  let level = LEVELS.some(l => l[0] === params.get('jr-level')) ? params.get('jr-level') : 'A1';
+  let editionLoading=null;
+  const selection=window.JREnglishSelection;
+  const params=new URLSearchParams(location.search);
+  const initialSelection=selection.initial(params,DATES);
+  let date=initialSelection.date,level=initialSelection.level,followToday=initialSelection.followToday;
   let filter = TYPES[params.get('jr-type')] ? params.get('jr-type') : 'all';
   let completed = {};
   let storageAvailable = true;
@@ -135,7 +134,7 @@
     const visible = edition.cards.filter(c => filter === 'all' || typeOf(c) === filter);
     return `<div class="page-head jr-en-heading"><div><p class="jr-en-kicker">EDUCATION / EVERYDAY ENGLISH</p><h1>English for<br><em>everyday life.</em></h1><p class="jr-en-intro">Choose your level. Read and listen, then answer “Your turn” before checking the model answer.<br>Finish with an essay that shows how four paragraphs build one clear argument.</p><p class="jr-en-speakers">Your speakers: ${escape(window.JR_ENGLISH_SPEAKERS?.[level]?.teacher.name||'')} &amp; ${escape(window.JR_ENGLISH_SPEAKERS?.[level]?.partner.name||'')}. ${level+' listening pace: '+Math.round(LEVEL_PACES[level]*100)+'%. '+escape(window.JR_ENGLISH_SPEAKERS?.[level]?.partner.name||'')+' joins the dialogue; all other reading is by '+escape(window.JR_ENGLISH_SPEAKERS?.[level]?.teacher.name||'')+'.'}</p><p><a class="jr-en-voice-preview" href="voice-preview.html" target="_blank" rel="noopener">Meet the twelve American English voices ↗</a></p></div><aside class="jr-en-summary" aria-label="Eleven cards per edition, six levels from A1 to C2"><p class="jr-en-summary-label">YOUR DAILY EDITION</p><div class="jr-en-summary-count"><strong>11</strong><span>cards to read,<br>listen &amp; practise</span></div><div class="jr-en-summary-levels"><span>A1 — C2</span><span>Six levels</span></div></aside></div>
       <div class="jr-en-levels" role="group" aria-label="English level">${LEVELS.map(l => `<button type="button" class="jr-en-level${l[0] === level ? ' is-active' : ''}" data-jr-do="level" data-jr-level="${l[0]}" aria-pressed="${l[0] === level}"><span>${l[0]}</span><b>${l[1]}</b><small>${l[2]}</small></button>`).join('')}</div>
-      <section class="jr-en-edition" aria-label="Selected English edition"><div><p class="jr-en-kicker">${level} · ${info[1].toUpperCase()} / SELECTED EDITION</p><h2>${escape(edition.theme)}</h2><p>2 vocabulary · 2 phrasal verbs · 2 idioms · 1 life phrase · 1 quote · 1 grammar · 1 small talk · 1 four-paragraph essay.</p></div><div class="jr-en-edition-tools"><label for="jr-en-date">Find an edition by date · Pacific Time</label><input id="jr-en-date" data-jr-date type="date" value="${date}" min="2026-01-01" max="2026-12-31" aria-describedby="jr-en-date-help"><small id="jr-en-date-help">Enter or choose a date in 2026.</small></div></section>
+      <section class="jr-en-edition" aria-label="Selected English edition"><div><p class="jr-en-kicker">${level} · ${info[1].toUpperCase()} / SELECTED EDITION</p><h2>${escape(edition.theme)}</h2><p>2 vocabulary · 2 phrasal verbs · 2 idioms · 1 life phrase · 1 quote · 1 grammar · 1 small talk · 1 four-paragraph essay.</p></div><div class="jr-en-edition-tools"><label for="jr-en-date">Find an edition by date · Pacific Time</label><input id="jr-en-date" data-jr-date type="date" value="${date}" min="2026-01-01" max="2026-12-31" aria-describedby="jr-en-date-help"><small id="jr-en-date-help">${followToday&&date!==selection.today()?'The prepared archive covers 2026. Showing '+date+'. ':'Enter or choose a date in 2026.'}</small><button type="button" data-jr-do="today" aria-label="Go to today’s edition">Today</button></div></section>
       <div class="jr-en-bulk-actions"><button type="button" data-jr-do="zip">↓ Download all 11 PNG cards · ZIP</button><button type="button" data-jr-do="print-all">▤ Print all 11 cards</button><button type="button" data-jr-do="print-all-ink">▤ Print all · ink saving</button></div>
       <div class="jr-en-progress-row"><div class="jr-en-progress-copy"><span>YOUR PROGRESS</span><b id="jr-en-progress-label">${count()} / 11 completed</b></div><progress id="jr-en-progress" value="${count()}" max="11" aria-label="Completed lessons">${count()} / 11</progress><span class="jr-en-progress-note">${storageAvailable ? 'Progress stays in this browser.' : 'Progress is available for this visit only.'}</span></div>
       <div class="jr-en-filter-row"><div class="jr-en-filters" role="group" aria-label="Card category"><button type="button" data-jr-do="filter" data-jr-filter="all" aria-pressed="${filter === 'all'}" class="${filter === 'all' ? 'is-active' : ''}">All 11 cards</button>${Object.entries(TYPES).map(([key, value]) => `<button type="button" data-jr-do="filter" data-jr-filter="${key}" aria-pressed="${filter === key}" class="${filter === key ? 'is-active' : ''}">${value.label}</button>`).join('')}</div><span class="jr-en-visible-count">${visible.length} ${visible.length===1?"card":"cards"}</span></div>
@@ -151,9 +150,11 @@
     if (focus) root.querySelector(focus)?.focus({ preventScroll: true });
     window.jrEnglishInit();
   }
-  function persistSelection() {
+  window.jrEnglishEnter=function(){date=selection.availableToday(DATES);level=selection.remembered();filter='all';followToday=true;persistSelection();};
+  function persistSelection(saveLevel=false) {
+    if(saveLevel)selection.remember(level);
     const url = new URL(location.href);
-    url.searchParams.set('jr-level', level); url.searchParams.set('jr-date', date);
+    url.searchParams.set('jr-level', level);if(followToday)url.searchParams.delete('jr-date');else url.searchParams.set('jr-date',date);
     if(filter==='all')url.searchParams.delete('jr-type');else url.searchParams.set('jr-type',filter);
     history.replaceState(null, '', url);
   }
@@ -394,9 +395,17 @@
     dialog.addEventListener('click', event => { if (event.target === dialog) { dialog.close(); dialog.remove(); } });
     dialog.addEventListener('cancel', () => dialog.remove()); document.body.appendChild(dialog); dialog.showModal();
   }
-  function crc32(bytes) { let crc = 0xffffffff; for (const byte of bytes) { crc ^= byte; for (let bit = 0; bit < 8; bit++) crc = (crc >>> 1) ^ ((crc & 1) ? 0xedb88320 : 0); } return (crc ^ 0xffffffff) >>> 0; }
-  async function zipCards(cards, editionDate, editionLevel) {
-    const files = await Promise.all(cards.map(async card => (await poster(card, false)).file));
+  const CRC_TABLE=Uint32Array.from({length:256},(_,n)=>{for(let bit=0;bit<8;bit++)n=(n>>>1)^((n&1)?0xedb88320:0);return n>>>0;});
+  function crc32(bytes){let crc=0xffffffff;for(const byte of bytes)crc=CRC_TABLE[(crc^byte)&255]^(crc>>>8);return (crc^0xffffffff)>>>0;}
+  async function prepareCardExports(cards,ink,onProgress=()=>{}){
+    const results=[];let done=0;
+    for(let start=0;start<cards.length;start+=3){
+      results.push(...await Promise.all(cards.slice(start,start+3).map(async card=>{const result=await poster(card,ink);onProgress(++done,cards.length);return {card,result};})));
+    }
+    return results;
+  }
+  async function zipCards(cards, editionDate, editionLevel,onProgress) {
+    const files=(await prepareCardExports(cards,false,onProgress)).map(row=>row.result.file);
     if (files.length !== 11 || new Set(files.map(f => f.name)).size !== 11) throw new Error('A complete set of eleven cards is required.');
     const parts = [], directory = [], encoder = new TextEncoder(); let offset = 0, directorySize = 0;
     const [year, month, day] = editionDate.split('-').map(Number), stamp = ((year - 1980) << 9) | (month << 5) | day;
@@ -415,7 +424,7 @@
     const popup = window.open('', '_blank'); if (!popup) { announce('Allow the print window in your browser, then try again.'); return; }
     popup.document.write('<!doctype html><html lang="en"><head><title>Everyday English · Preparing print</title></head><body style="font:16px Arial;padding:30px">Preparing ' + cards.length + ' complete cards…</body></html>'); popup.document.close();
     try {
-      const results = await Promise.all(cards.map(async card => ({ card, result: await poster(card, ink) })));
+      const results = await prepareCardExports(cards,ink);
       if (popup.closed) return;
       const ordinary = results.filter(r => typeOf(r.card) !== 'essay'), essays = results.filter(r => typeOf(r.card) === 'essay'), pages = [];
       const img = row => '<img src="' + row.result.url + '" alt="' + escape(row.card.title) + '">';
@@ -494,7 +503,8 @@
     const button = event.target.closest('#jr-english button[data-jr-do]'); if (!button) return;
     const action = button.dataset.jrDo;
     if(action==='retry'){editionLoading=null;window.jrEnglishInit();return;}
-    if (action === 'level') { if (LEVELS.some(l => l[0] === button.dataset.jrLevel)) { level = button.dataset.jrLevel; persistSelection(); renderLocal('[data-jr-level="' + level + '"]'); announce('Showing all eleven ' + level + ' cards for ' + date + '.'); } return; }
+    if (action === 'level') { if (LEVELS.some(l => l[0] === button.dataset.jrLevel)) { level = button.dataset.jrLevel; persistSelection(true); renderLocal('[data-jr-level="' + level + '"]'); announce('Showing '+(filter==='all'?'all eleven cards':TYPES[filter].label)+' · '+level+' · '+date+'.'); } return; }
+    if(action==='today'){date=selection.availableToday(DATES);followToday=true;persistSelection();renderLocal('[data-jr-do="today"]');announce('Showing '+date+' · '+level+'.');return;}
     if (action === 'filter') { if (button.dataset.jrFilter === 'all' || TYPES[button.dataset.jrFilter]) { filter = button.dataset.jrFilter; persistSelection(); renderLocal('[data-jr-filter="' + filter + '"]'); } return; }
     const card = cardById(button.dataset.jrId);
     if (action.startsWith('speak-')) { if (card) speak(card, action, button); return; }
@@ -502,7 +512,7 @@
     if (action.startsWith('print')) { const all = action.startsWith('print-all'); await printCards(all ? unit().cards.slice() : card ? [card] : [], action.endsWith('ink')); return; }
     const originalLabel = button.textContent; button.disabled = true;
     try {
-      if (action === 'zip') { button.textContent = 'Preparing eleven PNG cards…'; const archive = await zipCards(unit().cards.slice(), date, level); download(archive); announce('Your ZIP is ready: eleven complete PNG cards. Open the ZIP to extract the images.'); }
+      if (action === 'zip') { button.textContent = 'Preparing eleven PNG cards…'; const archive = await zipCards(unit().cards.slice(), date, level,(done,total)=>{button.textContent='Preparing cards '+done+' / '+total+'…';}); download(archive); announce('Your ZIP is ready: eleven complete PNG cards. Open the ZIP to extract the images.'); }
       else if (card && action === 'preview') await preview(card);
       else if (card && ['save', 'share'].includes(action)) {
         button.textContent = 'Preparing PNG…'; const result = await poster(card, false);
@@ -512,7 +522,8 @@
     } catch (error) { if (error.name === 'AbortError') announce('Sharing cancelled.'); else announce('The complete card could not be prepared. Please refresh and try again.'); }
     finally { button.disabled = false; if (action !== 'preview') button.textContent = originalLabel; }
   });
-  document.addEventListener('change', event => { if(event.target.matches('#jr-english [data-jr-date]')&&!DATES.includes(event.target.value)){event.target.setCustomValidity('Choose a date from January 1 to December 31, 2026.');event.target.reportValidity();return;} if (event.target.matches('#jr-english [data-jr-date]') && DATES.includes(event.target.value)) { event.target.setCustomValidity(''); date = event.target.value; persistSelection(); renderLocal('#jr-en-date'); announce('Showing ' + date + ' · ' + level + '.'); } });
+  document.addEventListener('change', event => { if(event.target.matches('#jr-english [data-jr-date]')&&!DATES.includes(event.target.value)){event.target.setCustomValidity('Choose a date from January 1 to December 31, 2026.');event.target.reportValidity();return;} if (event.target.matches('#jr-english [data-jr-date]') && DATES.includes(event.target.value)) { event.target.setCustomValidity(''); date = event.target.value; followToday=false; persistSelection(); renderLocal('#jr-en-date'); announce('Showing ' + date + ' · ' + level + '.'); } });
   window.addEventListener('hashchange', () => { if (location.hash !== '#english') stopSpeech(); });
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&location.hash==='#english'&&followToday){const day=selection.availableToday(DATES);if(day!==date){date=day;persistSelection();renderLocal();}}});
   window.jrEnglishDiagnostics = diagnostics;
 })();

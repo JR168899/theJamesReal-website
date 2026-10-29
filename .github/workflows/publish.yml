@@ -23,9 +23,14 @@ jobs:
           test -s dist/index.html
           node --check dist/james-real.js
           node --check dist/english-listening-preview.js
+          node --check dist/english-selection.js
+          node tools/test_english_selection.mjs
+          node tools/test_english_zip.mjs
+          node tools/audit_voice_roles.mjs
           node --check dist/named-voice-player.js
           python3 tools/audit_oct27_listening.py
           python3 tools/audit_quote_readings.py
+          python3 tools/audit_editorial_revision.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:

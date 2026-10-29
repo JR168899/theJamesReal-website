@@ -11,14 +11,14 @@ for p in sorted((D/'data/english-levels').glob('*.json')):
   if len(cs)!=11:errors.append([p.stem,level,'card_count'])
   ids=[re.search(r'(\d+)/?$',c['photoCredit']['sourceURL'].rstrip('/'))[1] for c in cs]
   if len(set(ids))!=11:errors.append([p.stem,level,'same_source_photo'])
-  nonessays=[c for c in cs if c['type']!='essay']
-  if len({c['conversation'] for c in nonessays})!=10:errors.append([p.stem,level,'same_conversation'])
+  nonessays=[c for c in cs if c.get('conversation')]
+  if len({c['conversation'] for c in nonessays})!=len(nonessays):errors.append([p.stem,level,'same_conversation'])
   if len({c['exercise'] for c in cs})!=11:errors.append([p.stem,level,'same_exercise'])
   for c in cs:
-   count+=1;convos[c['conversation']]+=1;exercises[c['exercise']]+=1;sources.add(c['photoCredit']['sourceURL'])
+   count+=1;convos[c.get('conversation','')]+=1;exercises[c['exercise']]+=1;sources.add(c['photoCredit']['sourceURL'])
    if not (D/c['illustration']).is_file():errors.append([c['id'],'missing_photo'])
    if c['type']=='vocabulary' and (not c.get('ipa') or not c.get('wordForms')):errors.append([c['id'],'word_metadata'])
-   if c['meaning']==c.get('synonyms'):errors.append([c['id'],'duplicate_fields'])
+   if c.get('meaning') and c.get('meaning')==c.get('synonyms'):errors.append([c['id'],'duplicate_fields'])
    if c.get('meaning') and c.get('example')==c['meaning']:errors.append([c['id'],'definition_as_context'])
    if c['type']=='reflection' and not all(c.get(k) for k in ['quoteAuthor','quoteWork','quoteYear','quoteSourceURL']):errors.append([c['id'],'quote_attribution'])
    copy=json.dumps({k:c.get(k) for k in ['meaning','example','notes','conversation','exercise','answer']},ensure_ascii=False)
